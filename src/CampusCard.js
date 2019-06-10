@@ -8,7 +8,7 @@ class CampusCard extends React.Component{
     super(props)
 
     this.state = {
-    students: ['jeff a', 'juan pablo', 'Pedro']}
+    }
 
   }
 
