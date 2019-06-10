@@ -1,32 +1,26 @@
 import React from 'react';
 import './App.css';
 import StudentRow from './StudentRow';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Home from './Home';
+import Campuses from './Campuses';
+import Students from './Students';
 
 class App extends React.Component{
 
-  constructor(props){
-    super(props)
-    
-    this.state = {
-      students: ['jeff a', 'juan pablo', 'Pedro']}
-
+  constructor(){
+    super()
+  
   }
 
-  getStudents(){
-    let students =[];
-    this.state.students.forEach( (item) =>{
-      students.push(<StudentRow name={item} />)
-    })
-
-    return students;
-  }
 
   render(){
     return (
-      <div>
-        
-         
-      </div>
+      <Router>
+         <Route exact path="/" component={Home} />
+         <Route exact path="/campuses" component={Campuses} />
+         <Route exact path="/students"  component={Students} />
+      </Router>
      
     )
   }
