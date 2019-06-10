@@ -6,7 +6,7 @@ class App extends React.Component{
 
   constructor(props){
     super(props)
-    // jeff added this
+    
     this.state = {
       students: ['jeff a', 'juan pablo', 'Pedro']}
 
