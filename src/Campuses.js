@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Navigation from './Navigation';
+import Header from './Header';
 
 class Campuses extends React.Component{
 
@@ -9,7 +10,7 @@ class Campuses extends React.Component{
         return (
             <div>
                 <Navigation />
-                <h1>I'm  Campuses</h1> 
+                <Header info="Campuses" />  
            </div>
         )
     }

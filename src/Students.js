@@ -1,12 +1,15 @@
 import React from 'react';
 import Navigation from './Navigation';
+import Header from './Header';
+
+
 class Students extends React.Component{
 
     render(){
         return (
             <div>
                 <Navigation />
-                <h1>I am Students</h1> 
+                <Header info="Students" />  
            </div>
         )
     }

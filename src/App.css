@@ -29,3 +29,12 @@ form div{
   color: #fff;
 
 }
+
+.header-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-container button{
+  height: 50px;
+}
