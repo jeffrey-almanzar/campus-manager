@@ -2,6 +2,11 @@
   display: flex;
 }
 
+.d-flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 form div{
   margin-top: 10px;
 }
