@@ -1,15 +1,34 @@
-.image-c, .image-showCampus,.studentCards{
+.image-c, .image-showCampus,.studentCards, .showStudent{
   display: flex;
 }
 
 .studentCards{
   flex-wrap: wrap;
 }
-.address, .studentList {
+.address, .studentList, .changeCampus {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
+}
+.changeCampus{
+align-items: flex-start;
+
+}
+
+.student-info-container{
+  width: 100%;
+}
+.button2{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  
+  
+}
+
+.button2 button{
+  display: block;
 }
 
 .campButton button{
