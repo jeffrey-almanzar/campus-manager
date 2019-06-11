@@ -4,7 +4,7 @@ function Header(props){
     return(
         <div className="header-container">
             <h1>{"All "+props.info}</h1>
-            <button>{"Add "+props.info}</button>
+            <button onClick={props.add}>{"Add "+props.info}</button>
         </div>
     )
 }

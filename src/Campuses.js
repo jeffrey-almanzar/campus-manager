@@ -10,7 +10,7 @@ class Campuses extends React.Component{
         return (
             <div>
                 <Navigation />
-                <Header info="Campuses" />  
+                <Header info="Campuses" add={this.props.add}/>  
            </div>
         )
     }

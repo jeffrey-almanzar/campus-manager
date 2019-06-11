@@ -65,6 +65,7 @@ class EditCampus extends React.Component{
                 <div className="edit-camp-options">
                     <div>
                         <select>
+                            <option >Select a student</option>
                             <option>Student 1</option>
                             <option>Student 2</option>
                             <option>Student 3</option>

@@ -9,7 +9,7 @@ class Students extends React.Component{
         return (
             <div>
                 <Navigation />
-                <Header info="Students" />  
+                <Header info="Students" add={this.props.add} />  
            </div>
         )
     }
