@@ -30,11 +30,41 @@ form div{
 
 }
 
-.header-container{
+.header-container, .edit-camp-options{
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.edit-camp-options{
+  width: 50%;
+  margin: auto;
 }
 
 .header-container button{
   height: 50px;
 }
+
+.form-container {
+  width: 90%;
+  margin: auto;
+}
+
+.input-container{
+  display: flex;
+  justify-content: center;
+}
+.input-container div{
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+
+}
+
+.input-container label, .input-container input, .input-container textarea{
+  margin-bottom: 10px;
+}
+
+
+
+
