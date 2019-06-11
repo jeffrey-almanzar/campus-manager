@@ -1,7 +1,18 @@
-.center-txt{
-    text-align: center;
+.image-c, .image-showCampus,.studentCards{
+  display: flex;
 }
 
-form div{
-  margin-top: 10px;
+.studentCards{
+  flex-wrap: wrap;
+}
+.address, .studentList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.campButton button{
+  /* text-align: end; */
+  margin-right: 100px;
 }

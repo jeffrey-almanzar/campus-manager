@@ -1,35 +1,21 @@
 import React from 'react';
+import logo from './logo.svg';
 import './App.css';
-import StudentRow from './StudentRow';
 
-class App extends React.Component{
+import CampusCard from './CampusCard';
+import StudentCard from './StudentCard';
+import ShowCampus from './ShowCampus';
+// import ShowStudent from '/ShowStudent';
 
-  constructor(props){
-    super(props)
-    // jeff added this
-    this.state = {
-      students: ['jeff a', 'juan pablo', 'Pedro']}
-
-  }
-
-  getStudents(){
-    let students =[];
-    this.state.students.forEach( (item) =>{
-      students.push(<StudentRow name={item} />)
-    })
-
-    return students;
-  }
-
-  render(){
-    return (
-      <div>
-        
-         
-      </div>
-     
-    )
-  }
+function App() {
+  return (
+    <div>
+      < CampusCard campName = "Lehman College"/>
+      < StudentCard name = "Alice Wang" campName ="Lehman College"/>
+      < ShowCampus campName = "Lehman College"/>
+      
+    </div>
+  );
 }
 
 export default App;
