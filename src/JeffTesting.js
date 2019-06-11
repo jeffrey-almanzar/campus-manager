@@ -1,10 +1,10 @@
 import React from 'react';
 
-import EditCampus from './EditCampus';
+import EditStudent from './EditStudent';
 
 function Testing(props){
     return (
-        <EditCampus />
+        <EditStudent />
     )
 }
 
