@@ -9,8 +9,6 @@ import {addStudent, addCampus} from './actions/actions';
 import {connect} from 'react-redux';
 import EditCampus from './EditCampus';
 // import { addEstudent, addCampus } from './reducers/reducer';
-
-
 const mapStateToProps = state =>{
     return {
       campuses: state.addCampus.campuses,
