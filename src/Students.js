@@ -21,8 +21,7 @@ class Students extends React.Component{
             campuses.push(<StudentCard name={student.name}  campName={student.campus}  />)
         }
         return campuses;
-        // console.log("from student")
-        // console.log(this.props)
+        
     }
 
     render(){
