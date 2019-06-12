@@ -31,12 +31,16 @@ class EditCampus extends React.Component{
         this.setState({description: e.target.value})
     }
 
+    submit = (e) =>{
+
+    }
+
     render(){
         return(
             <div className="form-container">
                 <h1 className="center-txt">Edit Campus</h1>
                 
-                <form>
+                <form onSubmit={this.submit}>
 
                     <div className="input-container">
                         <div>

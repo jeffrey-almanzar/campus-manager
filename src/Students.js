@@ -17,7 +17,7 @@ class Students extends React.Component{
     getStudents(){
         let campuses =[];
         for(let i=0; i<10; i++){
-            campuses.push(<StudentCard name="Jeffrey Almanzar"campName="Lehman" />)
+            campuses.push(<StudentCard name="Jeffrey Almanzar" campName="Lehman" />)
         }
         return campuses;
     }

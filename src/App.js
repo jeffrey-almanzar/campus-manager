@@ -6,11 +6,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Home from './Home';
 import Campuses from './Campuses';
 import Students from './Students';
-
-import CampusCard from './CampusCard';
-import StudentCard from './StudentCard';
-import ShowCampus from './ShowCampus';
-// import ShowStudent from '/ShowStudent';
+import Add from './Add';
 class App extends React.Component{
   constructor(){
     super()
@@ -19,11 +15,15 @@ class App extends React.Component{
 
 
   render(){
+    const AddCampusComponent = ()=>(<Add name="Campus" />)
+    const AddStudentComponent = ()=>(<Add name="Student" />)
     return (
       <Router>
          <Route exact path="/" component={Home} />
          <Route exact path="/campuses" component={Campuses} />
          <Route exact path="/students"  component={Students} />
+         <Route exact path="/addCampus"  component={AddCampusComponent} />
+         <Route exact path="/addStudent"  component={AddStudentComponent} />
       </Router>
      
     )

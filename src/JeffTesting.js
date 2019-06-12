@@ -1,10 +1,13 @@
 import React from 'react';
 
-import EditStudent from './EditStudent';
+import Add from './Add';
 
 function Testing(props){
     return (
-        <EditStudent />
+        <div>
+            <Add name="Student" />
+            <Add name="Campus" />
+        </div>
     )
 }
 
