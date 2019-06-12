@@ -7,6 +7,7 @@ import Students from './Students';
 import Add from './Add';
 import {addStudent, addCampus} from './actions/actions';
 import {connect} from 'react-redux';
+import EditCampus from './EditCampus';
 // import { addEstudent, addCampus } from './reducers/reducer';
 
 
@@ -41,6 +42,7 @@ class App extends React.Component{
     const AddStudentComponent = ()=>(<Add name="Student" add={this.props.onAddStudent}/>)
     const CampusesComponent = () =>(<Campuses campuses ={this.props.campuses} />)
     const StudentsComponent = () =>(<Students students={this.props.students} />)
+    const EditCampusComponent = () =>(<EditCampus  />)
     return (
       <Router>
          <Route exact path="/" component={Home} />
@@ -48,6 +50,7 @@ class App extends React.Component{
          <Route exact path="/students"  component={StudentsComponent} />
          <Route exact path="/addCampus"  component={AddCampusComponent} />
          <Route exact path="/addStudent"  component={AddStudentComponent} />
+         <Route exact path="/editCampus"  component={EditCampusComponent} />
       </Router>
      
     )
