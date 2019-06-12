@@ -13,6 +13,7 @@ class Add  extends React.Component{
 
     submit = (event) =>{
         event.preventDefault();
+        this.props.add(event.target[0])
 
     }
 

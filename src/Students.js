@@ -16,10 +16,13 @@ class Students extends React.Component{
 
     getStudents(){
         let campuses =[];
-        for(let i=0; i<10; i++){
-            campuses.push(<StudentCard name="Jeffrey Almanzar" campName="Lehman" />)
+        for(let i=0; i<this.props.students.length; i++){
+            let student = this.props.students[i];
+            campuses.push(<StudentCard name={student.name}  campName={student.campus}  />)
         }
         return campuses;
+        // console.log("from student")
+        // console.log(this.props)
     }
 
     render(){

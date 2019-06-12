@@ -14,9 +14,15 @@ class Campuses extends React.Component{
     }
 
     getCampuses(){
+        // let campuses =[];
+        // for(let i=0; i<10; i++){
+        //     campuses.push(<CampusCard campName="Lehman" />)
+        // }
+        // return campuses;
         let campuses =[];
-        for(let i=0; i<10; i++){
-            campuses.push(<CampusCard campName="Lehman" />)
+        for(let i=0; i<this.props.campuses.length; i++){
+            let campus = this.props.campuses[i];
+            campuses.push(<CampusCard campName={campus.campusName}  />)
         }
         return campuses;
     }
