@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import StudentCard from'./StudentCard'
+import Navigation from './Navigation';
 
 class ShowCampus extends React.Component{
 
@@ -16,6 +17,7 @@ class ShowCampus extends React.Component{
   render(){
     return (
       <div>
+      <Navigation />
       <div className="image-showCampus">
            <img src="https://www.uri.edu/wp-content/uploads/home/2018/05/kingston-campus-500x327.jpg" alt="lehman img"/>
       <div>

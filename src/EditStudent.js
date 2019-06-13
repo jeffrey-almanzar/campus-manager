@@ -1,4 +1,5 @@
 import React from 'react';
+import Navigation from './Navigation';
 
 class EditStudent extends React.Component{
     constructor(props){
@@ -56,6 +57,9 @@ class EditStudent extends React.Component{
 
     render(){
         return (
+            <div>
+            <Navigation />
+            
             <form onSubmit={this.submit}>
                 <p><label htmlFor="name">Student Name</label></p>
                 <input id="name" type="text" value={this.state.name} onChange={this.onChangeName} />
@@ -73,8 +77,8 @@ class EditStudent extends React.Component{
 
                 <input value="Save Changes" type="submit" />
 
-
             </form>
+            </div>
         )
     }
 }

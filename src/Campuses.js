@@ -2,7 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 import Header from './Header';
 import CampusCard from './CampusCard';
-import {Link } from 'react-router-dom';
+
 
 class Campuses extends React.Component{
 
@@ -23,7 +23,7 @@ class Campuses extends React.Component{
         let campuses =[];
         for(let i=0; i<this.props.campuses.length; i++){
             let campus = this.props.campuses[i];
-            campuses.push(<Link to="/editCampus" ><CampusCard campName={campus.campusName}  /></Link>)
+            campuses.push(<CampusCard campName={campus.campusName} link="/showCampus" delete={this.props.delete} />)
         }
         return campuses;
     }

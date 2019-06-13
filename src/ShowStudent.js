@@ -1,16 +1,47 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import StudentCard from'./StudentCard'
+import Navigation from './Navigation';
+import {Link } from 'react-router-dom';
+import {Redirect } from 'react-router-dom';
 
 class ShowStudent extends React.Component{
+ 
+  constructor(props){
+    super(props)
+    this.name = this.props.info.location.state.name;
+    // this.state={
+    //   redirect:false
+    // }
+    
+    
+  }
+  // setRedirect = () => {
+  //   this.setState({
+  //     redirect: true
+  //   })
+  // }
+  // renderRedirect = () => {
+  //   if (this.state.redirect) {
+  //     return  <Redirect to="/students" />
+  //   }
+  // }
 
+  delete =(e )=>{
+    // this.setRedirect();
+    this.props.delete(this.name);
+    
+    
+  }
+  
 
   render(){
+    
+    
     return (
 
-     
       <div>
+        <Navigation />
+        {/* {this.renderRedirect()} */}
         <h1>Show Student</h1>
 
 
@@ -20,11 +51,12 @@ class ShowStudent extends React.Component{
           </div>
 
           <div className="student-info-container">
-              <h1>Name: {this.props.name} </h1>
+              {/* <h1>Name: {this.props.location.state.name} </h1> */}
+              <h1>Name: {this.name} </h1>
               <p>GPA: {this.props.gpa}</p>
                <div className="button2">
-                 <button>Edit</button>
-                 <button>Delete</button>
+               <Link to="/editStudent"><button>Edit</button></Link>
+               <Link to="/students"> <button onClick={this.delete}>Delete</button></Link>
              </div> 
           </div>
         </div>
@@ -64,14 +96,6 @@ class ShowStudent extends React.Component{
 
         </div>
 </div>
-
-          
-        
-       
-        
-
-
-      
 
 
       </div>

@@ -11,3 +11,24 @@ export const addCampus = (event) =>{
         payload:event
     }
 }
+
+export const deleteCampus = (event)=>{
+    return {
+        type:"DELETE_CAMPUS",
+        payload: event
+    }
+}
+
+export const deleteStudent = (event) =>{
+    return {
+        type: "DELETE_STUDENT",
+        payload: event
+    }
+}
+
+export const studentClicked = (student) =>{
+    return {
+        type:"STUDENT_CLICKED",
+        payload:student
+    }
+}
