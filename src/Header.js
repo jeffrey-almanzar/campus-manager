@@ -7,7 +7,7 @@ function Header(props){
     return(
         <div className="header-container">
             
-            <h1>{"All "+props.info}</h1>
+            <h1 className="center-txt">{"All "+props.info}</h1>
             
             <button onClick={props.add}><Link to={link}>{"Add "+props.info}</Link></button>
         </div>

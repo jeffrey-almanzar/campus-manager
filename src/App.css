@@ -1,7 +1,9 @@
 .image-c, .image-showCampus,.studentCards, .showStudent{
   display: flex;
 }
-
+.center-txt{
+  text-align: center;
+}
 .d-flex{
   display: flex;
   flex-wrap: wrap;

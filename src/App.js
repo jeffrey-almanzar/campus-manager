@@ -50,7 +50,9 @@ class App extends React.Component{
     const StudentsComponent = () =>(<Students students={this.props.students} delete={this.props.onDeleteStudent} clicked={this.props.onStudentClicked}/>)
     const EditCampusComponent = () =>(<EditCampus  />)
     const EditStudentComponent = () =>(<EditStudent  />)
-    const ShowCampusComponent = () =>(<ShowCampus />)
+    const ShowCampusComponent = (info) =>{
+      return (<ShowCampus info={info} delete={this.props.onDeleteCampus}/>)
+    }
     const ShowStudentComponent = (info) => {
       //console.log(info);
       return <ShowStudent info={info} delete={this.props.onDeleteStudent}/>;

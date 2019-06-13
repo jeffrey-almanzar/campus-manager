@@ -18,7 +18,7 @@ class Students extends React.Component{
         let campuses =[];
         for(let i=0; i<this.props.students.length; i++){
             let student = this.props.students[i];
-            campuses.push(<StudentCard name={student.name} campName={student.campus} delete={this.props.delete} />)
+            campuses.push(<StudentCard name={student.name} gpa = {student.gpa}campName={student.campus} delete={this.props.delete} />)
         }
         return campuses;
         

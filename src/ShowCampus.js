@@ -2,16 +2,26 @@ import React from 'react';
 import './App.css';
 import StudentCard from'./StudentCard'
 import Navigation from './Navigation';
+import {Link} from 'react-router-dom';
 
 class ShowCampus extends React.Component{
 
   showStudentCard(){
     let studentCard= []
-    for(let i =0; i<10; i++){
-      studentCard.push(<StudentCard name ="Ada" campName ="Lehman College" /> )
+    for(let i =0; i<this.props.info.location.state.campStudents.length; i++){
+      let student = this.props.info.location.state.campStudents[i];
+      studentCard.push(<StudentCard name ={student.name} campName ={this.props.info.location.state.campus} /> )
     }
 
     return studentCard;
+  }
+
+  componentDidMount(){
+    console.log(this.props)
+  }
+
+  delete =()=>{
+    this.props.delete(this.props.info.location.state.campus)
   }
 
   render(){
@@ -21,8 +31,8 @@ class ShowCampus extends React.Component{
       <div className="image-showCampus">
            <img src="https://www.uri.edu/wp-content/uploads/home/2018/05/kingston-campus-500x327.jpg" alt="lehman img"/>
       <div>
-
-          <h1>{this.props.campName} </h1>
+      {/* this.props.info.location.state.campus */}
+          <h1>{this.props.info.location.state.campus} </h1>
         
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -38,7 +48,7 @@ class ShowCampus extends React.Component{
 
         <div>
            <button>Edit</button>
-           <button>Delete</button>
+           <Link to="/campuses"><button onClick={this.delete}>Delete</button></Link>
         </div> 
       </div>
 

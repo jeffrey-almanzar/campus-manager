@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
+import './Cards.css';
 import {Link } from "react-router-dom";
+import defaultImg from './img/profilePicture.jpg';
 
 class StudentCard extends React.Component{
 
@@ -12,22 +14,24 @@ class StudentCard extends React.Component{
 
   render(){
     return (
-      <div>
+      <div className="card-container">
+        
           <Link to={
             {
             pathname:"/showStudent", 
-            state: {name: this.props.name, campus:this.props.campName }
+            state: {name: this.props.name, campus:this.props.campName, gpa:this.props.gpa }
             } 
             }>
-            <img src="https://next.bncollege.com/wp-content/uploads/2016/10/Student-with-Textbook.jpg" alt="lehman img"/>
+              <div className="student-img-container"></div>
+            {/* <img src={defaultImg} alt="lehman img"/> */}
             </Link>
-          
-      <br/>
+        
+      
 
       <Link to={
             {
             pathname:"/showStudent", 
-            state: {name: this.props.name, campus:this.props.campName }
+            state: {name: this.props.name, campus:this.props.campName, gpa:this.props.gpa }
             } 
             }> <h1>{this.props.name} </h1>
             </Link>
