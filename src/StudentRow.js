@@ -5,7 +5,18 @@ class  StudentRow extends React.Component{
 
 
     deleteStudent = () =>{
-        this.props.deleteStudent({name: this.props.name, campName: this.props.campName})
+
+        // let campusStudents;
+        // for(let i=0; i< this.props.allCampuses.length; i++){
+        //     if (this.props.allCampuses[i].campusName === this.props.campusName ){
+        //         campusStudents = this.props.allCampuses[i].campusStudents;
+        //     }
+        // }
+        // this.props.reRenderEditCampus(campusStudents)
+        this.props.deleteStudent({name: this.props.name, campusName: this.props.campusName})
+        
+
+
     }
     render(){
 

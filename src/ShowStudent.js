@@ -33,7 +33,7 @@ class ShowStudent extends React.Component{
     if(this.campus){
       campusInfo =<div>
                     <h2>This student is registered in a campus</h2>  
-                    <CampusCard campName={this.campus} preview={true} />
+                    <CampusCard campusName={this.campus} preview={true} />
                   </div>
     }else{
       campusInfo= <h2>This student is not registered in a campus</h2>

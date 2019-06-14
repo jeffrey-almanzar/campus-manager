@@ -12,7 +12,7 @@ class ShowCampus extends React.Component{
     let studentCard= []
     for(let i =0; i<this.props.info.location.state.campusStudents.length; i++){
       let student = this.props.info.location.state.campusStudents[i];
-      studentCard.push(<StudentCard name ={student.name} campName ={this.props.info.location.state.campName} gpa={student.gpa} /> )
+      studentCard.push(<StudentCard name ={student.name} campusName ={this.props.info.location.state.campusName} gpa={student.gpa} /> )
     }
 
     return studentCard;
@@ -23,19 +23,19 @@ class ShowCampus extends React.Component{
   }
 
   delete =()=>{
-    this.props.delete(this.props.info.location.state.campName)
+    this.props.delete(this.props.info.location.state.campusName)
   }
 
   
   
 
   render(){
-    let campName = this.props.info.location.state.campName;
+    let campusName = this.props.info.location.state.campusName;
     let campusStudents = this.props.info.location.state.campusStudents;
     let location = this.props.info.location.state.location;
     let img = this.props.info.location.state.img;
     let description = this.props.info.location.state.description;
-    console.log(campName+" from show")
+    console.log(campusName+" from show")
     // /editCampus
     return (
       <div>
@@ -48,7 +48,7 @@ class ShowCampus extends React.Component{
             {/* <img src={campusDefault} alt="lehman img"/> */}
           <div>
       
-            <h1>{campName} </h1>
+            <h1>{campusName} </h1>
           
             <p>{description}</p>
         </div> 
@@ -62,7 +62,7 @@ class ShowCampus extends React.Component{
 
         <div>
            <Link to={{pathname:'/editCampus', state:{
-             campName,
+             campusName,
              campusStudents,
              location,
              img,
@@ -77,7 +77,7 @@ class ShowCampus extends React.Component{
         <h1>Students On Campus</h1>
       </div>
       <div>
-      <Link to={{pathname:"/addStudent", state:{campus:this.props.info.location.state.campName}}}><button>Add Student</button></Link>
+      <Link to={{pathname:"/addStudent", state:{campus:this.props.info.location.state.campusName}}}><button>Add Student</button></Link>
       </div>
     </div>
       

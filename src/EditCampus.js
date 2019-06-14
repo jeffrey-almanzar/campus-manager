@@ -1,20 +1,30 @@
 import React  from 'react';
 import Navigation from './Navigation';
 import StudentRow from './StudentRow';
+import {Link} from 'react-router-dom';
 
 class EditCampus extends React.Component{
 
     constructor(props){
         super(props);
 
+        let campusStudents =[];
+        for(let i=0; i< this.props.allCampuses.length; i++){
+            if(this.props.info.location.state.campusName === this.props.allCampuses[i].campusName){
+                campusStudents = this.props.allCampuses[i].campusStudents;
+                break;
+            }
+        }
+
         this.state = {
-            campName: this.props.info.location.state.campName,
+            campusName: this.props.info.location.state.campusName,
             location:this.props.info.location.state.location,
-            imgUrl:this.props.info.location.state.img,
-            campusStudents: this.props.info.location.state.campusStudents,
+            img:this.props.info.location.state.img,
+            campusStudents,
             description:this.props.info.location.state.description,
 
         }
+        // this.props.info.location.state.campusStudents,
     }
 
     deleteStudent = () =>{
@@ -26,17 +36,21 @@ class EditCampus extends React.Component{
     }
 
     onNameChange = (e) => {
-        this.setState({campName: e.target.value})
+        this.setState({campusName: e.target.value})
     }
 
     getInitialState = () =>{
         return ({
-            campName: this.props.info.location.state.campName,
+            campusName: this.props.info.location.state.campusName,
             location:this.props.info.location.state.location,
-            imgUrl:this.props.info.location.state.img,
+            img:this.props.info.location.state.img,
             campusStudents: this.props.info.location.state.students,
             description:this.props.info.location.state.description,
         })
+    }
+
+    reRender = (campusStudents) =>{
+        this.setState({campusStudents})
     }
 
     onLocationChange = (e) =>{
@@ -56,10 +70,10 @@ class EditCampus extends React.Component{
 
         let initialState = this.getInitialState();
         let currentState ={
-            campName: e.target[0].value ,
+            campusName: e.target[0].value ,
             location: e.target[1].value,
-            imgUrl: e.target[2].value,
-            campusStudents:  this.state.students,
+            img: e.target[2].value,
+            campusStudents:  this.state.campusStudents,
             description: e.target[3].value,
         }
         this.edit(initialState, currentState);
@@ -72,7 +86,17 @@ class EditCampus extends React.Component{
     displayStudents = () =>{
         let container = [];
         for(let i=0; i< this.state.campusStudents.length; i++){
-            container.push(<StudentRow campName={this.props.info.location.state.campName} name={this.state.campusStudents[i].name} deleteStudent = {this.props.deleteStudent} />)
+            container.push(<StudentRow reRenderEditCampus={this.reRender} campusStudents={this.state.campusStudents} campusName={this.props.info.location.state.campusName} name={this.state.campusStudents[i].name} deleteStudent = {this.props.deleteStudent} />)
+        }
+        return container;
+    }
+
+    getOptions = () =>{
+        let container =[];
+        for(let i=0; i< this.state.campusStudents.length; i++){
+            let student =this.state.campusStudents[i];
+            container.push(<option value={student.name} >{student.name}</option>)
+
         }
         return container;
 
@@ -96,7 +120,7 @@ class EditCampus extends React.Component{
                             </div>
 
                             <div>
-                                <input type="text" id="campus-name" onChange={this.onNameChange} value={this.state.campName} placeholder="" />
+                                <input type="text" id="campus-name" onChange={this.onNameChange} value={this.state.campusName} placeholder="" />
                                 <input type="text" id="campus-location" onChange={this.onLocationChange} value={this.state.location} placeholder="" />                           
                                 <input type="text" id="campus-img-url" onChange={this.onImgChange} value={this.state.imgUrl} placeholder="" />           
                                 <textarea id="campus-description" onChange={this.onDescriptionChange} value={this.state.description}  rows="6" cols="50" >                        
@@ -112,17 +136,15 @@ class EditCampus extends React.Component{
 
                     <h2 className="center-txt">Students On Campus</h2>
                     <div className="edit-camp-options">
-                        <div>
+                        {/* <div>
                             <select>
                                 <option >Select a student</option>
-                                <option>Student 1</option>
-                                <option>Student 2</option>
-                                <option>Student 3</option>
+                                {this.getOptions()}
                             </select>
                         </div>
-                        
+                         */}
                         <div>
-                            <button>Add to Campus</button>
+                        <Link to={{pathname:"/addStudent", state:{campus:this.props.info.location.state.campusName}}}><button>Add Student</button></Link>
                         </div>
                     
                     </div>

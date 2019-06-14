@@ -12,7 +12,7 @@ class StudentCard extends React.Component{
           <Link to={
                 {
                 pathname:"/showStudent", 
-                state: {name: this.props.name, campus:this.props.campName, gpa:this.props.gpa }
+                state: {name: this.props.name, campus:this.props.campusName, gpa:this.props.gpa }
                 } 
                 }>
 
@@ -25,12 +25,12 @@ class StudentCard extends React.Component{
       <Link to={
             {
             pathname:"/showStudent", 
-            state: {name: this.props.name, campus:this.props.campName, gpa:this.props.gpa }
+            state: {name: this.props.name, campus:this.props.campusName, gpa:this.props.gpa }
             } 
             }> <h1>{this.props.name} </h1>
             </Link>
      
-          <p>{this.props.campName}</p>
+          <p>{this.props.campusName}</p>
       </div>
 
     

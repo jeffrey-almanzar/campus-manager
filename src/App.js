@@ -52,9 +52,10 @@ const mapDispatchToProps = (dispatch)=>{
 class App extends React.Component{
 
 
-  // componentDidMount(){
-  //   console.log(this.props)
-  // }
+  componentDidMount(){
+    console.log("From main app")
+    console.log(this.props)
+  }
 
 
   render(){
@@ -68,7 +69,8 @@ class App extends React.Component{
     const StudentsComponent = () =>(<Students students={this.props.students} delete={this.props.onDeleteStudent} clicked={this.props.onStudentClicked}/>)
 
     const EditCampusComponent = (info) =>{
-      return (<EditCampus info={info} edit={this.props.onEditCampus} deleteStudent={this.props.onDeleteStudentFromCampus} />)
+      
+      return (<EditCampus allCampuses={this.props.campuses} info={info} edit={this.props.onEditCampus} deleteStudent={this.props.onDeleteStudentFromCampus} />)
     }
 
     const EditStudentComponent = (info) =>{
