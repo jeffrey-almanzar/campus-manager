@@ -38,16 +38,16 @@ class CampusCard extends React.Component{
             {/* <p>{this.props.campusStudents.length ? `${this.props.campusStudents.length} registered` : "not student registered"}</p> */}
             <div className="campButton">
               
-            <Link to={
-              {
-              pathname:'/editCampus',
-              state: {campusName:this.props.campusName, campusStudents: this.props.campusStudents,
-                    location: this.props.location, description:this.props.description,img:this.props.img }
-              } 
-              }>
-              <button>Edit</button>
-              </Link>
-            <button onClick={this.delete}>Delete</button>
+              <Link to={
+                {
+                pathname:'/showCampus',
+                state: {campusName:this.props.campusName, campusStudents: this.props.campusStudents,
+                      location: this.props.location, description:this.props.description,img:this.props.img }
+                } 
+                }>  <button>View Campus</button></Link>
+                {/* <button>Edit</button>
+                </Link>
+              <button onClick={this.delete}>Delete</button> */}
             </div>
           </div>
       </div>

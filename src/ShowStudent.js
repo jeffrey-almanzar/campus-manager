@@ -11,6 +11,21 @@ class ShowStudent extends React.Component{
     this.name = this.props.info.location.state.name;
     this.gpa =  this.props.info.location.state.gpa;
     this.campus = this.props.info.location.state.campus;
+
+    let allCampuses = this.props.info.location.state.campuses;
+    
+    this.campusCompleteInfo=null;
+
+    for(let i=0; i<allCampuses.length; i++){
+      if(allCampuses[i].campusName ===this.campus){
+
+        this.campusCompleteInfo = allCampuses[i];
+        break;
+
+      }
+    }
+
+    console.log(this.campusCompleteInfo)
     
     
   }
@@ -33,7 +48,11 @@ class ShowStudent extends React.Component{
     if(this.campus){
       campusInfo =<div>
                     <h2>This student is registered in a campus</h2>  
-                    <CampusCard campusName={this.campus} preview={true} />
+            <CampusCard preview ={true} campusName={this.campusCompleteInfo.campusName} 
+                        description={this.campusCompleteInfo.description} location={this.campusCompleteInfo.location}
+                        img={this.campusCompleteInfo.img}
+                       campusStudents ={this.campusCompleteInfo.campusStudents} link="/showCampus"  />
+                       {/* delete={this.props.delete} */}
                   </div>
     }else{
       campusInfo= <h2>This student is not registered in a campus</h2>
@@ -55,7 +74,7 @@ class ShowStudent extends React.Component{
               <h1>Name: {this.name} </h1>
               <p>GPA: {this.gpa}</p>
                <div className="button2">
-               <Link to={{pathname:"/editStudent", state:{name:this.name, gpa:this.gpa,campus:this.campus}}}><button>Edit</button></Link>
+               <Link to={{pathname:"/editStudent", state:{name:this.name, gpa:this.gpa,campusName:this.campusName}}}><button>Edit</button></Link>
                <Link to="/students"> <button onClick={this.delete}>Delete</button></Link>
              </div> 
           </div>

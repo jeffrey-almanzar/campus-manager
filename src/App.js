@@ -31,7 +31,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = (dispatch)=>{
   return {
-    onAddCampus:  (event) => dispatch(addCampus(event.value)),
+    onAddCampus:  (event) => dispatch(addCampus(event)),
     onAddStudent: (event) => dispatch(addStudent(event)),
     onDeleteCampus: (event) => dispatch(deleteCampus(event)),
     onDeleteStudent: (event) => dispatch(deleteStudent(event)),
@@ -66,7 +66,7 @@ class App extends React.Component{
     }
     const CampusesComponent = () =>(<Campuses campuses ={this.props.campuses} delete={this.props.onDeleteCampus}/>)
 
-    const StudentsComponent = () =>(<Students students={this.props.students} delete={this.props.onDeleteStudent} clicked={this.props.onStudentClicked}/>)
+    const StudentsComponent = () =>(<Students campuses ={this.props.campuses} students={this.props.students} delete={this.props.onDeleteStudent} clicked={this.props.onStudentClicked}/>)
 
     const EditCampusComponent = (info) =>{
       
@@ -79,7 +79,7 @@ class App extends React.Component{
     }
 
     const ShowCampusComponent = (info) =>{
-      return (<ShowCampus info={info} delete={this.props.onDeleteCampus}  />)
+      return (<ShowCampus info={info} delete={this.props.onDeleteCampus} campuses={this.props.campuses} />)
     }
     const ShowStudentComponent = (info) => {
       

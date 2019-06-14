@@ -10,14 +10,14 @@ const initialCampusState = {
                     name:"Jeffrey Almanzar",
                     "gpa": "4.0",
                     "url":"jeffreyalmanzar.com",
-                    campus:"Lehman College"
+                    campusName:"Lehman College"
                 },
         
                 {
                     name:"Asifa Khan",
                     "gpa": "3.9",
                     "url":"",
-                    campus:"Lehman College"
+                    campusName:"Lehman College"
                 }
             ]
         },
@@ -33,14 +33,14 @@ const initialCampusState = {
                     name:"Ismael Almanzar",
                     "gpa": "3.0",
                     "url":"",
-                    campus:"City College"
+                    campusName:"City College"
                 },
         
                 {
                     name:"Jose Peres",
                     "gpa": "3.8",
                     "url":"",
-                    campus:"City College"
+                    campusName:"City College"
                 }
             ]
         }
@@ -52,14 +52,14 @@ const initialStudentState ={
             name:"Jeffrey Almanzar",
             "gpa": "4.0",
             "url":"jeffreyalmanzar.com",
-            campus:"Lehman College"
+            campusName:"Lehman College"
         },
 
         {
             name:"Asifa Khan",
             "gpa": "3.9",
             "url":"",
-            campus:"Lehman College"
+            campusName:"Lehman College"
         }
     ]
 
@@ -103,8 +103,9 @@ export const addCampus =(state= initialCampusState, action={})=>{
   
    switch(action.type){
        case 'ADD_CAMPUS':
-           return {campuses: [
-               { campusName: action.payload, campusStudents:[]}, ...state.campuses]}
+            
+
+           return {campuses: [ action.payload , ...state.campuses]}
         case 'DELETE_CAMPUS':
             console.log(action.payload)
             return {campuses: state.campuses.filter((campus)=>{
@@ -113,7 +114,7 @@ export const addCampus =(state= initialCampusState, action={})=>{
         case 'ADD_STUDENT_TO_CAMPUS':
             
             for(let i=0; i<state.campuses.length; i++){
-                if(state.campuses[i].campusName === action.payload.campus){
+                if(state.campuses[i].campusName === action.payload.campusName){
                     state.campuses[i].campusStudents.push(action.payload);;
                     break;
                 }

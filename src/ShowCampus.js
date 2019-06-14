@@ -12,7 +12,7 @@ class ShowCampus extends React.Component{
     let studentCard= []
     for(let i =0; i<this.props.info.location.state.campusStudents.length; i++){
       let student = this.props.info.location.state.campusStudents[i];
-      studentCard.push(<StudentCard name ={student.name} campusName ={this.props.info.location.state.campusName} gpa={student.gpa} /> )
+      studentCard.push(<StudentCard name ={student.name} campusName ={this.props.info.location.state.campusName} campuses={this.props.campuses} gpa={student.gpa} /> )
     }
 
     return studentCard;
