@@ -23,9 +23,9 @@ class ShowStudent extends React.Component{
     
   }
 
-  componentDidMount(){
-    console.log(this.props)
-  }
+  // componentDidMount(){
+  //   console.log(this.props)
+  // }
   
 
   render(){
@@ -55,7 +55,7 @@ class ShowStudent extends React.Component{
               <h1>Name: {this.name} </h1>
               <p>GPA: {this.gpa}</p>
                <div className="button2">
-               <Link to="/editStudent"><button>Edit</button></Link>
+               <Link to={{pathname:"/editStudent", state:{name:this.name, gpa:this.gpa,campus:this.campus}}}><button>Edit</button></Link>
                <Link to="/students"> <button onClick={this.delete}>Delete</button></Link>
              </div> 
           </div>

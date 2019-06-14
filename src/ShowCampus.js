@@ -10,9 +10,9 @@ class ShowCampus extends React.Component{
 
   showStudentCard(){
     let studentCard= []
-    for(let i =0; i<this.props.info.location.state.campStudents.length; i++){
-      let student = this.props.info.location.state.campStudents[i];
-      studentCard.push(<StudentCard name ={student.name} campName ={this.props.info.location.state.campus} /> )
+    for(let i =0; i<this.props.info.location.state.campusStudents.length; i++){
+      let student = this.props.info.location.state.campusStudents[i];
+      studentCard.push(<StudentCard name ={student.name} campName ={this.props.info.location.state.campName} gpa={student.gpa} /> )
     }
 
     return studentCard;
@@ -23,12 +23,20 @@ class ShowCampus extends React.Component{
   }
 
   delete =()=>{
-    this.props.delete(this.props.info.location.state.campus)
+    this.props.delete(this.props.info.location.state.campName)
   }
 
   
+  
 
   render(){
+    let campName = this.props.info.location.state.campName;
+    let campusStudents = this.props.info.location.state.campusStudents;
+    let location = this.props.info.location.state.location;
+    let img = this.props.info.location.state.img;
+    let description = this.props.info.location.state.description;
+    console.log(campName+" from show")
+    // /editCampus
     return (
       <div>
       <Navigation />
@@ -40,23 +48,26 @@ class ShowCampus extends React.Component{
             {/* <img src={campusDefault} alt="lehman img"/> */}
           <div>
       
-            <h1>{this.props.info.location.state.campus} </h1>
+            <h1>{campName} </h1>
           
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. </p>
+            <p>{description}</p>
         </div> 
       </div> 
       </div>
       <div className="address">
         <div>
-           <p>250 Bedford Park Blvd W</p>
-           <p>The Bronx, NY 10468</p>
+           <address>{location}</address>
+           
         </div>
 
         <div>
-           <button>Edit</button>
+           <Link to={{pathname:'/editCampus', state:{
+             campName,
+             campusStudents,
+             location,
+             img,
+             description
+           }}}><button >Edit</button></Link>
            <Link to="/campuses"><button onClick={this.delete}>Delete</button></Link>
         </div> 
       </div>
@@ -66,7 +77,7 @@ class ShowCampus extends React.Component{
         <h1>Students On Campus</h1>
       </div>
       <div>
-      <Link to={{pathname:"/addStudent", state:{campus:this.props.info.location.state.campus}}}><button>Add Student</button></Link>
+      <Link to={{pathname:"/addStudent", state:{campus:this.props.info.location.state.campName}}}><button>Add Student</button></Link>
       </div>
     </div>
       

@@ -5,6 +5,13 @@ export const addStudent = (event) =>{
     }
 }
 
+export const editStudent = (event) =>{
+    return {
+        type:"EDIT_STUDENT",
+        payload: event
+    }
+}
+
 export const addCampus = (event) =>{
     return {
         type:"ADD_CAMPUS",
@@ -37,5 +44,19 @@ export const addStudentOnCampus = (student) =>{
     return {
         type:"ADD_STUDENT_TO_CAMPUS",
         payload: student
+    }
+}
+
+export const editCampus = (event) =>{
+    return {
+        type:"EDIT_CAMPUS",
+        payload: event
+    }
+}
+
+export const deleteStudentFromCampus = (event) =>{
+    return {
+        type:"DELETE_STUDENT_FROM_CAMPUS",
+        payload: event
     }
 }

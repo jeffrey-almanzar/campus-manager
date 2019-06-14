@@ -6,16 +6,34 @@ class EditStudent extends React.Component{
         super(props);
 
         this.state={
-            name:"",
-            gpa:"",
+            name: this.props.info.location.state.name,
+            gpa:this.props.info.location.state.gpa,
+            campus: this.props.info.location.state.campus,
             url:""
         }
+
+
+    }
+
+    getIntialState = () => {
+        return {
+            name: this.props.info.location.state.name,
+            gpa:this.props.info.location.state.gpa,
+            campus: this.props.info.location.state.campus,
+            url:""
+        }
+    }
+
+    edit =(prevState, currentState)=>{
+        this.props.edit({prevState: prevState, currentState: currentState})
     }
 
     submit = (event) =>{
         event.preventDefault();
         let name = event.target[0];
-        let gpa= event.target[1];
+        let campus = event.target[1]
+        let gpa= event.target[2];
+        let url = event.target[3];
         
         console.log(name)
 
@@ -39,6 +57,15 @@ class EditStudent extends React.Component{
             gpa.style.border ="none";
         })
 
+        let initState = this.getIntialState();
+        let currState = {
+            name: name.value,
+            gpa:gpa.value,
+            campus: campus.value,
+            url: url.value
+        }
+
+        this.edit(initState, currState);
 
         
     }
@@ -55,6 +82,12 @@ class EditStudent extends React.Component{
         this.setState({url: e.target.value})
     }
 
+    onCampusChange = (e) =>{
+        this.setState({campus: e.target.value})
+    }
+
+    
+
     render(){
         return (
             <div>
@@ -63,6 +96,9 @@ class EditStudent extends React.Component{
             <form onSubmit={this.submit}>
                 <p><label htmlFor="name">Student Name</label></p>
                 <input id="name" type="text" value={this.state.name} onChange={this.onChangeName} />
+
+                <p><label htmlFor="campus">Campus</label></p>
+                <input type="text" id="campus" value={this.state.campus} onChange={this.onCampusChange} />
 
                 <p><label htmlFor="gpa">GPA</label></p>
                 <input type="text" id="gpa" value={this.state.gpa} onChange={this.onChangeGpa} />

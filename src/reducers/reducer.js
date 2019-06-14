@@ -1,4 +1,51 @@
+const initialCampusState = {
+    campuses:[
+        {
+            campusName:"Lehman College",
+            location: '250 Bedford Park Blvd W The Bronx, NY 10468',
+            description: "Lehman College is a senior college of the City University of New York in New York, United States. Founded in 1931 as the Bronx campus of Hunter College, the school became an independent college within CUNY in September 1967.",
+            img:"",
+            campusStudents:[
+                {
+                    name:"Jeffrey Almanzar",
+                    "gpa": "4.0",
+                    "url":"jeffreyalmanzar.com",
+                    campus:"Lehman College"
+                },
+        
+                {
+                    name:"Asifa Khan",
+                    "gpa": "3.9",
+                    "url":"",
+                    campus:"Lehman College"
+                }
+            ]
+        },
 
+        {
+            campusName:"City College",
+            location:"160 Convent Ave, New York, NY 10031",
+            description:"The City College of the City University of New York is a public senior college of the City University of New York in New York City. Located in Hamilton Heights overlooking Harlem in Manhattan, City College's 35-acre Collegiate Gothic campus spans Convent Avenue from 130th to 141st Streets.",
+            img:"",
+            
+            campusStudents:[
+                {
+                    name:"Ismael Almanzar",
+                    "gpa": "3.0",
+                    "url":"",
+                    campus:"City College"
+                },
+        
+                {
+                    name:"Jose Peres",
+                    "gpa": "3.8",
+                    "url":"",
+                    campus:"City College"
+                }
+            ]
+        }
+    ]
+}
 const initialStudentState ={
     students :[
         {
@@ -31,6 +78,16 @@ export const addStudent =(state= initialStudentState, action={})=>{
             return {students: state.students.filter((student)=>{
                 return !(action.payload == student.name)
             })}
+        case 'EDIT_STUDENT':
+            console.log(action.payload);
+            for(let i=0; i<state.students.length; i++){
+                if(state.students[i].name === action.payload.prevState.name){
+                    state.students[i] = action.payload.currentState;
+                    console.log("Replace "+state.students[i].name +" for "+ action.payload.currentState.name )
+                    break;
+                }
+            }
+            return state;
 
         case 'STUDENT_CLICKED':
             console.log(action.payload)
@@ -40,47 +97,7 @@ export const addStudent =(state= initialStudentState, action={})=>{
    }
 }
 
-const initialCampusState = {
-    campuses:[
-        {
-            campusName:"Lehman College",
-            campusStudents:[
-                {
-                    name:"Jeffrey Almanzar",
-                    "gpa": "4.0",
-                    "url":"jeffreyalmanzar.com",
-                    campus:"Lehman College"
-                },
-        
-                {
-                    name:"Asifa Khan",
-                    "gpa": "3.9",
-                    "url":"",
-                    campus:"Lehman College"
-                }
-            ]
-        },
 
-        {
-            campusName:"City College",
-            campusStudents:[
-                {
-                    name:"Ismael Almanzar",
-                    "gpa": "3.0",
-                    "url":"",
-                    campus:"City College"
-                },
-        
-                {
-                    name:"Jose Peres",
-                    "gpa": "3.8",
-                    "url":"",
-                    campus:"City College"
-                }
-            ]
-        }
-    ]
-}
 
 export const addCampus =(state= initialCampusState, action={})=>{
   
@@ -94,7 +111,7 @@ export const addCampus =(state= initialCampusState, action={})=>{
                 return !(campus.campusName ==action.payload)
             })}
         case 'ADD_STUDENT_TO_CAMPUS':
-            let update;
+            
             for(let i=0; i<state.campuses.length; i++){
                 if(state.campuses[i].campusName === action.payload.campus){
                     state.campuses[i].campusStudents.push(action.payload);;
@@ -102,7 +119,31 @@ export const addCampus =(state= initialCampusState, action={})=>{
                 }
 
             }
-            return state
+            return state;
+
+        case 'EDIT_CAMPUS':
+            console.log(action.payload);
+            for(let i=0; i<state.campuses.length; i++){
+                if(state.campuses[i].campusName === action.payload.prevState.campName){
+                    state.campuses[i] = action.payload.currentState;
+                    break;
+                }
+            }
+            return state;
+        case 'DELETE_STUDENT_FROM_CAMPUS':
+            console.log(action.payload)
+            for(let i=0; i<state.campuses.length; i++){
+                if(state.campuses[i].campusName === action.payload.campName){
+                    alert("Campus Found!!")
+                    state.campuses[i].campusStudents =  state.campuses[i].campusStudents.filter((element)=>{
+                        return element.name != action.payload.name;
+                    })
+
+                    break
+                }
+            }
+            return state;
+
         default:
             return state;
    }

@@ -8,7 +8,8 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 //actions
 
-import {addStudent, addCampus, deleteCampus, deleteStudent, studentClicked, addStudentOnCampus} from './actions/actions';
+import {addStudent, addCampus, deleteCampus, deleteStudent, studentClicked, 
+  addStudentOnCampus, editStudent, editCampus, deleteStudentFromCampus} from './actions/actions';
 
 // components
 import Home from './Home';
@@ -35,7 +36,10 @@ const mapDispatchToProps = (dispatch)=>{
     onDeleteCampus: (event) => dispatch(deleteCampus(event)),
     onDeleteStudent: (event) => dispatch(deleteStudent(event)),
     onStudentClicked: (event) => dispatch(studentClicked(event)),
-    onAddStudentOnCampus: (event) => dispatch( addStudentOnCampus(event))
+    onAddStudentOnCampus: (event) => dispatch( addStudentOnCampus(event)),
+    onEditStudent: (event) => dispatch(editStudent(event)),
+    onEditCampus: (event) => dispatch(editCampus(event)),
+    onDeleteStudentFromCampus : (event) => dispatch(deleteStudentFromCampus(event))
 
 
   
@@ -48,9 +52,9 @@ const mapDispatchToProps = (dispatch)=>{
 class App extends React.Component{
 
 
-  componentDidMount(){
-    //console.log(this.props)
-  }
+  // componentDidMount(){
+  //   console.log(this.props)
+  // }
 
 
   render(){
@@ -63,9 +67,14 @@ class App extends React.Component{
 
     const StudentsComponent = () =>(<Students students={this.props.students} delete={this.props.onDeleteStudent} clicked={this.props.onStudentClicked}/>)
 
-    const EditCampusComponent = () =>(<EditCampus  />)
+    const EditCampusComponent = (info) =>{
+      return (<EditCampus info={info} edit={this.props.onEditCampus} deleteStudent={this.props.onDeleteStudentFromCampus} />)
+    }
 
-    const EditStudentComponent = () =>(<EditStudent  />)
+    const EditStudentComponent = (info) =>{
+      console.log(info);
+      return (<EditStudent info={info} edit={this.props.onEditStudent }/>)
+    }
 
     const ShowCampusComponent = (info) =>{
       return (<ShowCampus info={info} delete={this.props.onDeleteCampus}  />)

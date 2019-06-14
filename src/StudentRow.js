@@ -1,24 +1,34 @@
 import React from 'react';
 import './StudentRow.css';
 
-function StudentRow(props){
-    return(
-        <div className="st-row-container">
-            <div className="row-img">
+class  StudentRow extends React.Component{
 
-            </div>
 
-            <div className="st-row-info-container">
-                <div className="st-row-name-container">
-                    {props.name}
+    deleteStudent = () =>{
+        this.props.deleteStudent({name: this.props.name, campName: this.props.campName})
+    }
+    render(){
+
+    
+        return(
+            <div className="st-row-container">
+                <div className="row-img">
+
                 </div>
 
-                <div  className="st-row-remove-container">
-                    <button>remove from campus</button>
+                <div className="st-row-info-container">
+                    <div className="st-row-name-container">
+                        {this.props.name}
+                    </div>
+
+                    <div  className="st-row-remove-container">
+                        <button onClick={this.deleteStudent}>remove from campus</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+
+    }
 }
 
 export default StudentRow;

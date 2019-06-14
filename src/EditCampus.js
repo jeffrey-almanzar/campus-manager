@@ -1,5 +1,6 @@
 import React  from 'react';
 import Navigation from './Navigation';
+import StudentRow from './StudentRow';
 
 class EditCampus extends React.Component{
 
@@ -7,16 +8,35 @@ class EditCampus extends React.Component{
         super(props);
 
         this.state = {
-            name:"",
-            location:"",
-            imgUrl:"",
-            description:""
+            campName: this.props.info.location.state.campName,
+            location:this.props.info.location.state.location,
+            imgUrl:this.props.info.location.state.img,
+            campusStudents: this.props.info.location.state.campusStudents,
+            description:this.props.info.location.state.description,
 
         }
     }
 
+    deleteStudent = () =>{
+        
+    } 
+
+    componentDidMount(){
+        console.log(this.props);
+    }
+
     onNameChange = (e) => {
-        this.setState({name: e.target.value})
+        this.setState({campName: e.target.value})
+    }
+
+    getInitialState = () =>{
+        return ({
+            campName: this.props.info.location.state.campName,
+            location:this.props.info.location.state.location,
+            imgUrl:this.props.info.location.state.img,
+            campusStudents: this.props.info.location.state.students,
+            description:this.props.info.location.state.description,
+        })
     }
 
     onLocationChange = (e) =>{
@@ -32,6 +52,29 @@ class EditCampus extends React.Component{
     }
 
     submit = (e) =>{
+        e.preventDefault();
+
+        let initialState = this.getInitialState();
+        let currentState ={
+            campName: e.target[0].value ,
+            location: e.target[1].value,
+            imgUrl: e.target[2].value,
+            campusStudents:  this.state.students,
+            description: e.target[3].value,
+        }
+        this.edit(initialState, currentState);
+    }
+
+    edit = (prevState, currentState) =>{
+        this.props.edit({prevState, currentState});
+    }
+
+    displayStudents = () =>{
+        let container = [];
+        for(let i=0; i< this.state.campusStudents.length; i++){
+            container.push(<StudentRow campName={this.props.info.location.state.campName} name={this.state.campusStudents[i].name} deleteStudent = {this.props.deleteStudent} />)
+        }
+        return container;
 
     }
 
@@ -53,7 +96,7 @@ class EditCampus extends React.Component{
                             </div>
 
                             <div>
-                                <input type="text" id="campus-name" onChange={this.onNameChange} value={this.state.name} placeholder="" />
+                                <input type="text" id="campus-name" onChange={this.onNameChange} value={this.state.campName} placeholder="" />
                                 <input type="text" id="campus-location" onChange={this.onLocationChange} value={this.state.location} placeholder="" />                           
                                 <input type="text" id="campus-img-url" onChange={this.onImgChange} value={this.state.imgUrl} placeholder="" />           
                                 <textarea id="campus-description" onChange={this.onDescriptionChange} value={this.state.description}  rows="6" cols="50" >                        
@@ -85,7 +128,7 @@ class EditCampus extends React.Component{
                     </div>
 
                     <div>
-                        <p className="center-txt">There are no students currently in this campus.</p>
+                        { this.state.campusStudents.length ? this.displayStudents() : <p className="center-txt">There are no students currently in this campus.</p>}
                     </div>
                 </div>
             </div>

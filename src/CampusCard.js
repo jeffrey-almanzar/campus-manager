@@ -15,10 +15,11 @@ class CampusCard extends React.Component{
       return (
         <div className ="image-c">
           <div className="img-container">
-            <Link to={
+          <Link to={
               {
-              pathname:'/showCampus', 
-              state: {campus:this.props.campName }
+              pathname:'/showCampus',
+              state: {campName:this.props.campName, campusStudents: this.props.campusStudents,
+                    location: this.props.location, description:this.props.description,img:this.props.img }
               } 
               }>
                 <img src={defaultImg} alt="lehman img"/>
@@ -29,14 +30,23 @@ class CampusCard extends React.Component{
           <div>
           <Link to={
               {
-              pathname:this.props.link,
-              state: {campus:this.props.campName, campStudents: this.props.campStudents }
+              pathname:'/showCampus',
+              state: {campName:this.props.campName, campusStudents: this.props.campusStudents,
+                    location: this.props.location, description:this.props.description,img:this.props.img }
               } 
               }> <h1> {this.props.campName} </h1></Link>
-            {/* <p>{this.props.campStudents.length ? `${this.props.campStudents.length} registered` : "not student registered"}</p> */}
+            {/* <p>{this.props.campusStudents.length ? `${this.props.campusStudents.length} registered` : "not student registered"}</p> */}
             <div className="campButton">
               
-              <Link to="/editCampus"><button onClick={this.edit}>Edit</button></Link>
+            <Link to={
+              {
+              pathname:'/editCampus',
+              state: {campName:this.props.campName, campusStudents: this.props.campusStudents,
+                    location: this.props.location, description:this.props.description,img:this.props.img }
+              } 
+              }>
+              <button>Edit</button>
+              </Link>
             <button onClick={this.delete}>Delete</button>
             </div>
           </div>
@@ -48,11 +58,12 @@ class CampusCard extends React.Component{
       return(
       <div className ="image-c">
         <div className="img-container">
-           <Link to={
-            {
-            pathname:'/showCampus', 
-            state: {campus:this.props.campName }
-            } 
+        <Link to={
+              {
+              pathname:this.props.link,
+              state: {campName:this.props.campName, campusStudents: this.props.campusStudents,
+                    location: this.props.location, description:this.props.description,img:this.props.img }
+              } 
             }>
               <img src={defaultImg} alt="lehman img"/>
       
@@ -61,15 +72,24 @@ class CampusCard extends React.Component{
 
         <div>
         <Link to={
-            {
-            pathname:this.props.link,
-            state: {campus:this.props.campName, campStudents: this.props.campStudents }
-            } 
-            }> <h1> {this.props.campName} </h1></Link>
-          <p>{this.props.campStudents.length ? `${this.props.campStudents.length} registered` : "not student registered"}</p>
+              {
+              pathname:'/showCampus',
+              state: {campName:this.props.campName, campusStudents: this.props.campusStudents,
+                    location: this.props.location, description:this.props.description,img:this.props.img }
+              } 
+              }> <h1> {this.props.campName} </h1>
+            </Link>
+          <p>{this.props.campusStudents.length ? `${this.props.campusStudents.length} registered` : "not student registered"}</p>
           <div className="campButton">
             
-            <Link to="/editCampus"><button onClick={this.edit}>Edit</button></Link>
+          <Link to={
+              {
+              pathname:'/editCampus',
+              state: {campName:this.props.campName, campusStudents: this.props.campusStudents,
+                    location: this.props.location, description:this.props.description,img:this.props.img }
+              } 
+              }>
+               <button >Edit</button></Link>
           <button onClick={this.delete}>Delete</button>
           </div>
         </div>

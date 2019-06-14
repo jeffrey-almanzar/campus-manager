@@ -9,6 +9,7 @@ class Add  extends React.Component{
         this.state ={
             name:"",
             campus:"",
+            gpa:"",
             url:""
         }
     }
@@ -27,7 +28,8 @@ class Add  extends React.Component{
                    
                     name: event.target[0].value,
                     campus: event.target[1].value,
-                    url: event.target[2].value
+                    gpa: event.target[2].value,
+                    url: event.target[3].value
                 }
                 this.props.addOnCampus(info)
                 alert("Student Added")
@@ -35,7 +37,8 @@ class Add  extends React.Component{
                 info ={
                     name: event.target[0].value,
                     campus: event.target[1].value,
-                    url: event.target[2].value
+                    gpa: event.target[2].value,
+                    url: event.target[3].value
                 }
                 this.props.add(info);
                 alert("Student Added")
@@ -62,6 +65,10 @@ class Add  extends React.Component{
         this.setState({url: e.target.value})
     }
 
+    gpaChange = (e) =>{
+        this.setState({gpa: e.target.value})
+    }
+
     options = () =>{
         if(this.props.name.toUpperCase()=="STUDENT"){
             let defaultValue;
@@ -78,6 +85,9 @@ class Add  extends React.Component{
                     <input type="text" value={this.state.name} onChange={this.nameChange} />
                     <p><lable>Campus</lable></p>
                     <input type="text" value={defaultValue } onChange={this.campusChange}/>
+
+                    <p><lable>GPA</lable></p>
+                    <input type="text" value={this.state.gpa } onChange={this.gpaChange}/>
 
                     <p><lable>Img url</lable></p>
                     <input type="text" value={this.state.url}  onChange={this.urlChange} />
