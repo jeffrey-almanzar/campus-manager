@@ -4,6 +4,8 @@ import StudentCard from'./StudentCard'
 import Navigation from './Navigation';
 import {Link} from 'react-router-dom';
 
+
+
 class ShowCampus extends React.Component{
 
   showStudentCard(){
@@ -24,21 +26,28 @@ class ShowCampus extends React.Component{
     this.props.delete(this.props.info.location.state.campus)
   }
 
+  
+
   render(){
     return (
       <div>
       <Navigation />
-      <div className="image-showCampus">
-           <img src="https://www.uri.edu/wp-content/uploads/home/2018/05/kingston-campus-500x327.jpg" alt="lehman img"/>
-      <div>
-      {/* this.props.info.location.state.campus */}
-          <h1>{this.props.info.location.state.campus} </h1>
-        
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. </p>
-      </div>  
+      <div >
+        <div className="campus-info-container">
+            <div className="image-showCampus">
+
+            </div>
+            {/* <img src={campusDefault} alt="lehman img"/> */}
+          <div>
+      
+            <h1>{this.props.info.location.state.campus} </h1>
+          
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. </p>
+        </div> 
+      </div> 
       </div>
       <div className="address">
         <div>
@@ -57,7 +66,7 @@ class ShowCampus extends React.Component{
         <h1>Students On Campus</h1>
       </div>
       <div>
-      <button>Add Student</button>
+      <Link to={{pathname:"/addStudent", state:{campus:this.props.info.location.state.campus}}}><button>Add Student</button></Link>
       </div>
     </div>
       

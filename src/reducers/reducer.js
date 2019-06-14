@@ -23,8 +23,9 @@ export const addStudent =(state= initialStudentState, action={})=>{
     //console.log(...state.students);
    switch(action.type){
        case 'ADD_STUDENT':
-           return {students: [{
-               name: action.payload}, ...state.students]}
+           console.log(action)
+        //    {students: [action.payload, ...state.students]}
+           return {students: [action.payload, ...state.students]}
         case "DELETE_STUDENT":
             console.log(action.payload)
             return {students: state.students.filter((student)=>{
@@ -92,6 +93,16 @@ export const addCampus =(state= initialCampusState, action={})=>{
             return {campuses: state.campuses.filter((campus)=>{
                 return !(campus.campusName ==action.payload)
             })}
+        case 'ADD_STUDENT_TO_CAMPUS':
+            let update;
+            for(let i=0; i<state.campuses.length; i++){
+                if(state.campuses[i].campusName === action.payload.campus){
+                    state.campuses[i].campusStudents.push(action.payload);;
+                    break;
+                }
+
+            }
+            return state
         default:
             return state;
    }

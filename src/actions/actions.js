@@ -32,3 +32,10 @@ export const studentClicked = (student) =>{
         payload:student
     }
 }
+
+export const addStudentOnCampus = (student) =>{
+    return {
+        type:"ADD_STUDENT_TO_CAMPUS",
+        payload: student
+    }
+}

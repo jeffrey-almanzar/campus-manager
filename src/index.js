@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Testing from './JeffTesting';
 import * as serviceWorker from './serviceWorker';
+
 // redux
 import {Provider} from 'react-redux';
 import {createStore, combineReducers} from 'redux';

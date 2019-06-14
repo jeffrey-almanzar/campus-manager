@@ -5,25 +5,12 @@ import CampusCard from './CampusCard';
 
 
 class Campuses extends React.Component{
-
-    constructor(props){
-        super(props);
-
-        this.state ={
-            
-        }
-    }
-
+    
     getCampuses(){
-        // let campuses =[];
-        // for(let i=0; i<10; i++){
-        //     campuses.push(<CampusCard campName="Lehman" />)
-        // }
-        // return campuses;
         let campuses =[];
         for(let i=0; i<this.props.campuses.length; i++){
             let campus = this.props.campuses[i];
-            campuses.push(<CampusCard campName={campus.campusName} campStudents ={campus.campusStudents} link="/showCampus" delete={this.props.delete} />)
+            campuses.push(<CampusCard preview ={false} campName={campus.campusName} campStudents ={campus.campusStudents} link="/showCampus" delete={this.props.delete} />)
         }
         return campuses;
     }

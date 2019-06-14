@@ -32,3 +32,22 @@
     background-size: cover;
     background-position: top;
 }
+
+
+.image-showCampus{
+    width: 600px;
+    height: 400px;
+    background-image: url('./img/campus.png');
+    background-size: cover;
+    background-position: top;
+}
+
+.campus-info-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.campus-info-container div{
+    margin-right: 40px;
+}

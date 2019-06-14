@@ -1,11 +1,20 @@
 import React from 'react';
+
+//css
 import './App.css';
+
+//react-roter
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
+//actions
+
+import {addStudent, addCampus, deleteCampus, deleteStudent, studentClicked, addStudentOnCampus} from './actions/actions';
+
+// components
 import Home from './Home';
+import Add from './Add';
 import Campuses from './Campuses';
 import Students from './Students';
-import Add from './Add';
-import {addStudent, addCampus, deleteCampus, deleteStudent, studentClicked} from './actions/actions';
 import {connect} from 'react-redux';
 import EditCampus from './EditCampus';
 import ShowCampus from './ShowCampus';
@@ -22,10 +31,11 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = (dispatch)=>{
   return {
     onAddCampus:  (event) => dispatch(addCampus(event.value)),
-    onAddStudent: (event) => dispatch(addStudent(event.value)),
+    onAddStudent: (event) => dispatch(addStudent(event)),
     onDeleteCampus: (event) => dispatch(deleteCampus(event)),
     onDeleteStudent: (event) => dispatch(deleteStudent(event)),
-    onStudentClicked: (event) => dispatch(studentClicked(event))
+    onStudentClicked: (event) => dispatch(studentClicked(event)),
+    onAddStudentOnCampus: (event) => dispatch( addStudentOnCampus(event))
 
 
   
@@ -45,16 +55,23 @@ class App extends React.Component{
 
   render(){
     const AddCampusComponent = ()=>(<Add name="Campus" add={this.props.onAddCampus}/>)
-    const AddStudentComponent = ()=>(<Add name="Student" add={this.props.onAddStudent}/>)
+
+    const AddStudentComponent = (info)=>{
+      return (<Add name="Student" info ={info} add={this.props.onAddStudent} addOnCampus={this.props.onAddStudentOnCampus} addingOnCampus={true} />)
+    }
     const CampusesComponent = () =>(<Campuses campuses ={this.props.campuses} delete={this.props.onDeleteCampus}/>)
+
     const StudentsComponent = () =>(<Students students={this.props.students} delete={this.props.onDeleteStudent} clicked={this.props.onStudentClicked}/>)
+
     const EditCampusComponent = () =>(<EditCampus  />)
+
     const EditStudentComponent = () =>(<EditStudent  />)
+
     const ShowCampusComponent = (info) =>{
-      return (<ShowCampus info={info} delete={this.props.onDeleteCampus}/>)
+      return (<ShowCampus info={info} delete={this.props.onDeleteCampus}  />)
     }
     const ShowStudentComponent = (info) => {
-      //console.log(info);
+      
       return <ShowStudent info={info} delete={this.props.onDeleteStudent}/>;
     }
 

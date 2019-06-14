@@ -11,9 +11,6 @@ class ShowStudent extends React.Component{
     this.name = this.props.info.location.state.name;
     this.gpa =  this.props.info.location.state.gpa;
     this.campus = this.props.info.location.state.campus;
-    // this.state={
-    //   redirect:false
-    // }
     
     
   }
@@ -36,7 +33,7 @@ class ShowStudent extends React.Component{
     if(this.campus){
       campusInfo =<div>
                     <h2>This student is registered in a campus</h2>  
-                    <CampusCard campName={this.campus} />
+                    <CampusCard campName={this.campus} preview={true} />
                   </div>
     }else{
       campusInfo= <h2>This student is not registered in a campus</h2>
@@ -66,47 +63,7 @@ class ShowStudent extends React.Component{
 
 
       {campusInfo}
-        
-
-
-
-    {/* <div className= "changeCampus">
-        <div className="image-c">
-            <div>
-              <img src="https://www.uri.edu/wp-content/uploads/home/2018/05/kingston-campus-500x327.jpg" alt="lehman img"/>
-            </div>
-
-            <div>
-              <h1> {this.props.campName} </h1>
-              <p>5 Students</p>
-              <div className="campButton">
-              <button>Edit</button>
-              </div>
-            </div>
-        </div>
-
-
-        <div>
-           <select>
-          <option value="">Select Campus</option>
-          <option value="hostos">Hostos</option>
-          <option value="hunter">Hunter</option>
-          <option value="bmcc">BMCC</option>
-          </select>
-          <br></br>
-          <br></br>
-          <br></br>
-          
-           <button>Change Campus</button>
-
-
-        </div>
-</div>
-
-
-      </div> */}
-      
-      
+            
       </div>
       
      

@@ -6,14 +6,6 @@ import StudentCard from './StudentCard';
 
 class Students extends React.Component{
 
-    constructor(props){
-        super(props);
-
-        this.state ={
-            
-        }
-    }
-
     getStudents(){
         let campuses =[];
         for(let i=0; i<this.props.students.length; i++){
