@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.css';
-import './Cards.css';
+import '../css/App.css';
+import '../css/Cards.css';
 import { Link } from 'react-router-dom';
-import defaultImg from './img/campus.png'; 
+import defaultImg from '../img/campus.png'; 
 
 class CampusCard extends React.Component{
   
@@ -22,7 +22,7 @@ class CampusCard extends React.Component{
                     location: this.props.location, description:this.props.description,img:this.props.img }
               } 
               }>
-                <img src={defaultImg} alt="lehman img"/>
+                <img src={this.props.img || defaultImg} alt="lehman img"/>
         
               </Link>
           </div>
@@ -65,7 +65,7 @@ class CampusCard extends React.Component{
                     location: this.props.location, description:this.props.description,img:this.props.img }
               } 
             }>
-              <img src={defaultImg} alt="lehman img"/>
+              <img src={this.props.img || defaultImg} alt="lehman img"/>
       
             </Link>
         </div>

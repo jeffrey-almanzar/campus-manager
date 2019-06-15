@@ -1,11 +1,10 @@
 import React from 'react';
-import './App.css';
+import '../css/App.css';
 import Navigation from './Navigation';
 import {Link } from 'react-router-dom';
-import {Redirect } from 'react-router-dom';
 import CampusCard from './CampusCard';
 class ShowStudent extends React.Component{
- 
+//  if the campus is not in campuses will produce an error
   constructor(props){
     super(props)
     this.name = this.props.info.location.state.name;
@@ -25,23 +24,15 @@ class ShowStudent extends React.Component{
       }
     }
 
-    console.log(this.campusCompleteInfo)
-    
-    
+
   }
   
 
   delete =(e )=>{
     // this.setRedirect();
-    this.props.delete(this.name);
-    
-    
+    this.props.delete(this.name); 
   }
 
-  // componentDidMount(){
-  //   console.log(this.props)
-  // }
-  
 
   render(){
     let campusInfo;

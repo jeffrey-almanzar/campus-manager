@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
-import StudentCard from'./StudentCard'
+import '../css/App.css';
+import StudentCard from './StudentCard'
 import Navigation from './Navigation';
 import {Link} from 'react-router-dom';
 
@@ -12,7 +12,7 @@ class ShowCampus extends React.Component{
     let studentCard= []
     for(let i =0; i<this.props.info.location.state.campusStudents.length; i++){
       let student = this.props.info.location.state.campusStudents[i];
-      studentCard.push(<StudentCard name ={student.name} campusName ={this.props.info.location.state.campusName} campuses={this.props.campuses} gpa={student.gpa} /> )
+      studentCard.push(<StudentCard name ={student.name} url={student.url} delete={this.props.deleteStudent} campusName ={this.props.info.location.state.campusName} campuses={this.props.campuses} gpa={student.gpa} /> )
     }
 
     return studentCard;

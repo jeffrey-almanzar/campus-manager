@@ -4,19 +4,19 @@ const initialCampusState = {
             campusName:"Lehman College",
             location: '250 Bedford Park Blvd W The Bronx, NY 10468',
             description: "Lehman College is a senior college of the City University of New York in New York, United States. Founded in 1931 as the Bronx campus of Hunter College, the school became an independent college within CUNY in September 1967.",
-            img:"",
+            img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSwhJxE9QqsclsZaZzu_jn1olfPS4jd_ZE61sGgVlkZN0oyRQHUg",
             campusStudents:[
                 {
                     name:"Jeffrey Almanzar",
                     "gpa": "4.0",
-                    "url":"jeffreyalmanzar.com",
+                    "url":"https://bronxbroncos.com/images/2018/2/28/2018_BCC_BB_17_Jeffery_Almanzar.jpg?width=300",
                     campusName:"Lehman College"
                 },
         
                 {
                     name:"Asifa Khan",
                     "gpa": "3.9",
-                    "url":"",
+                    "url":"https://media.licdn.com/dms/image/C4D03AQGxHD7Rte3TLQ/profile-displayphoto-shrink_800_800/0?e=1565827200&v=beta&t=566EMNwsEbDTYjd1JLORorJuTeqFtroEZlDEQwpHze0",
                     campusName:"Lehman College"
                 }
             ]
@@ -51,14 +51,14 @@ const initialStudentState ={
         {
             name:"Jeffrey Almanzar",
             "gpa": "4.0",
-            "url":"jeffreyalmanzar.com",
+            "url":"https://bronxbroncos.com/images/2018/2/28/2018_BCC_BB_17_Jeffery_Almanzar.jpg?width=300",
             campusName:"Lehman College"
         },
 
         {
             name:"Asifa Khan",
             "gpa": "3.9",
-            "url":"",
+            "url":"https://media.licdn.com/dms/image/C4D03AQGxHD7Rte3TLQ/profile-displayphoto-shrink_800_800/0?e=1565827200&v=beta&t=566EMNwsEbDTYjd1JLORorJuTeqFtroEZlDEQwpHze0",
             campusName:"Lehman College"
         }
     ]

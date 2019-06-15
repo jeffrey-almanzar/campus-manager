@@ -1,23 +1,14 @@
 import React from 'react';
-import './StudentRow.css';
+import '../css/StudentRow.css';
 
 class  StudentRow extends React.Component{
 
 
     deleteStudent = () =>{
-
-        // let campusStudents;
-        // for(let i=0; i< this.props.allCampuses.length; i++){
-        //     if (this.props.allCampuses[i].campusName === this.props.campusName ){
-        //         campusStudents = this.props.allCampuses[i].campusStudents;
-        //     }
-        // }
-        // this.props.reRenderEditCampus(campusStudents)
         this.props.deleteStudent({name: this.props.name, campusName: this.props.campusName})
-        
-
 
     }
+    
     render(){
 
     

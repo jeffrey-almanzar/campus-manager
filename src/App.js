@@ -1,7 +1,7 @@
 import React from 'react';
 
 //css
-import './App.css';
+import './css/App.css';
 
 //react-roter
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
@@ -12,16 +12,19 @@ import {addStudent, addCampus, deleteCampus, deleteStudent, studentClicked,
   addStudentOnCampus, editStudent, editCampus, deleteStudentFromCampus} from './actions/actions';
 
 // components
-import Home from './Home';
-import Add from './Add';
-import Campuses from './Campuses';
-import Students from './Students';
-import {connect} from 'react-redux';
-import EditCampus from './EditCampus';
-import ShowCampus from './ShowCampus';
-import ShowStudent from './ShowStudent';
-import EditStudent from './EditStudent';
+import Home from './components/Home';
+import Add from './components/Add';
+import Campuses from './components/Campuses';
+import Students from './components/Students';
+
+import EditCampus from './components/EditCampus';
+import ShowCampus from './components/ShowCampus';
+import ShowStudent from './components/ShowStudent';
+import EditStudent from './components/EditStudent';
 // import { addEstudent, addCampus } from './reducers/reducer';
+
+import {connect} from 'react-redux';
+
 const mapStateToProps = state =>{
     return {
       campuses: state.addCampus.campuses,
@@ -79,7 +82,7 @@ class App extends React.Component{
     }
 
     const ShowCampusComponent = (info) =>{
-      return (<ShowCampus info={info} delete={this.props.onDeleteCampus} campuses={this.props.campuses} />)
+      return (<ShowCampus info={info} delete={this.props.onDeleteCampus} deleteStudent={this.props.onDeleteStudentFromCampus} campuses={this.props.campuses} />)
     }
     const ShowStudentComponent = (info) => {
       
