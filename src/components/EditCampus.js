@@ -2,6 +2,7 @@ import React  from 'react';
 import Navigation from './Navigation';
 import StudentRow from './StudentRow';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 class EditCampus extends React.Component{
 
@@ -76,6 +77,22 @@ class EditCampus extends React.Component{
             campusStudents:  this.state.campusStudents,
             description: e.target[3].value,
         }
+
+
+        axios.put('http://localhost:3000/editCampus/1', {
+            campusName: e.target[0].value ,
+            location: e.target[1].value,
+            img: e.target[2].value,
+            description: e.target[3].value,
+            preVname: initialState.campusName
+        })
+        .then( (response) => {
+        console.log(response.data);
+        })
+        .catch((error)=> {
+        console.log("Not worked");
+        });
+
         this.edit(initialState, currentState);
     }
 

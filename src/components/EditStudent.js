@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from './Navigation';
+import axios from 'axios';
 
 class EditStudent extends React.Component{
     constructor(props){
@@ -64,6 +65,20 @@ class EditStudent extends React.Component{
             campus: campus.value,
             url: url.value
         }
+
+        axios.put('http://localhost:3000/editStudent/1', {
+            name: name.value,
+            gpa:gpa.value,
+            campus: campus.value,
+            url: url.value,
+            preVname: initState.name
+        })
+            .then(function (response) {
+            console.log(response.data);
+            })
+            .catch(function (error) {
+            console.log("Not worked");
+            });
 
         this.edit(initState, currState);
 

@@ -3,11 +3,21 @@ import '../css/App.css';
 import '../css/Cards.css';
 import { Link } from 'react-router-dom';
 import defaultImg from '../img/campus.png'; 
+import axios from 'axios';
 
 class CampusCard extends React.Component{
   
+  
   delete = ()=>{
+    axios.delete('http://localhost:3000/deleteCampus/'+this.props.campusName)
+      .then((elem)=>{
+        console.log(elem)
+      })
     this.props.delete(this.props.campusName)
+  }
+
+  componentDidMount(){
+
   }
 
   display = () =>{
@@ -45,9 +55,7 @@ class CampusCard extends React.Component{
                       location: this.props.location, description:this.props.description,img:this.props.img }
                 } 
                 }>  <button>View Campus</button></Link>
-                {/* <button>Edit</button>
-                </Link>
-              <button onClick={this.delete}>Delete</button> */}
+                
             </div>
           </div>
       </div>

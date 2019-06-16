@@ -3,6 +3,8 @@ import '../css/App.css';
 import '../css/Cards.css';
 import {Link } from "react-router-dom";
 import defaultImage from '../img/profilePicture.jpg';
+import axios from 'axios';
+
 class StudentCard extends React.Component{
   constructor(props){
     super(props);
@@ -11,7 +13,12 @@ class StudentCard extends React.Component{
 
   }
   delete = () =>{
+    axios.delete('http://localhost:3000/deleteStudent/'+this.props.name)
+      .then((elem)=>{
+        console.log(elem)
+      })
     this.props.delete(this.props.name)
+
   }
 
   

@@ -3,6 +3,8 @@ import '../css/App.css';
 import Navigation from './Navigation';
 import {Link } from 'react-router-dom';
 import CampusCard from './CampusCard';
+import axios from 'axios';
+
 class ShowStudent extends React.Component{
 //  if the campus is not in campuses will produce an error
   constructor(props){
@@ -30,6 +32,10 @@ class ShowStudent extends React.Component{
 
   delete =(e )=>{
     // this.setRedirect();
+    axios.delete('http://localhost:3000/deleteStudent/'+this.name)
+      .then((elem)=>{
+        console.log(elem)
+      })
     this.props.delete(this.name); 
   }
 

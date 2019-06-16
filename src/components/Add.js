@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from './Navigation';
+import axios from 'axios';
 
 class Add  extends React.Component{
 
@@ -52,10 +53,24 @@ class Add  extends React.Component{
                     url: event.target[3].value
                 }
 
+               let info2 ={
+                    name: event.target[0].value,
+                    campus: event.target[1].value,
+                    gpa: event.target[2].value,
+                    url: event.target[3].value
+                }
+
                 
                 let validGpa = (Number(info.gpa) >0.0 && Number(info.gpa) < 4.0);
 
                 if(info.name && validGpa && info.campusName){
+                    axios.post('http://localhost:3000/addStudent', info2)
+                      .then(function (response) {
+                        console.log(response);
+                      })
+                      .catch(function (error) {
+                        console.log(error);
+                      });
                     this.props.add(info);
                 }else{
                     alert("Name, campus, and GPA must be provide, try again.")
@@ -73,7 +88,23 @@ class Add  extends React.Component{
                 campusStudents:[]
             }
 
+            let info2 ={
+                   
+                campusname: event.target[0].value,
+                location: event.target[1].value,
+                description: event.target[2].value,
+                img: event.target[3].value,
+                
+            }
+
             if(info.campusName){
+                axios.post('http://localhost:3000/addCampus', info2)
+                      .then(function (response) {
+                        console.log(response);
+                      })
+                      .catch(function (error) {
+                        console.log(error);
+                      });
                 this.props.add(info);
             }else{
                 alert("Name can not be empty, try again!")
@@ -123,7 +154,8 @@ class Add  extends React.Component{
             }
 
             return(
-                <form onSubmit={this.submit} className="center-txt">
+                // ADDING A STUDENT
+                <form onSubmit={this.submit} className="center-txt" >
 
                     <h2>{this.props.name.toUpperCase()} NAME</h2>
                     <input type="text" value={this.state.name} onChange={this.nameChange} />
@@ -145,7 +177,8 @@ class Add  extends React.Component{
             )
         }else{
             return (
-                <form onSubmit={this.submit} className="center-txt">
+                // ADDING A Campus
+                <form onSubmit={this.submit} className="center-txt" >
 
                     <h2>{this.props.name.toUpperCase()} NAME</h2>
                     <input type="text" value={this.state.campus} onChange={this.campusChange} />

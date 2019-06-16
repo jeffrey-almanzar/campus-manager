@@ -26,9 +26,6 @@ class ShowCampus extends React.Component{
     this.props.delete(this.props.info.location.state.campusName)
   }
 
-  
-  
-
   render(){
     let campusName = this.props.info.location.state.campusName;
     let campusStudents = this.props.info.location.state.campusStudents;

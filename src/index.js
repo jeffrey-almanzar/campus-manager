@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './css/index.css';
 import App from './App';
 
-
+//react-script-start
 // redux
 import {Provider} from 'react-redux';
 import {createStore, combineReducers} from 'redux';

@@ -5,6 +5,20 @@ export const addStudent = (event) =>{
     }
 }
 
+export const loadStudents = (event) =>{
+    return{
+        type:'LOAD STUDENTS',
+        payload: event
+    }
+}
+
+export const loadCampuses = (event) =>{
+    return{
+        type:'LOAD CAMPUSES',
+        payload: event
+    }
+}
+
 export const editStudent = (event) =>{
     return {
         type:"EDIT_STUDENT",

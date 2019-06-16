@@ -2,15 +2,28 @@ import React from 'react';
 import Navigation from './Navigation';
 import '../css/Home.css';
 import homeImage from '../img/home.jpg';
+import axios from 'axios';
 
 class Home extends React.Component{
   constructor(props){
     super(props);
 
-    this.state ={
-        
-    }
-}
+    console.log("From update")
+    console.log(this.props)
+    
+  }
+
+  // componentDidMount(){
+  //   axios.get('http://localhost:3000/')
+  //     .then(function (response) {
+  //   // handle success
+  //         console.log(response);
+  //     })
+  //     .catch(function (error) {
+  //   // handle error
+  //     console.log(error);
+  //   })
+  // }
 
     render(){
         return (
@@ -20,7 +33,7 @@ class Home extends React.Component{
           <main>
               <div className ="homePic">
                   <img src = {homeImage}/>
-                  <div class="top-left">Campus Manager</div>
+                  <div className="top-left">Campus Manager</div>
               </div>
             
 

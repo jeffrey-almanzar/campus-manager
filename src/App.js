@@ -1,5 +1,5 @@
 import React from 'react';
-
+import axios from 'axios';
 //css
 import './css/App.css';
 
@@ -9,7 +9,8 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 //actions
 
 import {addStudent, addCampus, deleteCampus, deleteStudent, studentClicked, 
-  addStudentOnCampus, editStudent, editCampus, deleteStudentFromCampus} from './actions/actions';
+  addStudentOnCampus, editStudent, editCampus, deleteStudentFromCampus,
+  loadCampuses, loadStudents} from './actions/actions';
 
 // components
 import Home from './components/Home';
@@ -42,9 +43,9 @@ const mapDispatchToProps = (dispatch)=>{
     onAddStudentOnCampus: (event) => dispatch( addStudentOnCampus(event)),
     onEditStudent: (event) => dispatch(editStudent(event)),
     onEditCampus: (event) => dispatch(editCampus(event)),
-    onDeleteStudentFromCampus : (event) => dispatch(deleteStudentFromCampus(event))
-
-
+    onDeleteStudentFromCampus : (event) => dispatch(deleteStudentFromCampus(event)),
+    onLoadStudents: (event) => dispatch(loadStudents(event)),
+    onLoadCampuses : (event) => dispatch(loadCampuses(event))
   
   }
 
@@ -58,8 +59,35 @@ class App extends React.Component{
   componentDidMount(){
     console.log("From main app")
     console.log(this.props)
+    axios.get('http://localhost:3000/campuses')
+      .then((response) => {
+        // console.log(response)
+          this.props.onLoadCampuses(response.data.campuses)
+          console.log(this.props)
+      })
+      .catch((error) => {
+        console.log(error);
+    })
+
+    axios.get('http://localhost:3000/students')
+      .then( (response) => {
+        // console.log(response)
+          this.props.onLoadStudents(response.data.students)
+          console.log(this.props)
+          
+      })
+      .catch( (error) =>{
+    
+      console.log(error);
+    })
   }
 
+  // componentDidUpdate(){
+    
+
+  // }
+
+  
 
   render(){
     const AddCampusComponent = ()=>(<Add name="Campus" add={this.props.onAddCampus}/>)
@@ -89,9 +117,11 @@ class App extends React.Component{
       return <ShowStudent info={info} delete={this.props.onDeleteStudent}/>;
     }
 
+    const HomeComponent = ()=>(<Home onLoadCampuses={this.props.onLoadCampuses} campuses={this.props.campuses} students={this.props.students} />)
+
     return (
       <Router>
-         <Route exact path="/" component={Home} />
+         <Route exact path="/" component={HomeComponent} />
          <Route exact path="/campuses" component={CampusesComponent} />
          <Route exact path="/students"  component={StudentsComponent} />
          <Route exact path="/addCampus"  component={AddCampusComponent} />
