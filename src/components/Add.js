@@ -72,6 +72,7 @@ class Add  extends React.Component{
                         console.log(error);
                       });
                     this.props.add(info);
+                    
                 }else{
                     alert("Name, campus, and GPA must be provide, try again.")
                 }
