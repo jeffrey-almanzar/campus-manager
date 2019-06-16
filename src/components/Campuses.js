@@ -13,7 +13,7 @@ class Campuses extends React.Component{
             campuses.push(<CampusCard preview ={false} campusName={campus.campusName} 
             description={campus.description} location={campus.location}
             img={campus.img}
-            campusStudents ={campus.campusStudents} link="/showCampus" delete={this.props.delete} />)
+            campusStudents ={this.props.students} link="/showCampus" delete={this.props.delete} />)
         }
         return campuses;
     }

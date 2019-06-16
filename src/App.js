@@ -95,7 +95,7 @@ class App extends React.Component{
     const AddStudentComponent = (info)=>{
       return (<Add name="Student" info ={info} add={this.props.onAddStudent} addOnCampus={this.props.onAddStudentOnCampus} addingOnCampus={true} />)
     }
-    const CampusesComponent = () =>(<Campuses campuses ={this.props.campuses} delete={this.props.onDeleteCampus}/>)
+    const CampusesComponent = () =>(<Campuses students ={this.props.students} campuses ={this.props.campuses} delete={this.props.onDeleteCampus}/>)
 
     const StudentsComponent = () =>(<Students campuses ={this.props.campuses} students={this.props.students} delete={this.props.onDeleteStudent} clicked={this.props.onStudentClicked}/>)
 
@@ -117,7 +117,7 @@ class App extends React.Component{
       return <ShowStudent info={info} delete={this.props.onDeleteStudent}/>;
     }
 
-    const HomeComponent = ()=>(<Home onLoadCampuses={this.props.onLoadCampuses} campuses={this.props.campuses} students={this.props.students} />)
+    const HomeComponent = ()=>(<Home  />)
 
     return (
       <Router>

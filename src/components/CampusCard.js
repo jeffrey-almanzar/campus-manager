@@ -7,6 +7,16 @@ import axios from 'axios';
 
 class CampusCard extends React.Component{
   
+  constructor(props){
+    super(props)
+    this.studentsRegistered = 0;
+    for(let i=0; i < this.props.campusStudents.length; i++){
+        if(this.props.campusStudents[i].campusName === this.props.campusName ){
+          this.studentsRegistered++;
+        }
+    }
+
+  }
   
   delete = ()=>{
     axios.delete('http://localhost:3000/deleteCampus/'+this.props.campusName)
@@ -87,7 +97,7 @@ class CampusCard extends React.Component{
               } 
               }> <h1> {this.props.campusName} </h1>
             </Link>
-          <p>{this.props.campusStudents.length ? `${this.props.campusStudents.length} registered` : "not student registered"}</p>
+          <p>{this.studentsRegistered ? `${this.studentsRegistered} registered` : "not student registered"}</p>
           <div className="campButton">
             
           <Link to={
