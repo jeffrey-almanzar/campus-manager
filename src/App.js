@@ -10,7 +10,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import {addStudent, addCampus, deleteCampus, deleteStudent, studentClicked, 
   addStudentOnCampus, editStudent, editCampus, deleteStudentFromCampus,
-  loadCampuses, loadStudents} from './actions/actions';
+  loadCampuses, loadStudents, reRender} from './actions/actions';
 
 // components
 import Home from './components/Home';
@@ -22,6 +22,7 @@ import EditCampus from './components/EditCampus';
 import ShowCampus from './components/ShowCampus';
 import ShowStudent from './components/ShowStudent';
 import EditStudent from './components/EditStudent';
+import NotFound from './components/NotFound';
 // import { addEstudent, addCampus } from './reducers/reducer';
 
 import {connect} from 'react-redux';
@@ -45,7 +46,8 @@ const mapDispatchToProps = (dispatch)=>{
     onEditCampus: (event) => dispatch(editCampus(event)),
     onDeleteStudentFromCampus : (event) => dispatch(deleteStudentFromCampus(event)),
     onLoadStudents: (event) => dispatch(loadStudents(event)),
-    onLoadCampuses : (event) => dispatch(loadCampuses(event))
+    onLoadCampuses : (event) => dispatch(loadCampuses(event)),
+    onReRender: (event) => dispatch(reRender(event))
   
   }
 
@@ -90,10 +92,10 @@ class App extends React.Component{
   
 
   render(){
-    const AddCampusComponent = ()=>(<Add name="Campus" add={this.props.onAddCampus}/>)
+    const AddCampusComponent = ()=>(<Add name="Campus" add={this.props.onAddCampus} onLoadCampuses={this.props.onLoadCampuses}  />)
 
     const AddStudentComponent = (info)=>{
-      return (<Add name="Student" info ={info} add={this.props.onAddStudent} addOnCampus={this.props.onAddStudentOnCampus} addingOnCampus={true} />)
+      return (<Add name="Student"  onLoadCampuses={this.props.onLoadCampuses} info ={info} add={this.props.onAddStudent} addOnCampus={this.props.onAddStudentOnCampus} addingOnCampus={true} />)
     }
     const CampusesComponent = () =>(<Campuses students ={this.props.students} campuses ={this.props.campuses} delete={this.props.onDeleteCampus}/>)
 
@@ -110,27 +112,31 @@ class App extends React.Component{
     }
 
     const ShowCampusComponent = (info) =>{
-      return (<ShowCampus info={info} delete={this.props.onDeleteCampus} deleteStudent={this.props.onDeleteStudentFromCampus} campuses={this.props.campuses} />)
+      return (<ShowCampus  info={info} delete={this.props.onDeleteCampus} deleteStudent={this.props.onDeleteStudentFromCampus} campuses={this.props.campuses} />)
     }
     const ShowStudentComponent = (info) => {
       
-      return <ShowStudent info={info} delete={this.props.onDeleteStudent}/>;
+      return <ShowStudent students={this.props.students} info={info} delete={this.props.onDeleteStudent}/>;
     }
 
     const HomeComponent = ()=>(<Home  />)
 
     return (
       <Router>
-         <Route exact path="/" component={HomeComponent} />
-         <Route exact path="/campuses" component={CampusesComponent} />
-         <Route exact path="/students"  component={StudentsComponent} />
-         <Route exact path="/addCampus"  component={AddCampusComponent} />
-         <Route exact path="/addStudent"  component={AddStudentComponent} />
-         <Route exact path="/editCampus"  component={EditCampusComponent} />
-         <Route exact path="/showCampus"  component={ShowCampusComponent} />
-         <Route exact path="/showStudent"  component={ShowStudentComponent} />
-         <Route exact path="/editStudent"  component={EditStudentComponent} />
+        <Switch>
+          <Route exact path="/" component={HomeComponent} />
+          <Route exact path="/campuses" component={CampusesComponent} />
+          <Route exact path="/students"  component={StudentsComponent} />
+          <Route exact path="/addCampus"  component={AddCampusComponent} />
+          <Route exact path="/addStudent"  component={AddStudentComponent} />
+          <Route exact path="/editCampus"  component={EditCampusComponent} />
+          <Route exact path="/showCampus"  component={ShowCampusComponent} />
+          <Route exact path="/showStudent"  component={ShowStudentComponent} />
+          <Route exact path="/editStudent"  component={EditStudentComponent} />
+          <Route component={NotFound} />
+         </Switch>
       </Router>
+      
      
     )
   }

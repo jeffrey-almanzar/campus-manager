@@ -140,7 +140,7 @@ class EditCampus extends React.Component{
                             <div>
                                 <input type="text" id="campus-name" onChange={this.onNameChange} value={this.state.campusName} placeholder="" />
                                 <input type="text" id="campus-location" onChange={this.onLocationChange} value={this.state.location} placeholder="" />                           
-                                <input type="text" id="campus-img-url" onChange={this.onImgChange} value={this.state.imgUrl} placeholder="" />           
+                                <input type="text" id="campus-img-url" onChange={this.onImgChange} value={this.state.img} placeholder="" />           
                                 <textarea id="campus-description" onChange={this.onDescriptionChange} value={this.state.description}  rows="6" cols="50" >                        
                                 </textarea>
                                 <input type="submit" value="Save Changes" /> 

@@ -48,7 +48,7 @@ class ShowStudent extends React.Component{
             <CampusCard preview ={true} campusName={this.campusCompleteInfo.campusName} 
                         description={this.campusCompleteInfo.description} location={this.campusCompleteInfo.location}
                         img={this.campusCompleteInfo.img}
-                       campusStudents ={this.campusCompleteInfo.campusStudents} link="/showCampus"  />
+                       campusStudents ={this.props.students} link="/showCampus"  />
                        {/* delete={this.props.delete} */}
                   </div>
     }else{

@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation';
 import axios from 'axios';
+import { Redirect} from "react-router-dom";
 
 class Add  extends React.Component{
 
@@ -14,7 +15,10 @@ class Add  extends React.Component{
             url:"",
             location:"",
             description:"",
-            img:""
+            img:"",
+            redirect:false
+            
+            
         }
     }
 
@@ -71,7 +75,21 @@ class Add  extends React.Component{
                       .catch(function (error) {
                         console.log(error);
                       });
-                    this.props.add(info);
+                    this.setState({redirect:true})
+                    setTimeout( ()=> this.props.add(info) , 1000);
+                     setTimeout(()=>{
+                    axios.get('http://localhost:3000/campuses')
+                    .then((response) => {
+                        // console.log(response)
+                        this.props.onLoadCampuses(response.data.campuses)
+                        console.log(this.props)
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+                },500)
+                    
+                    
                     
                 }else{
                     alert("Name, campus, and GPA must be provide, try again.")
@@ -106,7 +124,21 @@ class Add  extends React.Component{
                       .catch(function (error) {
                         console.log(error);
                       });
-                this.props.add(info);
+                this.setState({redirect:true})
+                // setTimeout( ()=> this.props.add(info) , 1000);
+                setTimeout(()=>{
+                    axios.get('http://localhost:3000/campuses')
+                    .then((response) => {
+                        // console.log(response)
+                        this.props.onLoadCampuses(response.data.campuses)
+                        console.log(this.props)
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+                },1000)
+                //this.props.add(info);
+                //this.setState({redirect:true})
             }else{
                 alert("Name can not be empty, try again!")
             }
@@ -205,8 +237,19 @@ class Add  extends React.Component{
         }
     }
 
-    render(){ 
+    render(){
+        if (this.state.redirect) {
+            if(this.props.name ==='Student'){
+               
+                return <Redirect to='/students'/>;
+            }else{
+                return <Redirect to='/campuses'/>;
+            }
+           
+        } 
+
         return (
+            
             <div>
                 <Navigation />
                 {this.options()}

@@ -40,6 +40,11 @@ export const deleteCampus = (event)=>{
     }
 }
 
+export const reRender = (event) =>{
+    return {
+        type:"RE_RENDER"
+    }
+}
 export const deleteStudent = (event) =>{
     return {
         type: "DELETE_STUDENT",
