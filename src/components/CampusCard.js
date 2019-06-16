@@ -9,10 +9,10 @@ class CampusCard extends React.Component{
   
   constructor(props){
     super(props)
-    this.studentsRegistered = 0;
-    for(let i=0; i < this.props.campusStudents.length; i++){
+    this.studentsRegistered = [];
+    for(let i=0; i <this.props.campusStudents.length; i++){
         if(this.props.campusStudents[i].campusName === this.props.campusName ){
-          this.studentsRegistered++;
+          this.studentsRegistered.push(this.props.campusStudents[i]);
         }
     }
 
@@ -38,7 +38,7 @@ class CampusCard extends React.Component{
           <Link to={
               {
               pathname:'/showCampus',
-              state: {campusName:this.props.campusName, campusStudents: this.props.campusStudents,
+              state: {campusName:this.props.campusName, campusStudents:this.studentsRegistered,
                     location: this.props.location, description:this.props.description,img:this.props.img }
               } 
               }>
@@ -51,7 +51,7 @@ class CampusCard extends React.Component{
           <Link to={
               {
               pathname:'/showCampus',
-              state: {campusName:this.props.campusName, campusStudents: this.props.campusStudents,
+              state: {campusName:this.props.campusName, campusStudents:this.studentsRegistered,
                     location: this.props.location, description:this.props.description,img:this.props.img }
               } 
               }> <h1> {this.props.campusName} </h1></Link>
@@ -61,7 +61,7 @@ class CampusCard extends React.Component{
               <Link to={
                 {
                 pathname:'/showCampus',
-                state: {campusName:this.props.campusName, campusStudents: this.props.campusStudents,
+                state: {campusName:this.props.campusName, campusStudents:this.studentsRegistered,
                       location: this.props.location, description:this.props.description,img:this.props.img }
                 } 
                 }>  <button>View Campus</button></Link>
@@ -79,7 +79,7 @@ class CampusCard extends React.Component{
         <Link to={
               {
               pathname:this.props.link,
-              state: {campusName:this.props.campusName, campusStudents: this.props.campusStudents,
+              state: {campusName:this.props.campusName, campusStudents:this.studentsRegistered,
                     location: this.props.location, description:this.props.description,img:this.props.img }
               } 
             }>
@@ -92,18 +92,18 @@ class CampusCard extends React.Component{
         <Link to={
               {
               pathname:'/showCampus',
-              state: {campusName:this.props.campusName, campusStudents: this.props.campusStudents,
+              state: {campusName:this.props.campusName, campusStudents:this.studentsRegistered,
                     location: this.props.location, description:this.props.description,img:this.props.img }
               } 
               }> <h1> {this.props.campusName} </h1>
             </Link>
-          <p>{this.studentsRegistered ? `${this.studentsRegistered} registered` : "not student registered"}</p>
+          <p>{this.studentsRegistered.length ? `${this.studentsRegistered.length} registered` : "not student registered"}</p>
           <div className="campButton">
             
           <Link to={
               {
               pathname:'/editCampus',
-              state: {campusName:this.props.campusName, campusStudents: this.props.campusStudents,
+              state: {campusName:this.props.campusName, campusStudents:this.studentsRegistered,
                     location: this.props.location, description:this.props.description,img:this.props.img }
               } 
               }>
