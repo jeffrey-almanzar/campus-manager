@@ -61,7 +61,7 @@ class App extends React.Component{
   componentDidMount(){
     console.log("From main app")
     console.log(this.props)
-    axios.get('http://localhost:3000/campuses')
+    axios.get('https://desolate-hollows-41655.herokuapp.com/campuses')
       .then((response) => {
         // console.log(response)
           this.props.onLoadCampuses(response.data.campuses)
