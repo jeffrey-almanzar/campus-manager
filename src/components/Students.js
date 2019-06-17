@@ -19,6 +19,12 @@ class Students extends React.Component{
     }
 
     render(){
+        let content;
+        if(this.props.campuses.length){
+            content =this.getStudents()
+        }else{
+            content = <h2>There are no students registered in the database </h2>
+        }
         return (
             <div>
                 
@@ -26,7 +32,7 @@ class Students extends React.Component{
                     <Header info="Students" add={this.props.add} />  
 
                     <div className="d-flex students-container">
-                        {this.getStudents()}
+                        {}
                     </div>
 
            </div>
