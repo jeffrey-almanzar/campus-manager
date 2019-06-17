@@ -8,9 +8,9 @@ import axios from 'axios';
 class StudentCard extends React.Component{
   
   delete = () =>{
-    axios.delete('http://localhost:3000/deleteStudent/'+this.props.name)
+    axios.delete('https://desolate-hollows-41655.herokuapp.com/deleteStudent/'+this.props.name)
       .then((elem)=>{
-          axios.get('http://localhost:3000/students')
+          axios.get('https://desolate-hollows-41655.herokuapp.com/students')
           .then( (response) => {
             // console.log(response)
              
@@ -51,7 +51,7 @@ class StudentCard extends React.Component{
                 }>
 
               <div id="student-img-container"  className="student-img-container" >
-                  <img src={this.props.url || defaultImage}  />
+                  <img src={this.props.url || defaultImage} alt="Check link" />
               </div>
             
             </Link>
@@ -63,11 +63,11 @@ class StudentCard extends React.Component{
             pathname:"/showStudent", 
             state: {name: this.props.name, url:this.props.url, students:this.props.students, campus:this.props.campusName, gpa:this.props.gpa, campuses: this.props.campuses }
             } 
-            }> <h1>{this.props.name} </h1>
+            }> <h1 className="student-name">{this.props.name} </h1>
             </Link>
      
-          <p>{this.props.campusName}</p>
-          <button onClick={this.delete}>Delete</button>
+          <p className="student-campus">{this.props.campusName}</p>
+          <button className="delete-btn" onClick={this.delete}>Delete</button>
       </div>
 
     

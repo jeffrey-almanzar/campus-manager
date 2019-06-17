@@ -66,7 +66,7 @@ class EditStudent extends React.Component{
             url: url.value
         }
 
-        axios.put('http://localhost:3000/editStudent/1', {
+        axios.put('https://desolate-hollows-41655.herokuapp.com/editStudent/1', {
             name: name.value,
             gpa:gpa.value,
             campus: campus.value,

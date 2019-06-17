@@ -28,7 +28,7 @@ class CampusCard extends React.Component{
   }
   
   delete = ()=>{
-    axios.delete('http://localhost:3000/deleteCampus/'+this.props.campusName)
+    axios.delete('https://desolate-hollows-41655.herokuapp.com/deleteCampus/'+this.props.campusName)
       .then((elem)=>{
         console.log(elem)
       })
@@ -42,7 +42,7 @@ class CampusCard extends React.Component{
   display = () =>{
     if(this.props.preview){
       return (
-        <div className ="image-c">
+        <div className ="campus-card-preview">
           <div className="img-container">
           <Link to={
               {
@@ -51,7 +51,7 @@ class CampusCard extends React.Component{
                     location: this.props.location, description:this.props.description,img:this.props.img }
               } 
               }>
-                <img src={this.props.img || defaultImg} alt="lehman img"/>
+                <img src={this.props.img || defaultImg} alt="Check link" />
         
               </Link>
           </div>
@@ -73,7 +73,7 @@ class CampusCard extends React.Component{
                 state: {campusName:this.props.campusName, campusStudents:this.studentsRegistered,
                       location: this.props.location, description:this.props.description,img:this.props.img }
                 } 
-                }>  <button>View Campus</button></Link>
+                }>  <button className="add-btn">View Campus</button></Link>
                 
             </div>
           </div>
@@ -83,7 +83,7 @@ class CampusCard extends React.Component{
 
     }else{
       return(
-      <div className ="image-c">
+      <div className ="campus-card">
         <div className="img-container">
         <Link to={
               {
@@ -97,16 +97,16 @@ class CampusCard extends React.Component{
             </Link>
         </div>
 
-        <div>
+        <div className="campus-info">
         <Link to={
               {
               pathname:'/showCampus',
               state: {campusName:this.props.campusName, campusStudents:this.studentsRegistered,
                     location: this.props.location, description:this.props.description,img:this.props.img }
               } 
-              }> <h1> {this.props.campusName} </h1>
+              }> <h1 className="campus-name"> {this.props.campusName} </h1>
             </Link>
-          <p>{this.studentsRegistered.length ? `${this.studentsRegistered.length} registered` : "not student registered"}</p>
+          <p className="number-register">{this.studentsRegistered.length ? `${this.studentsRegistered.length} registered` : "not student registered"}</p>
           <div className="campButton">
             
           <Link to={
@@ -116,8 +116,8 @@ class CampusCard extends React.Component{
                     location: this.props.location, description:this.props.description,img:this.props.img }
               } 
               }>
-               <button >Edit</button></Link>
-          <button onClick={this.delete}>Delete</button>
+               <button className="add-btn">Edit</button></Link>
+          <button className="delete-btn" onClick={this.delete}>Delete</button>
           </div>
         </div>
       </div>

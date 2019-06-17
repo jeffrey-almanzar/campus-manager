@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 import Header from './Header';
 import StudentCard from './StudentCard';
+import Footer from './Footer';
 
 
 class Students extends React.Component{
@@ -20,12 +21,14 @@ class Students extends React.Component{
     render(){
         return (
             <div>
-                <Navigation />
-                <Header info="Students" add={this.props.add} />  
+                
+                    <Navigation />
+                    <Header info="Students" add={this.props.add} />  
 
-                <div className="d-flex">
-                    {this.getStudents()}
-                </div>
+                    <div className="d-flex students-container">
+                        {this.getStudents()}
+                    </div>
+
            </div>
 
            

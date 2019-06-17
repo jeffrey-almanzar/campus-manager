@@ -71,7 +71,7 @@ class App extends React.Component{
         console.log(error);
     })
 
-    axios.get('http://localhost:3000/students')
+    axios.get('https://desolate-hollows-41655.herokuapp.com/students')
       .then( (response) => {
         // console.log(response)
           this.props.onLoadStudents(response.data.students)

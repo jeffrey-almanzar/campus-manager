@@ -33,7 +33,7 @@ class EditCampus extends React.Component{
     }
     
     refresh = () =>{
-        axios.get('http://localhost:3000/students')
+        axios.get('https://desolate-hollows-41655.herokuapp.com/students')
             .then( (response) => {
                 let studentsRegistered = [];
     
@@ -102,7 +102,7 @@ class EditCampus extends React.Component{
         }
 
 
-        axios.put('http://localhost:3000/editCampus/1', {
+        axios.put('https://desolate-hollows-41655.herokuapp.com/editCampus/1', {
             campusName: e.target[0].value ,
             location: e.target[1].value,
             img: e.target[2].value,
@@ -126,7 +126,7 @@ class EditCampus extends React.Component{
     displayStudents = () =>{
         let container = [];
         for(let i=0; i< this.state.campusStudents.length; i++){
-            container.push(<StudentRow refresh={this.refresh} onLoadStudents={this.props.onLoadStudents} reRenderEditCampus={this.reRender} campusStudents={this.state.campusStudents} campusName={this.props.info.location.state.campusName} name={this.state.campusStudents[i].name} deleteStudent = {this.props.deleteStudent} />)
+            container.push(<StudentRow refresh={this.refresh} url ={this.state.campusStudents[i].url} onLoadStudents={this.props.onLoadStudents} reRenderEditCampus={this.reRender} campusStudents={this.state.campusStudents} campusName={this.props.info.location.state.campusName} name={this.state.campusStudents[i].name} deleteStudent = {this.props.deleteStudent} />)
         }
         return container;
     }

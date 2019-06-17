@@ -3,6 +3,7 @@ import Navigation from './Navigation';
 import '../css/Home.css';
 import homeImage from '../img/home.jpg';
 import axios from 'axios';
+import Footer from './Footer';
 
 class Home extends React.Component{
  
@@ -14,7 +15,7 @@ class Home extends React.Component{
           <main>
               <div className ="homePic">
                   <img src = {homeImage}/>
-                  <div className="top-left">Campus Manager</div>
+                  {/* <div className="top-left">Campus Manager</div> */}
               </div>
             
 
@@ -52,21 +53,7 @@ class Home extends React.Component{
 
             </div>
 
-            <div >
-                <footer>
-                                    
-                  <ul className="styleF">
-                      <li> <a href="index4.html">Privacy Policy</a></li>
-                      <li> <a href="index4.html">Terms of Use</a></li>
-                      <li> <a href="index4.html">Sponsers</a></li>
-                      <li><a href="index4.html">Location</a></li>                                            
-                  </ul>                         
-                                        
-                            
-                  <p>&copy; 2019 Campus Manager</p>
-            
-              </footer>
-            </div>  
+            <Footer />
         </main>
        </div>
                 

@@ -3,6 +3,10 @@
     height: 100px;
     background-color: red;
 }
+.row-img img{
+    width: 100%;
+    max-height:100%;
+}
 
 
 .st-row-container{

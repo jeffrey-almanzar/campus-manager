@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 import axios from 'axios';
 import { Redirect} from "react-router-dom";
+import Footer from './Footer';
 
 class Add  extends React.Component{
 
@@ -68,7 +69,7 @@ class Add  extends React.Component{
                 let validGpa = (Number(info.gpa) >0.0 && Number(info.gpa) < 4.0);
 
                 if(info.name && validGpa && info.campusName){
-                    axios.post('http://localhost:3000/addStudent', info2)
+                    axios.post('https://desolate-hollows-41655.herokuapp.com/addStudent', info2)
                       .then(function (response) {
                         console.log(response);
                       })
@@ -78,7 +79,7 @@ class Add  extends React.Component{
                     this.setState({redirect:true})
                     setTimeout( ()=> this.props.add(info) , 1000);
                      setTimeout(()=>{
-                    axios.get('http://localhost:3000/campuses')
+                    axios.get('https://desolate-hollows-41655.herokuapp.com/campuses')
                     .then((response) => {
                         // console.log(response)
                         this.props.onLoadCampuses(response.data.campuses)
@@ -117,7 +118,7 @@ class Add  extends React.Component{
             }
 
             if(info.campusName){
-                axios.post('http://localhost:3000/addCampus', info2)
+                axios.post('https://desolate-hollows-41655.herokuapp.com/addCampus', info2)
                       .then(function (response) {
                         console.log(response);
                       })
@@ -127,7 +128,7 @@ class Add  extends React.Component{
                 this.setState({redirect:true})
                 // setTimeout( ()=> this.props.add(info) , 1000);
                 setTimeout(()=>{
-                    axios.get('http://localhost:3000/campuses')
+                    axios.get('https://desolate-hollows-41655.herokuapp.com/campuses')
                     .then((response) => {
                         // console.log(response)
                         this.props.onLoadCampuses(response.data.campuses)
@@ -188,6 +189,8 @@ class Add  extends React.Component{
 
             return(
                 // ADDING A STUDENT
+                <div>
+                <div className="wrapper">
                 <form onSubmit={this.submit} className="center-txt" >
 
                     <h2>{this.props.name.toUpperCase()} NAME</h2>
@@ -206,32 +209,42 @@ class Add  extends React.Component{
                     </div>
 
                 </form>
+                   
+                </div>
+                  <Footer />
+                </div>
 
             )
         }else{
             return (
                 // ADDING A Campus
-                <form onSubmit={this.submit} className="center-txt" >
+                <div>
+                    <div className="wrapper">
+                    <form onSubmit={this.submit} className="center-txt" >
 
-                    <h2>{this.props.name.toUpperCase()} NAME</h2>
-                    <input type="text" value={this.state.campus} onChange={this.campusChange} />
+                        <h2>{this.props.name.toUpperCase()} NAME</h2>
+                        <input type="text" value={this.state.campus} onChange={this.campusChange} />
 
-                    <p><lable>Location</lable></p>
-                    <input type="text" value={this.state.location} onChange={this.locationChange}/>
+                        <p><lable>Location</lable></p>
+                        <input type="text" value={this.state.location} onChange={this.locationChange}/>
 
-                    <p><lable>Description</lable></p>
-                   <textarea onChange={this.descriptionChange} value={this.state.description}  rows="6" cols="50" >                        
-                    </textarea>
+                        <p><lable>Description</lable></p>
+                    <textarea onChange={this.descriptionChange} value={this.state.description}  rows="6" cols="50" >                        
+                        </textarea>
 
-                    <p><lable>Img Url</lable></p>
-                    <input type="text" value={this.state.img}  onChange={this.imgChange} />
+                        <p><lable>Img Url</lable></p>
+                        <input type="text" value={this.state.img}  onChange={this.imgChange} />
 
 
-                    <div>
-                        <input type ="submit" value={"Add " + this.props.name} /> 
+                        <div>
+                            <input type ="submit" value={"Add " + this.props.name} /> 
+                        </div>
+
+                    </form>
+                    
                     </div>
-
-                </form>
+                    <Footer />
+                </div>
 
             )
         }

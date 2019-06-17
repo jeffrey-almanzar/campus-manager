@@ -1,15 +1,16 @@
 import React from 'react';
 import '../css/StudentRow.css';
 import axios from 'axios';
+import defaultImage from '../img/profilePicture.jpg';
 
 class  StudentRow extends React.Component{
 
 
     deleteStudent = () =>{
         //this.props.deleteStudent({name: this.props.name, campusName: this.props.campusName})
-        axios.delete('http://localhost:3000/deleteStudent/'+this.props.name)
+        axios.delete('https://desolate-hollows-41655.herokuapp.com/deleteStudent/'+this.props.name)
         .then((elem)=>{
-            axios.get('http://localhost:3000/students')
+            axios.get('https://desolate-hollows-41655.herokuapp.com/students')
             .then( (response) => {
                 // console.log(response)
                 this.props.onLoadStudents(response.data.students)
@@ -30,7 +31,7 @@ class  StudentRow extends React.Component{
         return(
             <div className="st-row-container">
                 <div className="row-img">
-
+                    <img src={ this.props.url ||  defaultImage  } />
                 </div>
 
                 <div className="st-row-info-container">

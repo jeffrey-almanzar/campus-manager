@@ -4,6 +4,7 @@ import Navigation from './Navigation';
 import {Link } from 'react-router-dom';
 import CampusCard from './CampusCard';
 import axios from 'axios';
+import defaultImage from '../img/profilePicture.jpg';
 
 class ShowStudent extends React.Component{
 //  if the campus is not in campuses will produce an error
@@ -12,6 +13,7 @@ class ShowStudent extends React.Component{
     this.name = this.props.info.location.state.name;
     this.gpa =  this.props.info.location.state.gpa;
     this.campus = this.props.info.location.state.campus;
+    this.url = this.props.info.location.state.url;
 
     let allCampuses = this.props.info.location.state.campuses;
     
@@ -32,7 +34,7 @@ class ShowStudent extends React.Component{
 
   delete =(e )=>{
     // this.setRedirect();
-    axios.delete('http://localhost:3000/deleteStudent/'+this.name)
+    axios.delete('https://desolate-hollows-41655.herokuapp.com/deleteStudent/'+this.name)
       .then((elem)=>{
         console.log(elem)
       })
@@ -43,14 +45,36 @@ class ShowStudent extends React.Component{
   render(){
     let campusInfo;
     if(this.campus){
-      campusInfo =<div>
-                    <h2>This student is registered in a campus</h2>  
-            <CampusCard preview ={true} campusName={this.campusCompleteInfo.campusName} 
-                        description={this.campusCompleteInfo.description} location={this.campusCompleteInfo.location}
-                        img={this.campusCompleteInfo.img}
-                       campusStudents ={this.props.students} link="/showCampus"  />
-                       {/* delete={this.props.delete} */}
-                  </div>
+      try{ //campus exits
+        campusInfo =<div>
+                      <h2>This student is registered in a campus</h2>  
+              <CampusCard preview ={true} campusName={this.campusCompleteInfo.campusName} 
+                          description={this.campusCompleteInfo.description} location={this.campusCompleteInfo.location}
+                          img={this.campusCompleteInfo.img}
+                        campusStudents ={this.props.students} link="/showCampus"  />
+                        {/* delete={this.props.delete} */}
+                    </div>
+      }catch(e){
+        axios.put('https://desolate-hollows-41655.herokuapp.com/editStudent/1', {
+            name: this.name,
+            gpa:this.gpa,
+            campus: "Unknown Campus",
+            url: this.url,
+            preVname: this.name
+        })
+            .then(function (response) {
+            console.log(response.data);
+            })
+        campusInfo =<div>
+                      <h2>This student is registered in a campus</h2>  
+              <CampusCard preview ={true} campusName="Unknown Campus" 
+                          description="Not info available" location="Unknown"
+                          img=""
+                          campusStudents ={[]} link="/showCampus"  />
+                        {/* delete={this.props.delete} */}
+                    </div>
+
+      }
     }else{
       campusInfo= <h2>This student is not registered in a campus</h2>
     }
@@ -64,7 +88,9 @@ class ShowStudent extends React.Component{
 
 
         <div className="showStudent">
-        <div className="student-img-container show-student"></div>
+        <div className="student-img-container show-student">
+          <img src={this.url || defaultImage}  />
+        </div>
 
           <div className="student-info-container">
               {/* <h1>Name: {this.props.location.state.name} </h1> */}

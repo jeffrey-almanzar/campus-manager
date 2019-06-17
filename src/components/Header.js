@@ -9,7 +9,7 @@ function Header(props){
             
             <h1 className="center-txt">{"All "+props.info}</h1>
             
-            <button onClick={props.add}><Link to={link}>{"Add "+props.info}</Link></button>
+            <button className="add-btn" onClick={props.add}><Link to={link}>{"Add "+props.info}</Link></button>
         </div>
     )
 }

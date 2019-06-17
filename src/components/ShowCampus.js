@@ -4,6 +4,7 @@ import StudentCard from './StudentCard'
 import Navigation from './Navigation';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import defaultImg from '../img/campus.png'; 
 
 
 
@@ -69,9 +70,11 @@ class ShowCampus extends React.Component{
       <Navigation />
       <div >
         <div className="campus-info-container">
-            <div className="image-showCampus">
-
-            </div>
+            <div className ="image-c">
+                <div className="img-container">
+                    <img src={this.props.info.location.state.img || defaultImg} alt="Check link" />
+                </div>
+              </div>
             {/* <img src={campusDefault} alt="lehman img"/> */}
           <div>
       

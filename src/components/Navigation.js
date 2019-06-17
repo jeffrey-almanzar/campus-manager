@@ -13,10 +13,13 @@ function Navigation(props){
 
         <header>
             <nav className="navigation-bar">
-                <a href="index.html">
-                    <img className="logo" src="https://image.freepik.com/free-vector/university-campus-logo_1447-1791.jpg"
-                        alt="Main logo"/>
-                </a>
+                <div>
+                    <a href="/">
+                        <img className="logo" src="https://image.freepik.com/free-vector/university-campus-logo_1447-1791.jpg"
+                            alt="Main logo"/>
+                    </a>
+                    <li><a>Campus Manager</a></li>
+                </div>
                 <ul>
                     <li><Link to="/">Home </Link></li>
                     <li><Link to="/campuses">Campuses</Link></li>
