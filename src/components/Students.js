@@ -32,7 +32,7 @@ class Students extends React.Component{
                     <Header info="Students" add={this.props.add} />  
 
                     <div className="d-flex students-container">
-                        {}
+                        {content}
                     </div>
 
            </div>
