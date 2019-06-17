@@ -9,8 +9,8 @@ class EditStudent extends React.Component{
         this.state={
             name: this.props.info.location.state.name,
             gpa:this.props.info.location.state.gpa,
-            campus: this.props.info.location.state.campus,
-            url:""
+            campus: this.props.info.location.state.campusName,
+            url:this.props.info.location.state.url
         }
 
 
@@ -20,8 +20,8 @@ class EditStudent extends React.Component{
         return {
             name: this.props.info.location.state.name,
             gpa:this.props.info.location.state.gpa,
-            campus: this.props.info.location.state.campus,
-            url:""
+            campus: this.props.info.location.state.campusName,
+            url:this.props.info.location.state.url
         }
     }
 
@@ -100,6 +100,8 @@ class EditStudent extends React.Component{
     onCampusChange = (e) =>{
         this.setState({campus: e.target.value})
     }
+
+    
 
     
 
