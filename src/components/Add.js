@@ -191,21 +191,25 @@ class Add  extends React.Component{
                 // ADDING A STUDENT
                 <div>
                 <div className="wrapper">
-                <form onSubmit={this.submit} className="center-txt" >
+                <form onSubmit={this.submit} className="adding-from" >
+                    <div className="adding-wrapper">
+                        <h2 className="center-txt" >Add Student</h2>
+                        <p>{this.props.name} Name</p>
+                        <input type="text" value={this.state.name} onChange={this.nameChange} />
+                        <p><lable>Campus</lable></p>
+                        <input type="text" value={defaultValue } onChange={this.campusChange}/>
 
-                    <h2>{this.props.name.toUpperCase()} NAME</h2>
-                    <input type="text" value={this.state.name} onChange={this.nameChange} />
-                    <p><lable>Campus</lable></p>
-                    <input type="text" value={defaultValue } onChange={this.campusChange}/>
+                        <p><lable>GPA</lable></p>
+                        <input type="text" value={this.state.gpa } onChange={this.gpaChange}/>
 
-                    <p><lable>GPA</lable></p>
-                    <input type="text" value={this.state.gpa } onChange={this.gpaChange}/>
+                       
+                        <p><lable>Img url</lable></p>
+                        <input type="text" value={this.state.url}  onChange={this.urlChange} />
+                        
 
-                    <p><lable>Img url</lable></p>
-                    <input type="text" value={this.state.url}  onChange={this.urlChange} />
-
-                    <div>
-                        <input type ="submit" value={"Add " + this.props.name} /> 
+                        <div  className="center-txt bt-container">
+                            <input className="add-btn btn" type ="submit" value={"Add " + this.props.name} /> 
+                        </div>
                     </div>
 
                 </form>
@@ -220,25 +224,27 @@ class Add  extends React.Component{
                 // ADDING A Campus
                 <div>
                     <div className="wrapper">
-                    <form onSubmit={this.submit} className="center-txt" >
-
-                        <h2>{this.props.name.toUpperCase()} NAME</h2>
+                    <form onSubmit={this.submit}  className="adding-from">
+                    <div className="adding-wrapper">
+                        <h2 className="center-txt">Add Campus</h2>
+                        <p>{this.props.name} Name</p>
                         <input type="text" value={this.state.campus} onChange={this.campusChange} />
 
                         <p><lable>Location</lable></p>
                         <input type="text" value={this.state.location} onChange={this.locationChange}/>
 
                         <p><lable>Description</lable></p>
-                    <textarea onChange={this.descriptionChange} value={this.state.description}  rows="6" cols="50" >                        
+                    <textarea onChange={this.descriptionChange} value={this.state.description}  rows="6" cols="45" >                        
                         </textarea>
 
                         <p><lable>Img Url</lable></p>
                         <input type="text" value={this.state.img}  onChange={this.imgChange} />
 
 
-                        <div>
-                            <input type ="submit" value={"Add " + this.props.name} /> 
+                        <div  className="center-txt bt-container">
+                            <input  className="add-btn btn" type ="submit" value={"Add " + this.props.name} /> 
                         </div>
+                    </div>
 
                     </form>
                     

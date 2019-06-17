@@ -18,7 +18,7 @@ function Navigation(props){
                         <img className="logo" src="https://image.freepik.com/free-vector/university-campus-logo_1447-1791.jpg"
                             alt="Main logo"/>
                     </a>
-                    <li><a>Campus Manager</a></li>
+                    <li><Link to="/">Campus Manager</Link></li>
                 </div>
                 <ul>
                     <li><Link to="/">Home </Link></li>

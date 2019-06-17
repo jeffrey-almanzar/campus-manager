@@ -68,7 +68,8 @@ class ShowCampus extends React.Component{
     return (
       <div>
       <Navigation />
-      <div >
+      <div className="campus-info-container-wrapper">
+      <div  >
         <div className="campus-info-container">
             <div className ="image-c">
                 <div className="img-container">
@@ -81,15 +82,14 @@ class ShowCampus extends React.Component{
             <h1>{campusName} </h1>
           
             <p>{description}</p>
+            <div>
+              <address>{location}</address>
+            </div>
         </div> 
       </div> 
       </div>
       <div className="address">
-        <div>
-           <address>{location}</address>
-           
-        </div>
-
+  
         <div>
            <Link to={{pathname:'/editCampus', state:{
              campusName,
@@ -97,8 +97,8 @@ class ShowCampus extends React.Component{
              location,
              img,
              description
-           }}}><button >Edit</button></Link>
-           <Link to="/campuses"><button onClick={this.delete}>Delete</button></Link>
+           }}}><button className="add-btn">Edit</button></Link>
+           <Link to="/campuses"><button className="delete-btn" onClick={this.delete}>Delete</button></Link>
         </div> 
       </div>
 
@@ -107,7 +107,7 @@ class ShowCampus extends React.Component{
         <h1>Students On Campus</h1>
       </div>
       <div>
-      <Link to={{pathname:"/addStudent", state:{campus:this.props.info.location.state.campusName}}}><button>Add Student</button></Link>
+      <Link to={{pathname:"/addStudent", state:{campus:this.props.info.location.state.campusName}}}><button className="add-btn">Add Student</button></Link>
       </div>
     </div>
       
@@ -117,7 +117,7 @@ class ShowCampus extends React.Component{
       </div>
       
       
-      
+      </div>
       </div>
 );
 }
