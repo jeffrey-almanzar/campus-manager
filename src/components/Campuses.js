@@ -20,12 +20,18 @@ class Campuses extends React.Component{
     }
 
     render(){
+        let content;
+        if(this.props.campuses.length){
+            content =this.getCampuses()
+        }else{
+            content = <h2>There are no campuses registered in the database </h2>
+        }
         return (
             <div >
                 <Navigation />
                 <Header info="Campuses" add={this.props.add}/> 
                 <div className="d-flex campus-cards-container">
-                    {this.getCampuses()}
+                    {content}
                 </div>
                 
            </div>

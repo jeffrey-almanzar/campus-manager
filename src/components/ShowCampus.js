@@ -31,7 +31,7 @@ class ShowCampus extends React.Component{
     return studentCard;
   }
   refresh = () =>{
-    axios.get('http://localhost:3000/students')
+    axios.get('https://desolate-hollows-41655.herokuapp.com/students')
         .then( (response) => {
             let studentsRegistered = [];
 
