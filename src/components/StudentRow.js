@@ -1,11 +1,26 @@
 import React from 'react';
 import '../css/StudentRow.css';
+import axios from 'axios';
 
 class  StudentRow extends React.Component{
 
 
     deleteStudent = () =>{
-        this.props.deleteStudent({name: this.props.name, campusName: this.props.campusName})
+        //this.props.deleteStudent({name: this.props.name, campusName: this.props.campusName})
+        axios.delete('http://localhost:3000/deleteStudent/'+this.props.name)
+        .then((elem)=>{
+            axios.get('http://localhost:3000/students')
+            .then( (response) => {
+                // console.log(response)
+                this.props.onLoadStudents(response.data.students)
+                this.props.refresh();
+                
+            })
+            .catch( (error) =>{
+            
+            console.log(error);
+            })
+        })
 
     }
     

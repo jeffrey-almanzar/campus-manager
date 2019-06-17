@@ -3,23 +3,53 @@ import '../css/App.css';
 import StudentCard from './StudentCard'
 import Navigation from './Navigation';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 
 
 class ShowCampus extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      campusStudents:""
+    }
+  }
 
   showStudentCard(){
     let studentCard= []
-    for(let i =0; i<this.props.info.location.state.campusStudents.length; i++){
-      let student = this.props.info.location.state.campusStudents[i];
-      studentCard.push(<StudentCard name ={student.name} url={student.url} delete={this.props.deleteStudent} campusName ={this.props.info.location.state.campusName} campuses={this.props.campuses} gpa={student.gpa} /> )
+    // for(let i =0; i<this.props.info.location.state.campusStudents.length; i++){
+    //   let student = this.props.info.location.state.campusStudents[i];
+    //   studentCard.push(<StudentCard onLoadStudents={this.props.onLoadStudents} name ={student.name} url={student.url} delete={this.props.deleteStudent} campusName ={this.props.info.location.state.campusName} campuses={this.props.campuses} gpa={student.gpa} /> )
+    // }
+
+    for(let i =0; i<this.state.campusStudents.length; i++){
+      let student = this.state.campusStudents[i];
+      studentCard.push(<StudentCard refresh ={this.refresh} onLoadStudents={this.props.onLoadStudents} name ={student.name} url={student.url} delete={this.props.deleteStudent} campusName ={this.props.info.location.state.campusName} campuses={this.props.campuses} gpa={student.gpa} /> )
     }
 
     return studentCard;
   }
+  refresh = () =>{
+    axios.get('http://localhost:3000/students')
+        .then( (response) => {
+            let studentsRegistered = [];
+
+            for(let i=0; i <response.data.students.length; i++){
+                if(response.data.students[i].campusName === this.props.info.location.state.campusName ){
+                    studentsRegistered.push(response.data.students[i]);
+                }
+            }
+            console.log(studentsRegistered)
+
+            this.setState({campusStudents:studentsRegistered})  
+            
+        })
+
+  }
 
   componentDidMount(){
     console.log(this.props)
+    this.refresh()
   }
 
   delete =()=>{

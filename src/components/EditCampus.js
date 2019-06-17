@@ -30,11 +30,33 @@ class EditCampus extends React.Component{
 
     deleteStudent = () =>{
         
-    } 
+    }
+    
+    refresh = () =>{
+        axios.get('http://localhost:3000/students')
+            .then( (response) => {
+                let studentsRegistered = [];
+    
+                for(let i=0; i <response.data.students.length; i++){
+                    if(response.data.students[i].campusName === this.props.info.location.state.campusName ){
+                        studentsRegistered.push(response.data.students[i]);
+                    }
+                }
+                console.log(studentsRegistered)
+
+                this.setState({campusStudents:studentsRegistered})  
+                
+            })
+
+    }
 
     componentDidMount(){
         console.log(this.props);
-        this.setState({campusStudents: this.props.info.location.state.campusStudents})
+        //jjj
+        this.refresh()
+        
+        //lll
+        //this.setState({campusStudents: this.props.info.location.state.campusStudents})
     }
 
     onNameChange = (e) => {
@@ -104,7 +126,7 @@ class EditCampus extends React.Component{
     displayStudents = () =>{
         let container = [];
         for(let i=0; i< this.state.campusStudents.length; i++){
-            container.push(<StudentRow reRenderEditCampus={this.reRender} campusStudents={this.state.campusStudents} campusName={this.props.info.location.state.campusName} name={this.state.campusStudents[i].name} deleteStudent = {this.props.deleteStudent} />)
+            container.push(<StudentRow refresh={this.refresh} onLoadStudents={this.props.onLoadStudents} reRenderEditCampus={this.reRender} campusStudents={this.state.campusStudents} campusName={this.props.info.location.state.campusName} name={this.state.campusStudents[i].name} deleteStudent = {this.props.deleteStudent} />)
         }
         return container;
     }

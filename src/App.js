@@ -99,11 +99,11 @@ class App extends React.Component{
     }
     const CampusesComponent = () =>(<Campuses students ={this.props.students} campuses ={this.props.campuses} delete={this.props.onDeleteCampus}/>)
 
-    const StudentsComponent = () =>(<Students campuses ={this.props.campuses} students={this.props.students} delete={this.props.onDeleteStudent} clicked={this.props.onStudentClicked}/>)
+    const StudentsComponent = () =>(<Students onLoadStudents={this.props.onLoadStudents} campuses ={this.props.campuses} students={this.props.students} delete={this.props.onDeleteStudent} clicked={this.props.onStudentClicked}/>)
 
     const EditCampusComponent = (info) =>{
       
-      return (<EditCampus allCampuses={this.props.campuses} info={info} edit={this.props.onEditCampus} deleteStudent={this.props.onDeleteStudentFromCampus} />)
+      return (<EditCampus onLoadStudents={this.props.onLoadStudents} allCampuses={this.props.campuses} info={info} edit={this.props.onEditCampus} deleteStudent={this.props.onDeleteStudentFromCampus} />)
     }
 
     const EditStudentComponent = (info) =>{
@@ -112,7 +112,7 @@ class App extends React.Component{
     }
 
     const ShowCampusComponent = (info) =>{
-      return (<ShowCampus  info={info} delete={this.props.onDeleteCampus} deleteStudent={this.props.onDeleteStudentFromCampus} campuses={this.props.campuses} />)
+      return (<ShowCampus  onLoadStudents={this.props.onLoadStudents} info={info} delete={this.props.onDeleteCampus} deleteStudent={this.props.onDeleteStudentFromCampus} campuses={this.props.campuses} />)
     }
     const ShowStudentComponent = (info) => {
       

@@ -139,32 +139,7 @@ export const addCampus =(state= initialCampusState, action={})=>{
             }
             return state;
 
-        case 'LOAD CAMPUSES':
-            //     axios.get('http://localhost:3000/students')
-            //     .then( (response) => {
-            //         let campuses = action.payload;
-            //         let students = response.data.students;
-    
-            //         for( let i = 0; i < campuses.length; i++){
-            //             let onCampus =[];
-            //             students.forEach(element => {
-            //             if(element.campus === campuses[i].campusName){
-            //                 onCampus.push(element);
-            //             }
-            //             }); 
-    
-            //             campuses[i].campusStudents = onCampus;
-            //             onCampus = [];
-    
-            //         }
-                    
-                    
-            //     })
-            //     .catch( (error) =>{
-              
-            //     console.log(error);
-            //   })
-                
+        case 'LOAD CAMPUSES':   
             return {campuses: [...action.payload]}
 
         case 'RE_RENDER':

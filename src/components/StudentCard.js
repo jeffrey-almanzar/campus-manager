@@ -6,18 +6,34 @@ import defaultImage from '../img/profilePicture.jpg';
 import axios from 'axios';
 
 class StudentCard extends React.Component{
-  constructor(props){
-    super(props);
-
-   
-
-  }
+  
   delete = () =>{
     axios.delete('http://localhost:3000/deleteStudent/'+this.props.name)
       .then((elem)=>{
-        console.log(elem)
+          axios.get('http://localhost:3000/students')
+          .then( (response) => {
+            // console.log(response)
+             
+              console.log(this.props)
+              try{//comming from show campus
+                this.props.onLoadStudents(response.data.students)
+                this.props.refresh()
+
+          
+              }catch(e){
+                this.props.onLoadStudents(response.data.students)
+                  
+              }
+              //
+              
+          })
+          .catch( (error) =>{
+        
+          console.log(error);
+        })
       })
-    this.props.delete(this.props.name)
+
+    //this.props.delete(this.props.name)
 
   }
 
