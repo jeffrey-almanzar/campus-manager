@@ -40,7 +40,7 @@ class  StudentRow extends React.Component{
                     </div>
 
                     <div  className="st-row-remove-container">
-                        <button onClick={this.deleteStudent}>remove from campus</button>
+                        <button className="delete-btn" onClick={this.deleteStudent}>remove from campus</button>
                     </div>
                 </div>
             </div>
