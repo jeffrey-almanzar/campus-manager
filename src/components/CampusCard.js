@@ -15,14 +15,7 @@ class CampusCard extends React.Component{
           if(this.props.campusStudents[i].campusName === this.props.campusName ){
             this.studentsRegistered.push(this.props.campusStudents[i]);
           }
-      //}
-    // }else{ //coming from show students
-    //   for(let i=0; i <this.props.info.location.state.students.length; i++){
-    //     let student = this.props.info.location.state.students[i];
-    //     if(student[i].campusName === this.props.campusName ){
-    //       this.studentsRegistered.push(student[i]);
-    //     }
-    // }
+   
      } 
 
   }
