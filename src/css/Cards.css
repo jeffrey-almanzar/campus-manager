@@ -82,7 +82,10 @@
 /* .campus-info-container div{
     margin-right: 40px;
 } */
-
+.sh-student-title{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
 .campus-card{
     display: flex;
     align-items:flex-start;
@@ -90,6 +93,10 @@
     box-shadow: 1px 2px 3px #000;
     margin: 20px 10px 0px;
     height: 200px;
+}
+
+.showStudent{
+    margin-bottom: 40px;
 }
 
 .campus-card .img-container {

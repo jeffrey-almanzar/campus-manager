@@ -82,32 +82,34 @@ class ShowCampus extends React.Component{
             <h1>{campusName} </h1>
           
             <p>{description}</p>
+            <br />
+            <br />
             <div>
               <address>{location}</address>
             </div>
         </div> 
       </div> 
       </div>
-      <div className="address">
+      
   
-        <div>
+        <div className="show-student-btns">
            <Link to={{pathname:'/editCampus', state:{
              campusName,
              campusStudents,
              location,
              img,
              description
-           }}}><button className="add-btn">Edit</button></Link>
-           <Link to="/campuses"><button className="delete-btn" onClick={this.delete}>Delete</button></Link>
+           }}}><button className="add-btn show-c-bt">Edit</button></Link>
+           <Link to="/campuses"><button className="delete-btn show-c-bt" onClick={this.delete}>Delete</button></Link>
         </div> 
-      </div>
+     
 
     <div className="studentList">
       <div>
         <h1>Students On Campus</h1>
       </div>
       <div>
-      <Link to={{pathname:"/addStudent", state:{campus:this.props.info.location.state.campusName}}}><button className="add-btn">Add Student</button></Link>
+      <Link to={{pathname:"/addStudent", state:{campus:this.props.info.location.state.campusName}}}><button className="add-btn show-c-bt">Add Student</button></Link>
       </div>
     </div>
       

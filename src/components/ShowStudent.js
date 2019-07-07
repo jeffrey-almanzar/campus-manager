@@ -84,11 +84,12 @@ class ShowStudent extends React.Component{
       <div>
         <Navigation />
         {/* {this.renderRedirect()} */}
-        <h1>Show Student</h1>
+        <div className="show-student-wrapper">
+        <h1 className="sh-student-title">Show Student</h1>
 
 
         <div className="showStudent">
-        <div className="student-img-container show-student">
+        <div className="student-img-container student-img-container-show show-student">
           <img src={this.url || defaultImage}  />
         </div>
 
@@ -97,14 +98,15 @@ class ShowStudent extends React.Component{
               <h1>Name: {this.name} </h1>
               <p>GPA: {this.gpa}</p>
                <div className="button2">
-               <Link to={{pathname:"/editStudent", state:{name:this.name, url:this.url, gpa:this.gpa,campusName:this.campus}}}><button>Edit</button></Link>
-               <Link to="/students"> <button onClick={this.delete}>Delete</button></Link>
+               <Link to={{pathname:"/editStudent", state:{name:this.name, url:this.url, gpa:this.gpa,campusName:this.campus}}}><button className="add-btn show-c-bt" >Edit</button></Link>
+               <Link to="/students"> <button className="delete-btn show-c-bt" onClick={this.delete}>Delete</button></Link>
              </div> 
           </div>
         </div>
 
 
       {campusInfo}
+      </div>
             
       </div>
       

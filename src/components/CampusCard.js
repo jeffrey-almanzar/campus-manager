@@ -42,7 +42,7 @@ class CampusCard extends React.Component{
   display = () =>{
     if(this.props.preview){
       return (
-        <div className ="campus-card-preview">
+        <div className ="campus-card campus-card-preview">
           <div className="img-container">
           <Link to={
               {
@@ -56,14 +56,14 @@ class CampusCard extends React.Component{
               </Link>
           </div>
 
-          <div>
+          <div className="center-txt">
           <Link to={
               {
               pathname:'/showCampus',
               state: {campusName:this.props.campusName, campusStudents:this.studentsRegistered,
                     location: this.props.location, description:this.props.description,img:this.props.img }
               } 
-              }> <h1> {this.props.campusName} </h1></Link>
+              }> <h1 className="campus-card-p-title"> {this.props.campusName} </h1></Link>
             {/* <p>{this.props.campusStudents.length ? `${this.props.campusStudents.length} registered` : "not student registered"}</p> */}
             <div className="campButton">
               

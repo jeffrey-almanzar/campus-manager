@@ -2,6 +2,10 @@
   margin: 0px;
   padding:0px;
 }
+a{
+  text-decoration: none;
+  cursor: pointer;
+}
 
 .delete-btn{
     background-color:#E53935;
@@ -23,9 +27,18 @@
   color: #fff;
   
 }
+.show-student-wrapper{
+  width: 90%;
+  margin: auto;
+  margin-bottom: 50px;
+}
 
 .image-c, .image-showCampus,.studentCards, .showStudent{
   display: flex;
+}
+
+.student-img-container-show{
+  width: 300px;
 }
 
 .image-c{
@@ -229,4 +242,31 @@ textarea{
 
 .bt-container{
   width: 100%;
+}
+.show-student-btns{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  
+}
+
+.show-student{
+  margin-top: 50px;
+}
+
+.show-c-bt{
+  font-size: 1rem;
+}
+
+.campus-card-preview .img-container{
+ margin-right: 40px;
+}
+
+.campus-card-preview{
+  width: 50%;
+}
+
+.campus-card-p-title{
+  margin-bottom: 20px;
+  text-align: center;
 }

@@ -50,6 +50,7 @@ p{
   
   .studentCards{
     flex-wrap: wrap;
+    margin-top: 40px;
   }
   .address, .studentList, .changeCampus {
     display: flex;
