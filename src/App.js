@@ -59,7 +59,8 @@ class App extends React.Component{
 
 
   componentDidMount(){
-    console.log("From main app")
+    console.log("From main app-p");
+    console.log("jajaajaj");
     console.log(this.props)
     axios.get('https://desolate-hollows-41655.herokuapp.com/campuses')
       .then((response) => {
@@ -82,6 +83,7 @@ class App extends React.Component{
     
       console.log(error);
     })
+    
   }
 
   // componentDidUpdate(){
