@@ -10,7 +10,7 @@ class CampusCard extends React.Component{
   constructor(props){
     super(props)
     this.studentsRegistered = [];
-    //if(!this.props.preview){
+    
       for(let i=0; i <this.props.campusStudents.length; i++){
           if(this.props.campusStudents[i].campusName === this.props.campusName ){
             this.studentsRegistered.push(this.props.campusStudents[i]);
@@ -28,9 +28,7 @@ class CampusCard extends React.Component{
     this.props.delete(this.props.campusName)
   }
 
-  componentDidMount(){
 
-  }
 
   display = () =>{
     if(this.props.preview){

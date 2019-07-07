@@ -183,12 +183,7 @@ p{
     text-decoration: none;
   }
   
-  /* .homePic{
-    height: 100vh;
-    background-image: url('https://www.gonzaga.edu/-/media/Website/Images/Full-Width-Image-and-Video/About/Other/fw-flyover-video-screenshot.ashx?h=600&w=1440&la=en&hash=2BB5F333CB2B74543077126EAB3907907D5F290F');
-    background-size: cover;
-    background-position: center;
-  } */
+  
   .homePic img{
     width:100%;
     height:auto;
@@ -210,12 +205,7 @@ p{
     margin-inline-end: 0px;
     font-weight:normal;
   }
-  /* img {
-    border-radius: 50%;
-  } */
-  /* .homePic img{
-   
-  } */
+  
   .homePic{
     position: relative;
     text-align: center;
