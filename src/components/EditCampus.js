@@ -1,7 +1,7 @@
 import React  from 'react';
 import Navigation from './Navigation';
 import StudentRow from './StudentRow';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import axios from 'axios';
 
 class EditCampus extends React.Component{
@@ -14,6 +14,7 @@ class EditCampus extends React.Component{
             img:this.props.info.location.state.img,
             campusStudents:"",
             description:this.props.info.location.state.description,
+            redirect:false
 
         }
         
@@ -97,6 +98,8 @@ class EditCampus extends React.Component{
             preVname: initialState.campusName
         })
         .then( (response) => {
+            alert("Campus edited");
+            this.setState({redirect:true})
         console.log(response.data);
         })
         .catch((error)=> {
@@ -130,6 +133,9 @@ class EditCampus extends React.Component{
     }
 
     render(){
+        if(this.state.redirect){
+            return <Redirect to="/campuses" />
+        }
         return(
             <div>
                 <Navigation />
