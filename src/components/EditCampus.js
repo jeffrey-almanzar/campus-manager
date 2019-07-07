@@ -8,15 +8,6 @@ class EditCampus extends React.Component{
 
     constructor(props){
         super(props);
-
-        // let campusStudents =[];
-        // for(let i=0; i< this.props.allCampuses.length; i++){
-        //     if(this.props.info.location.state.campusName === this.props.allCampuses[i].campusName){
-        //         campusStudents = this.props.allCampuses[i].campusStudents;
-        //         break;
-        //     }
-        // }
-
         this.state = {
             campusName: this.props.info.location.state.campusName,
             location:this.props.info.location.state.location,
@@ -25,7 +16,7 @@ class EditCampus extends React.Component{
             description:this.props.info.location.state.description,
 
         }
-        // this.props.info.location.state.campusStudents,
+        
     }
 
     deleteStudent = () =>{
@@ -52,11 +43,7 @@ class EditCampus extends React.Component{
 
     componentDidMount(){
         console.log(this.props);
-        //jjj
         this.refresh()
-        
-        //lll
-        //this.setState({campusStudents: this.props.info.location.state.campusStudents})
     }
 
     onNameChange = (e) => {

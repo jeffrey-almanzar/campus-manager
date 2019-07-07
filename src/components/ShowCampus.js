@@ -18,10 +18,6 @@ class ShowCampus extends React.Component{
 
   showStudentCard(){
     let studentCard= []
-    // for(let i =0; i<this.props.info.location.state.campusStudents.length; i++){
-    //   let student = this.props.info.location.state.campusStudents[i];
-    //   studentCard.push(<StudentCard onLoadStudents={this.props.onLoadStudents} name ={student.name} url={student.url} delete={this.props.deleteStudent} campusName ={this.props.info.location.state.campusName} campuses={this.props.campuses} gpa={student.gpa} /> )
-    // }
 
     for(let i =0; i<this.state.campusStudents.length; i++){
       let student = this.state.campusStudents[i];
@@ -72,7 +68,7 @@ class ShowCampus extends React.Component{
       <div  >
         <div className="campus-info-container">
             <div className ="image-c">
-                <div className="img-container">
+                <div className="img-container show">
                     <img src={this.props.info.location.state.img || defaultImg} alt="Check link" />
                 </div>
               </div>

@@ -1,71 +1,4 @@
 import axios from 'axios';
-// const initialCampusState = {
-//     campuses:[
-//         {
-//             campusName:"Lehman College",
-//             location: '250 Bedford Park Blvd W The Bronx, NY 10468',
-//             description: "Lehman College is a senior college of the City University of New York in New York, United States. Founded in 1931 as the Bronx campus of Hunter College, the school became an independent college within CUNY in September 1967.",
-//             img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSwhJxE9QqsclsZaZzu_jn1olfPS4jd_ZE61sGgVlkZN0oyRQHUg",
-//             campusStudents:[
-//                 {
-//                     name:"Jeffrey Almanzar",
-//                     "gpa": "4.0",
-//                     "url":"https://bronxbroncos.com/images/2018/2/28/2018_BCC_BB_17_Jeffery_Almanzar.jpg?width=300",
-//                     campusName:"Lehman College"
-//                 },
-        
-//                 {
-//                     name:"Asifa Khan",
-//                     "gpa": "3.9",
-//                     "url":"https://media.licdn.com/dms/image/C4D03AQGxHD7Rte3TLQ/profile-displayphoto-shrink_800_800/0?e=1565827200&v=beta&t=566EMNwsEbDTYjd1JLORorJuTeqFtroEZlDEQwpHze0",
-//                     campusName:"Lehman College"
-//                 }
-//             ]
-//         },
-
-//         {
-//             campusName:"City College",
-//             location:"160 Convent Ave, New York, NY 10031",
-//             description:"The City College of the City University of New York is a public senior college of the City University of New York in New York City. Located in Hamilton Heights overlooking Harlem in Manhattan, City College's 35-acre Collegiate Gothic campus spans Convent Avenue from 130th to 141st Streets.",
-//             img:"",
-            
-//             campusStudents:[
-//                 {
-//                     name:"Ismael Almanzar",
-//                     "gpa": "3.0",
-//                     "url":"",
-//                     campusName:"City College"
-//                 },
-        
-//                 {
-//                     name:"Jose Peres",
-//                     "gpa": "3.8",
-//                     "url":"",
-//                     campusName:"City College"
-//                 }
-//             ]
-//         }
-//     ]
-// }
-// const initialStudentState ={
-//     students :[
-//         {
-//             name:"Jeffrey Almanzar",
-//             "gpa": "4.0",
-//             "url":"https://bronxbroncos.com/images/2018/2/28/2018_BCC_BB_17_Jeffery_Almanzar.jpg?width=300",
-//             campusName:"Lehman College"
-//         },
-
-//         {
-//             name:"Asifa Khan",
-//             "gpa": "3.9",
-//             "url":"https://media.licdn.com/dms/image/C4D03AQGxHD7Rte3TLQ/profile-displayphoto-shrink_800_800/0?e=1565827200&v=beta&t=566EMNwsEbDTYjd1JLORorJuTeqFtroEZlDEQwpHze0",
-//             campusName:"Lehman College"
-//         }
-//     ]
-
-    
-// }
 
 const initialCampusState = {
     campuses:[]
@@ -81,7 +14,6 @@ export const addStudent =(state= initialStudentState, action={})=>{
    switch(action.type){
        case 'ADD_STUDENT':
            console.log(action)
-        //    {students: [action.payload, ...state.students]}
            return {students: [action.payload, ...state.students]}
         case "DELETE_STUDENT":
             console.log(action.payload)

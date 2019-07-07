@@ -39,12 +39,11 @@ class EditStudent extends React.Component{
         console.log(name)
 
         if(!name.value){
-            //name.style.borderColor="red";
             name.style.borderColor ="red";
             
         }
 
-        if(!(gpa.value> 0.0 && gpa.value <= 4.0)){
+        if(!(gpa.value> 0.0 && gpa.value <= 4)){
             gpa.style.borderColor ="red";
             
         }

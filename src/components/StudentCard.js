@@ -41,7 +41,7 @@ class StudentCard extends React.Component{
   render(){
     
     return (
-      <div className="card-container">
+      <div className="stu-card-container">
         
           <Link to={
                 {
@@ -67,7 +67,16 @@ class StudentCard extends React.Component{
             </Link>
      
           <p className="student-campus">{this.props.campusName}</p>
-          <button className="delete-btn" onClick={this.delete}>Delete</button>
+
+          <Link to={
+              {pathname:"/showStudent", 
+              state: {name: this.props.name, url:this.props.url, students:this.props.students, campus:this.props.campusName, gpa:this.props.gpa, campuses: this.props.campuses }
+              } 
+              }>
+                <button className="add-btn" >View Student</button>
+          </Link>
+
+          {/* <button className="delete-btn" onClick={this.delete}>Delete</button> */}
       </div>
 
     

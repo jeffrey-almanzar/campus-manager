@@ -7,7 +7,7 @@ import axios from 'axios';
 import defaultImage from '../img/profilePicture.jpg';
 
 class ShowStudent extends React.Component{
-//  if the campus is not in campuses will produce an error
+
   constructor(props){
     super(props)
     this.name = this.props.info.location.state.name;
