@@ -94,9 +94,12 @@ class ShowStudent extends React.Component{
         </div>
 
           <div className="student-info-container">
-              {/* <h1>Name: {this.props.location.state.name} </h1> */}
-              <h1>Name: {this.name} </h1>
-              <p>GPA: {this.gpa}</p>
+            
+              <div>
+                <h1>Name: {this.name} </h1>
+                <p>GPA: {this.gpa}</p>
+              </div>
+              
                <div className="button2">
                <Link to={{pathname:"/editStudent", state:{name:this.name, url:this.url, gpa:this.gpa,campusName:this.campus}}}><button className="add-btn show-c-bt" >Edit</button></Link>
                <Link to="/students"> <button className="delete-btn show-c-bt" onClick={this.delete}>Delete</button></Link>

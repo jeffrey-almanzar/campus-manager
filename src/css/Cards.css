@@ -109,3 +109,12 @@
     margin-top: 10px;
     color: #01579B;
 }
+
+.student-info-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.campus-card-preview .img-container{
+    margin-right: 20px;
+}
