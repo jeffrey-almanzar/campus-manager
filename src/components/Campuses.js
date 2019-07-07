@@ -24,7 +24,7 @@ class Campuses extends React.Component{
         if(this.props.campuses.length){
             content =this.getCampuses()
         }else{
-            content = <h2>There are no campuses registered in the database </h2>
+            content = <h2 className="sub-heading">There are no campuses registered in the database </h2>
         }
         return (
             <div >

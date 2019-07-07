@@ -23,7 +23,7 @@ class Students extends React.Component{
         if(this.props.campuses.length){
             content =this.getStudents()
         }else{
-            content = <h2>There are no students registered in the database </h2>
+            content = <h2 className="sub-heading">There are no students registered in the database </h2>
         }
         return (
             <div>

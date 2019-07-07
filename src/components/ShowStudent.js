@@ -47,7 +47,7 @@ class ShowStudent extends React.Component{
     if(this.campus){
       try{ //campus exits
         campusInfo =<div>
-                      <h2>This student is registered in a campus</h2>  
+                      <h2 className="sub-heading">This student is registered in a campus</h2>  
               <CampusCard preview ={true} campusName={this.campusCompleteInfo.campusName} 
                           description={this.campusCompleteInfo.description} location={this.campusCompleteInfo.location}
                           img={this.campusCompleteInfo.img}
@@ -66,7 +66,7 @@ class ShowStudent extends React.Component{
             console.log(response.data);
             })
         campusInfo =<div>
-                      <h2>This student is registered in a campus</h2>  
+                      <h2 className="sub-heading">This student is registered in a campus:</h2>  
               <CampusCard preview ={true} campusName="Unknown Campus" 
                           description="Not info available" location="Unknown"
                           img=""
@@ -76,7 +76,7 @@ class ShowStudent extends React.Component{
 
       }
     }else{
-      campusInfo= <h2>This student is not registered in a campus</h2>
+      campusInfo= <h2 className="sub-heading">This student is not registered in a campus.</h2>
     }
     
     return (
@@ -85,7 +85,7 @@ class ShowStudent extends React.Component{
         <Navigation />
         {/* {this.renderRedirect()} */}
         <div className="show-student-wrapper">
-        <h1 className="sh-student-title">Show Student</h1>
+        <h1 className="sh-student-title sub-heading">Show Student</h1>
 
 
         <div className="showStudent">

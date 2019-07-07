@@ -134,16 +134,16 @@ class EditCampus extends React.Component{
             <div>
                 <Navigation />
                 <div className="form-container">
-                    <h1 className="center-txt">Edit Campus</h1>
+                   
                     
                     <form onSubmit={this.submit}>
-
+                    <h1 className="center-txt sub-heading">Edit Campus</h1>
                         <div className="input-container">
                             <div>
-                                <label htmlFor="campus-name">Campus Name:</label>
-                                <label htmlFor="campus-location">Campus Location:</label>
-                                <label htmlFor="campus-img-url">Campus Image URL:</label>
-                                <label htmlFor="campus-description">Campus Description:</label>
+                                <label className="bold" htmlFor="campus-name">Campus Name:</label>
+                                <label className="bold" htmlFor="campus-location">Campus Location:</label>
+                                <label className="bold" htmlFor="campus-img-url">Campus Image URL:</label>
+                                <label className="bold" htmlFor="campus-description">Campus Description:</label>
                             </div>
 
                             <div>
@@ -152,7 +152,7 @@ class EditCampus extends React.Component{
                                 <input type="text" id="campus-img-url" onChange={this.onImgChange} value={this.state.img} placeholder="" />           
                                 <textarea id="campus-description" onChange={this.onDescriptionChange} value={this.state.description}  rows="6" cols="50" >                        
                                 </textarea>
-                                <input type="submit" value="Save Changes" /> 
+                                <input className="add-btn" type="submit" value="Save Changes" /> 
                             </div>
                             
                         </div>
@@ -161,17 +161,11 @@ class EditCampus extends React.Component{
                         
                     </form>
 
-                    <h2 className="center-txt">Students On Campus</h2>
+                    <h2 className="center-txt sub-heading">Students On Campus</h2>
                     <div className="edit-camp-options">
-                        {/* <div>
-                            <select>
-                                <option >Select a student</option>
-                                {this.getOptions()}
-                            </select>
-                        </div>
-                         */}
-                        <div>
-                        <Link to={{pathname:"/addStudent", state:{campus:this.props.info.location.state.campusName}}}><button>Add Student</button></Link>
+                        
+                        <div className="edit-campus-btn-container">
+                        <Link to={{pathname:"/addStudent", state:{campus:this.props.info.location.state.campusName}}}><button className="add-btn">Add Student</button></Link>
                         </div>
                     
                     </div>

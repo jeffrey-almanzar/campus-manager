@@ -117,6 +117,28 @@ form div{
   margin: auto;
 }
 
+.form-container form{
+  margin: 2.5rem auto;
+}
+
+.edit-campus-btn-container button{
+  display: inline-block;
+}
+.bold{
+  font-weight: 600;
+}
+
+.sub-heading{
+  color: #00732e;
+  font-weight: 900;
+}
+.edit-campus-btn-container{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin: 1rem auto;
+}
+
 .input-container{
   display: flex;
   justify-content: center;
@@ -187,7 +209,7 @@ align-items: flex-start;
     margin-left: 20px;
 }
 
-.adding-from{
+.adding-from, .edit-form{
   width: 50%;
   margin: 50px auto 0px auto;
   border: 1px solid #000;
@@ -196,18 +218,15 @@ align-items: flex-start;
   
 }
 
-.adding-from h2{
+.adding-from h2, .edit-form h2{
   margin-bottom: 20px;
   color: #00732e;
 
 }
 
-/* .adding-from p{
-  margin-bottom: 20px;
 
-} */
 
-.adding-wrapper{
+.adding-wrapper, .edit-wrapper{
   width: 50%;
   margin: auto;
 }
@@ -216,6 +235,13 @@ align-items: flex-start;
   width: 100%;
   padding: 5px;
 
+}
+
+.edit-wrapper input[type='text']{
+  display: inline-block;
+  width: 95%;
+  margin: auto;
+  padding: 5px;
 }
 
 textarea{
@@ -268,5 +294,23 @@ textarea{
 
 .campus-card-p-title{
   margin-bottom: 20px;
-  text-align: center;
+  text-align: start;
+}
+
+.warning{
+  color: #E53935;
+  font-size: 1rem;
+}
+
+.edit-form label{
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.edit-form .edit-campus-btn-container{
+  justify-content: center;
+}
+
+.edit-form{
+  width: 70%;
 }

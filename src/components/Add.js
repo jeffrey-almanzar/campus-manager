@@ -138,8 +138,7 @@ class Add  extends React.Component{
                         console.log(error);
                     })
                 },1000)
-                //this.props.add(info);
-                //this.setState({redirect:true})
+                
             }else{
                 alert("Name can not be empty, try again!")
             }
@@ -193,7 +192,7 @@ class Add  extends React.Component{
                 <div className="wrapper">
                 <form onSubmit={this.submit} className="adding-from" >
                     <div className="adding-wrapper">
-                        <h2 className="center-txt" >Add Student</h2>
+                        <h2 className="center-txt sub-heading" >Add Student</h2>
                         <p>{this.props.name} Name</p>
                         <input type="text" value={this.state.name} onChange={this.nameChange} />
                         <p><lable>Campus</lable></p>
@@ -226,7 +225,7 @@ class Add  extends React.Component{
                     <div className="wrapper">
                     <form onSubmit={this.submit}  className="adding-from">
                     <div className="adding-wrapper">
-                        <h2 className="center-txt">Add Campus</h2>
+                        <h2 className="center-txt sub-heading">Add Campus</h2>
                         <p>{this.props.name} Name</p>
                         <input type="text" value={this.state.campus} onChange={this.campusChange} />
 

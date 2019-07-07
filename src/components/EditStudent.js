@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from './Navigation';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
 class EditStudent extends React.Component{
@@ -10,8 +11,11 @@ class EditStudent extends React.Component{
             name: this.props.info.location.state.name,
             gpa:this.props.info.location.state.gpa,
             campus: this.props.info.location.state.campusName,
-            url:this.props.info.location.state.url
+            url:this.props.info.location.state.url,
+           redirect:false
         }
+
+      
 
 
     }
@@ -72,8 +76,10 @@ class EditStudent extends React.Component{
             url: url.value,
             preVname: initState.name
         })
-            .then(function (response) {
-            console.log(response.data);
+            .then((response)=> {
+                alert("Student edited")
+                this.setState({redirect:true});
+        
             })
             .catch(function (error) {
             console.log("Not worked");
@@ -105,31 +111,41 @@ class EditStudent extends React.Component{
     
 
     render(){
+        if(this.state.redirect){
+            return <Redirect to="/students" />
+        }
         return (
             <div>
-            <Navigation />
-            
-            <form onSubmit={this.submit}>
-                <p><label htmlFor="name">Student Name</label></p>
-                <input id="name" type="text" value={this.state.name} onChange={this.onChangeName} />
+                <Navigation />
+                <div className="wrapper">
+                <div className="edit-wrapper">
+                    <form onSubmit={this.submit} className="edit-form">
+                        <h2 className="center-txt sub-heading">Edit Student</h2>
+                        <p><label className="bold" htmlFor="name">Student Name</label></p>
+                        <input id="name" type="text" value={this.state.name} onChange={this.onChangeName} />
 
-                <p><label htmlFor="campus">Campus</label></p>
-                <input type="text" id="campus" value={this.state.campus} onChange={this.onCampusChange} />
+                        <p><label className="bold" htmlFor="campus">Campus</label></p>
+                        <input type="text" id="campus" value={this.state.campus} onChange={this.onCampusChange} />
 
-                <p><label htmlFor="gpa">GPA</label></p>
-                <input type="text" id="gpa" value={this.state.gpa} onChange={this.onChangeGpa} />
+                        <p><label className="bold" htmlFor="gpa">GPA</label></p>
+                        <input type="text" id="gpa" value={this.state.gpa} onChange={this.onChangeGpa} />
 
-                <p><label htmlFor="url">Student URL</label></p>
-                <input type="text" id="url" value={this.state.url} onChange={this.onChangeUrl} />
+                        <p><label className="bold" htmlFor="url">Student URL</label></p>
+                        <input type="text" id="url" value={this.state.url} onChange={this.onChangeUrl} />
 
-                <div>
-                    <p>*Student name can not be blank</p>
-                    <p>*GPA must be a number between 0.0 and 4.0</p>
+                        <div>
+                            <p className="warning">*Student name can not be blank</p>
+                            <p className="warning">*GPA must be a number between 0.0 and 4.0</p>
+                        </div>
+
+                        <div className="edit-campus-btn-container">
+                            <input className="add-btn btn" value="Save Changes" type="submit" />
+                        </div>
+                        
+
+                    </form>
                 </div>
-
-                <input value="Save Changes" type="submit" />
-
-            </form>
+                </div>
             </div>
         )
     }

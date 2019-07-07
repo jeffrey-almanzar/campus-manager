@@ -72,7 +72,7 @@ class ShowCampus extends React.Component{
                     <img src={this.props.info.location.state.img || defaultImg} alt="Check link" />
                 </div>
               </div>
-            {/* <img src={campusDefault} alt="lehman img"/> */}
+           
           <div>
       
             <h1>{campusName} </h1>
@@ -102,7 +102,7 @@ class ShowCampus extends React.Component{
 
     <div className="studentList">
       <div>
-        <h1>Students On Campus</h1>
+        <h1 className="sub-heading">Students On Campus</h1>
       </div>
       <div>
       <Link to={{pathname:"/addStudent", state:{campus:this.props.info.location.state.campusName}}}><button className="add-btn show-c-bt">Add Student</button></Link>
