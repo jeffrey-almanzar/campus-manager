@@ -6,13 +6,14 @@ import App from './App';
 //react-script-start
 // redux
 import {Provider} from 'react-redux';
-import {createStore, combineReducers} from 'redux';
-import {addStudent, addCampus} from './reducers/reducer';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {addStudent, addCampus,requestChanges} from './reducers/reducer';
+import thunkMiddleware from 'redux-thunk';
 
 
-const rootReducer = combineReducers({addStudent,addCampus});
+const rootReducer = combineReducers({addStudent,addCampus, requestChanges});
 //addCampus reducer
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 
 ReactDOM.render(

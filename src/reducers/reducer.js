@@ -138,3 +138,24 @@ export const addCampus =(state= initialCampusState, action={})=>{
             return state;
    }
 }
+
+const changesInitState= {
+   isPending:false,
+   changes:[],
+   error:""
+}
+export const requestChanges = (state= changesInitState, action={}) =>{
+    switch(action.type){
+       case "REQUEST_CHANGES_PENDING":
+         return Object.assign({}, state, {isPending:true});
+
+       case "REQUEST_CHANGES_SUCCESS":
+        return Object.assign({}, state, {isPending:false, changes:action.payload});
+
+       case "REQUEST_CHANGES_FAILED":
+        return Object.assign({}, state, {isPending:false, error:action.payload});
+
+       default:
+           return state;
+    }
+}

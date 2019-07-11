@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const addStudent = (event) =>{
     return {
         type: 'ADD_STUDENT',
@@ -78,4 +80,21 @@ export const deleteStudentFromCampus = (event) =>{
         type:"DELETE_STUDENT_FROM_CAMPUS",
         payload: event
     }
+}
+
+//redux-thunk
+export const requestChanges =() => (dispatch) =>{
+  
+    dispatch({type:"REQUEST_CHANGES_PENDING"});
+    axios.get('https://desolate-hollows-41655.herokuapp.com/campuses')
+        .then((response)=> {
+            alert("Student edited")
+            dispatch({type:"REQUEST_CHANGES_SUCCESS", payload:response})
+    
+        })
+        .catch(function (error) {
+        console.log("Not worked");
+        dispatch({type:"REQUEST_CHANGES_FAILED", payload:error})
+        });    
+    
 }

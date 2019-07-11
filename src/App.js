@@ -10,7 +10,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import {addStudent, addCampus, deleteCampus, deleteStudent, studentClicked, 
   addStudentOnCampus, editStudent, editCampus, deleteStudentFromCampus,
-  loadCampuses, loadStudents, reRender} from './actions/actions';
+  loadCampuses, loadStudents, reRender, requestChanges} from './actions/actions';
 
 // components
 import Home from './components/Home';
@@ -30,7 +30,10 @@ import {connect} from 'react-redux';
 const mapStateToProps = state =>{
     return {
       campuses: state.addCampus.campuses,
-      students: state.addStudent.students
+      students: state.addStudent.students,
+      changes: state.requestChanges.changes,
+      isPending: state.requestChanges.isPending,
+      error: state.requestChanges.error
     }
 }
 
@@ -47,7 +50,8 @@ const mapDispatchToProps = (dispatch)=>{
     onDeleteStudentFromCampus : (event) => dispatch(deleteStudentFromCampus(event)),
     onLoadStudents: (event) => dispatch(loadStudents(event)),
     onLoadCampuses : (event) => dispatch(loadCampuses(event)),
-    onReRender: (event) => dispatch(reRender(event))
+    onReRender: (event) => dispatch(reRender(event)),
+    onRequestChanges: (event) => dispatch(requestChanges())
   
   }
 
@@ -62,6 +66,7 @@ class App extends React.Component{
     console.log("From main app-p");
     console.log("jajaajaj");
     console.log(this.props)
+    this.props.onRequestChanges();
     axios.get('https://desolate-hollows-41655.herokuapp.com/campuses')
       .then((response) => {
         // console.log(response)
@@ -85,7 +90,7 @@ class App extends React.Component{
     })
     
   }
-  
+
   render(){
     const AddCampusComponent = ()=>(<Add name="Campus" add={this.props.onAddCampus} onLoadCampuses={this.props.onLoadCampuses}  />)
 
