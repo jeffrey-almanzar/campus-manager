@@ -85,14 +85,7 @@ class App extends React.Component{
     })
     
   }
-
-  // componentDidUpdate(){
-    
-
-  // }
-
   
-
   render(){
     const AddCampusComponent = ()=>(<Add name="Campus" add={this.props.onAddCampus} onLoadCampuses={this.props.onLoadCampuses}  />)
 
