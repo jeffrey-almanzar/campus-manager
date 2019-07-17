@@ -62,20 +62,9 @@ const mapDispatchToProps = (dispatch)=>{
 class App extends React.Component{
 
   componentDidMount(){
-    console.log("From main app-p");
-    console.log("jajaajaj");
-    console.log(this.props)
+    
     this.props.onrequestCampuses();
-    axios.get('https://desolate-hollows-41655.herokuapp.com/campuses')
-      .then((response) => {
-        // console.log(response)
-          this.props.onLoadCampuses(response.data.campuses)
-          console.log(this.props)
-      })
-      .catch((error) => {
-        console.log(error);
-    })
-
+   
     axios.get('https://desolate-hollows-41655.herokuapp.com/students')
       .then( (response) => {
         // console.log(response)
