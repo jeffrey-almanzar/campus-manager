@@ -146,13 +146,13 @@ const requestCampusesInitState= {
 }
 export const requestCampuses = (state= requestCampusesInitState, action={}) =>{
     switch(action.type){
-       case "REQUEST_CHANGES_PENDING":
+       case "REQUEST_CAMPUSES_PENDING":
          return Object.assign({}, state, {isPending:true});
 
-       case "REQUEST_CHANGES_SUCCESS":
+       case "REQUEST_CAMPUSES_SUCCESS":
         return Object.assign({}, state, {isPending:false, campuses:action.payload});
 
-       case "REQUEST_CHANGES_FAILED":
+       case "REQUEST_CAMPUSES_FAILED":
         return Object.assign({}, state, {isPending:false, error:action.payload});
 
        default:

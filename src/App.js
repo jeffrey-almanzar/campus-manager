@@ -61,7 +61,6 @@ const mapDispatchToProps = (dispatch)=>{
 
 class App extends React.Component{
 
-
   componentDidMount(){
     console.log("From main app-p");
     console.log("jajaajaj");
