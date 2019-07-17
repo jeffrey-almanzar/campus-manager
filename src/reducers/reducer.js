@@ -139,18 +139,18 @@ export const addCampus =(state= initialCampusState, action={})=>{
    }
 }
 
-const changesInitState= {
+const requestCampusesInitState= {
    isPending:false,
-   changes:[],
+   campuses:[],
    error:""
 }
-export const requestChanges = (state= changesInitState, action={}) =>{
+export const requestCampuses = (state= requestCampusesInitState, action={}) =>{
     switch(action.type){
        case "REQUEST_CHANGES_PENDING":
          return Object.assign({}, state, {isPending:true});
 
        case "REQUEST_CHANGES_SUCCESS":
-        return Object.assign({}, state, {isPending:false, changes:action.payload});
+        return Object.assign({}, state, {isPending:false, campuses:action.payload});
 
        case "REQUEST_CHANGES_FAILED":
         return Object.assign({}, state, {isPending:false, error:action.payload});

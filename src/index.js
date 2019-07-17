@@ -7,11 +7,11 @@ import App from './App';
 // redux
 import {Provider} from 'react-redux';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
-import {addStudent, addCampus,requestChanges} from './reducers/reducer';
+import {addStudent, addCampus,requestCampuses} from './reducers/reducer';
 import thunkMiddleware from 'redux-thunk';
 
 
-const rootReducer = combineReducers({addStudent,addCampus, requestChanges});
+const rootReducer = combineReducers({addStudent,addCampus, requestCampuses});
 //addCampus reducer
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 

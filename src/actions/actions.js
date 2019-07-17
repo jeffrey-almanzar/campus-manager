@@ -83,18 +83,17 @@ export const deleteStudentFromCampus = (event) =>{
 }
 
 //redux-thunk
-export const requestChanges =() => (dispatch) =>{
+export const requestCampuses =() => (dispatch) =>{
   
     dispatch({type:"REQUEST_CHANGES_PENDING"});
     axios.get('https://desolate-hollows-41655.herokuapp.com/campuses')
         .then((response)=> {
-            alert("Student edited")
-            dispatch({type:"REQUEST_CHANGES_SUCCESS", payload:response})
+           
+            dispatch({type:"REQUEST_CHANGES_SUCCESS", payload:response.data.campuses})
     
         })
         .catch(function (error) {
-        console.log("Not worked");
-        dispatch({type:"REQUEST_CHANGES_FAILED", payload:error})
+             dispatch({type:"REQUEST_CHANGES_FAILED", payload:error})
         });    
     
 }
