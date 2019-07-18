@@ -10,7 +10,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 //actions
 import {addStudent, addCampus, deleteCampus, deleteStudent, studentClicked, 
   addStudentOnCampus, editStudent, editCampus, deleteStudentFromCampus,
-  loadCampuses, loadStudents, reRender, requestCampuses} from './actions/actions';
+  loadStudents, reRender, requestCampuses} from './actions/actions';
 
 // components
 import Home from './components/Home';
@@ -48,7 +48,6 @@ const mapDispatchToProps = (dispatch)=>{
     onEditCampus: (event) => dispatch(editCampus(event)),
     onDeleteStudentFromCampus : (event) => dispatch(deleteStudentFromCampus(event)),
     onLoadStudents: (event) => dispatch(loadStudents(event)),
-    onLoadCampuses : (event) => dispatch(loadCampuses(event)),
     onReRender: (event) => dispatch(reRender(event)),
     onRequestCampuses: (event) => dispatch(requestCampuses())
   
@@ -82,13 +81,12 @@ class App extends React.Component{
         <Add 
           name="Campus" 
           add={this.props.onAddCampus} 
-          onLoadCampuses={this.props.onLoadCampuses}
           refreshCampuses={this.props.onRequestCampuses}   
         />
     );
 
     const AddStudentComponent = (info)=>{
-      return (<Add name="Student"  onLoadCampuses={this.props.onLoadCampuses} info ={info} add={this.props.onAddStudent} addOnCampus={this.props.onAddStudentOnCampus} addingOnCampus={true} />)
+      return (<Add name="Student" info ={info} add={this.props.onAddStudent} addOnCampus={this.props.onAddStudentOnCampus} addingOnCampus={true} />)
     }
     const CampusesComponent = () =>(
           <Campuses 
