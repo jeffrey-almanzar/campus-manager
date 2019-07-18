@@ -24,11 +24,11 @@ class CampusCard extends React.Component{
     axios.delete('https://desolate-hollows-41655.herokuapp.com/deleteCampus/'+this.props.campusName)
       .then((elem)=>{
         console.log(elem)
+        this.props.refreshCampuses();
       })
-    this.props.delete(this.props.campusName)
+    //this.props.delete(this.props.campusName)
+    
   }
-
-
 
   display = () =>{
     if(this.props.preview){

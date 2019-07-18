@@ -21,19 +21,14 @@ class ShowStudent extends React.Component{
 
     for(let i=0; i<allCampuses.length; i++){
       if(allCampuses[i].campusName ===this.campus){
-
         this.campusCompleteInfo = allCampuses[i];
         break;
 
       }
     }
-
-
   }
   
-
   delete =(e )=>{
-    // this.setRedirect();
     axios.delete('https://desolate-hollows-41655.herokuapp.com/deleteStudent/'+this.name)
       .then((elem)=>{
         console.log(elem)
@@ -52,7 +47,6 @@ class ShowStudent extends React.Component{
                           description={this.campusCompleteInfo.description} location={this.campusCompleteInfo.location}
                           img={this.campusCompleteInfo.img}
                         campusStudents ={this.props.students} link="/showCampus"  />
-                        {/* delete={this.props.delete} */}
                     </div>
       }catch(e){
         axios.put('https://desolate-hollows-41655.herokuapp.com/editStudent/1', {
@@ -83,11 +77,8 @@ class ShowStudent extends React.Component{
 
       <div>
         <Navigation />
-        {/* {this.renderRedirect()} */}
         <div className="show-student-wrapper">
         <h1 className="sh-student-title sub-heading">Show Student</h1>
-
-
         <div className="showStudent">
         <div className="student-img-container student-img-container-show show-student">
           <img src={this.url || defaultImage} alt="" />
@@ -112,8 +103,6 @@ class ShowStudent extends React.Component{
       </div>
             
       </div>
-      
-     
   );
 }
 }

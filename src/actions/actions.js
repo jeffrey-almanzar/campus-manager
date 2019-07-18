@@ -85,12 +85,11 @@ export const deleteStudentFromCampus = (event) =>{
 //redux-thunk
 export const requestCampuses =() => (dispatch) =>{
   
-    dispatch({type:"REQUEST_CAMPUSES_PENDING"});
+    //dispatch({type:"REQUEST_CAMPUSES_PENDING"});
     axios.get('https://desolate-hollows-41655.herokuapp.com/campuses')
         .then((response)=> {
-           
             dispatch({type:"REQUEST_CAMPUSES_SUCCESS", payload:response.data.campuses})
-    
+
         })
         .catch(function (error) {
              dispatch({type:"REQUEST_CAMPUSES_FAILED", payload:error})

@@ -50,7 +50,7 @@ const mapDispatchToProps = (dispatch)=>{
     onLoadStudents: (event) => dispatch(loadStudents(event)),
     onLoadCampuses : (event) => dispatch(loadCampuses(event)),
     onReRender: (event) => dispatch(reRender(event)),
-    onrequestCampuses: (event) => dispatch(requestCampuses())
+    onRequestCampuses: (event) => dispatch(requestCampuses())
   
   }
 
@@ -62,7 +62,7 @@ class App extends React.Component{
 
   componentDidMount(){
     
-    this.props.onrequestCampuses();
+    this.props.onRequestCampuses();
    
     axios.get('https://desolate-hollows-41655.herokuapp.com/students')
       .then( (response) => {
@@ -78,12 +78,26 @@ class App extends React.Component{
   }
 
   render(){
-    const AddCampusComponent = ()=>(<Add name="Campus" add={this.props.onAddCampus} onLoadCampuses={this.props.onLoadCampuses}  />)
+    const AddCampusComponent = ()=>(
+        <Add 
+          name="Campus" 
+          add={this.props.onAddCampus} 
+          onLoadCampuses={this.props.onLoadCampuses}
+          refreshCampuses={this.props.onRequestCampuses}   
+        />
+    );
 
     const AddStudentComponent = (info)=>{
       return (<Add name="Student"  onLoadCampuses={this.props.onLoadCampuses} info ={info} add={this.props.onAddStudent} addOnCampus={this.props.onAddStudentOnCampus} addingOnCampus={true} />)
     }
-    const CampusesComponent = () =>(<Campuses students ={this.props.students} campuses ={this.props.campuses} delete={this.props.onDeleteCampus}/>)
+    const CampusesComponent = () =>(
+          <Campuses 
+            students ={this.props.students}
+            campuses ={this.props.campuses} 
+            delete={this.props.onDeleteCampus} 
+            refreshCampuses={ () => this.props.onRequestCampuses()} 
+          />
+    );
 
     const StudentsComponent = () =>(<Students onLoadStudents={this.props.onLoadStudents} campuses ={this.props.campuses} students={this.props.students} delete={this.props.onDeleteStudent} clicked={this.props.onStudentClicked}/>)
 

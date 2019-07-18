@@ -3,8 +3,6 @@ import Navigation from './Navigation';
 import Header from './Header';
 import CampusCard from './CampusCard';
 
-
-
 class Campuses extends React.Component{
     
     getCampuses(){
@@ -13,6 +11,7 @@ class Campuses extends React.Component{
             let campus = this.props.campuses[i];
             campuses.push(<CampusCard preview ={false} campusName={campus.campusName} 
             description={campus.description} location={campus.location}
+            refreshCampuses ={this.props.refreshCampuses}
             img={campus.img}
             campusStudents ={this.props.students} link="/showCampus" delete={this.props.delete} />)
         }
