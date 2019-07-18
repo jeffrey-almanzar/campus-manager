@@ -22,7 +22,6 @@ import ShowCampus from './components/ShowCampus';
 import ShowStudent from './components/ShowStudent';
 import EditStudent from './components/EditStudent';
 import NotFound from './components/NotFound';
-// import { addEstudent, addCampus } from './reducers/reducer';
 
 import {connect} from 'react-redux';
 
@@ -55,8 +54,6 @@ const mapDispatchToProps = (dispatch)=>{
 
 }
 
-
-
 class App extends React.Component{
 
   componentDidMount(){
@@ -65,14 +62,8 @@ class App extends React.Component{
    
     axios.get('https://desolate-hollows-41655.herokuapp.com/students')
       .then( (response) => {
-        // console.log(response)
-          this.props.onLoadStudents(response.data.students)
-          console.log(this.props)
-          
+          this.props.onLoadStudents(response.data.students) 
       })
-      .catch( (error) =>{
-  
-    })
     
   }
 
@@ -88,6 +79,7 @@ class App extends React.Component{
     const AddStudentComponent = (info)=>{
       return (<Add name="Student" info ={info} add={this.props.onAddStudent} addOnCampus={this.props.onAddStudentOnCampus} addingOnCampus={true} />)
     }
+
     const CampusesComponent = () =>(
           <Campuses 
             students ={this.props.students}
@@ -97,24 +89,58 @@ class App extends React.Component{
           />
     );
 
-    const StudentsComponent = () =>(<Students onLoadStudents={this.props.onLoadStudents} campuses ={this.props.campuses} students={this.props.students} delete={this.props.onDeleteStudent} clicked={this.props.onStudentClicked}/>)
+    const StudentsComponent = () =>(
+        <Students 
+          onLoadStudents={this.props.onLoadStudents} 
+          campuses ={this.props.campuses} 
+          students={this.props.students} 
+          delete={this.props.onDeleteStudent} 
+          clicked={this.props.onStudentClicked}
+        />
+    );
 
     const EditCampusComponent = (info) =>{
       
-      return (<EditCampus onLoadStudents={this.props.onLoadStudents} allCampuses={this.props.campuses} info={info} edit={this.props.onEditCampus} deleteStudent={this.props.onDeleteStudentFromCampus} />)
+      return (
+        <EditCampus 
+          onLoadStudents={this.props.onLoadStudents} 
+          allCampuses={this.props.campuses} 
+          info={info} edit={this.props.onEditCampus} 
+          deleteStudent={this.props.onDeleteStudentFromCampus} 
+          />
+      );
     }
 
     const EditStudentComponent = (info) =>{
       console.log(info);
-      return (<EditStudent info={info} edit={this.props.onEditStudent }/>)
+      return (
+        <EditStudent 
+          info={info} 
+          edit={this.props.onEditStudent }
+        />
+      )
     }
 
     const ShowCampusComponent = (info) =>{
-      return (<ShowCampus  onLoadStudents={this.props.onLoadStudents} info={info} delete={this.props.onDeleteCampus} deleteStudent={this.props.onDeleteStudentFromCampus} campuses={this.props.campuses} />)
+      return (
+        <ShowCampus  
+          onLoadStudents={this.props.onLoadStudents} 
+          info={info} delete={this.props.onDeleteCampus} 
+          deleteStudent={this.props.onDeleteStudentFromCampus} 
+          campuses={this.props.campuses} 
+        />
+      );
     }
+    
     const ShowStudentComponent = (info) => {
       
-      return <ShowStudent students={this.props.students} info={info} delete={this.props.onDeleteStudent}/>;
+      return( 
+        <ShowStudent 
+          students={this.props.students} 
+          info={info} 
+          delete={this.props.onDeleteStudent}
+        />
+      );
     }
 
     const HomeComponent = ()=>(<Home  />)
@@ -133,10 +159,8 @@ class App extends React.Component{
           <Route exact path="/editStudent"  component={EditStudentComponent} />
           <Route component={NotFound} />
          </Switch>
-      </Router>
-      
-     
-    )
+      </Router>    
+    );
   }
 }
 
