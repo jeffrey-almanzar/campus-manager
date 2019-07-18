@@ -2,7 +2,6 @@ import React from 'react';
 import Navigation from './Navigation';
 import '../css/Home.css';
 import homeImage from '../img/home.jpg';
-import axios from 'axios';
 import Footer from './Footer';
 
 class Home extends React.Component{
@@ -14,7 +13,7 @@ class Home extends React.Component{
           
           <main>
               <div className ="homePic">
-                  <img src = {homeImage}/>
+                  <img src = {homeImage} alt=""/>
                   {/* <div className="top-left">Campus Manager</div> */}
               </div>
             

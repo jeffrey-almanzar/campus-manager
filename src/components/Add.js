@@ -32,7 +32,7 @@ class Add  extends React.Component{
            
 
             try{
-                let campusName = this.props.info.location.state.campus;
+                
                 info ={
                    
                     name: event.target[0].value,
@@ -178,7 +178,7 @@ class Add  extends React.Component{
     }
 
     options = () =>{
-        if(this.props.name.toUpperCase()=="STUDENT"){
+        if(this.props.name.toUpperCase()==="STUDENT"){
             let defaultValue;
             try{
                 defaultValue = this.props.info.location.state.campus

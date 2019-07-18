@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+
 //css
 import './css/App.css';
 
@@ -7,7 +8,6 @@ import './css/App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 //actions
-
 import {addStudent, addCampus, deleteCampus, deleteStudent, studentClicked, 
   addStudentOnCampus, editStudent, editCampus, deleteStudentFromCampus,
   loadCampuses, loadStudents, reRender, requestCampuses} from './actions/actions';
@@ -17,7 +17,6 @@ import Home from './components/Home';
 import Add from './components/Add';
 import Campuses from './components/Campuses';
 import Students from './components/Students';
-
 import EditCampus from './components/EditCampus';
 import ShowCampus from './components/ShowCampus';
 import ShowStudent from './components/ShowStudent';

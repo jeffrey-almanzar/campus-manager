@@ -2,7 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 import Header from './Header';
 import CampusCard from './CampusCard';
-import Footer from './Footer';
+
 
 
 class Campuses extends React.Component{

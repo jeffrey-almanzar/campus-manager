@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 
 const initialCampusState = {
     campuses:[]
@@ -18,7 +18,7 @@ export const addStudent =(state= initialStudentState, action={})=>{
         case "DELETE_STUDENT":
             console.log(action.payload)
             return {students: state.students.filter((student)=>{
-                return !(action.payload == student.name)
+                return !(action.payload === student.name)
             })}
         case 'EDIT_STUDENT':
             console.log(action.payload);
@@ -57,7 +57,7 @@ export const addCampus =(state= initialCampusState, action={})=>{
         case 'DELETE_CAMPUS':
             console.log(action.payload)
             return {campuses: state.campuses.filter((campus)=>{
-                return !(campus.campusName ==action.payload)
+                return !(campus.campusName ===action.payload)
             })}
 
         case 'ADD_STUDENT_TO_CAMPUS':
@@ -111,7 +111,7 @@ export const addCampus =(state= initialCampusState, action={})=>{
                     description = state.campuses[i].description;
                      
                     campusStudents = state.campuses[i].campusStudents.filter((element)=>{  
-                            return element.name != action.payload.name;
+                            return element.name !== action.payload.name;
                     })
 
                     modifiedCampus = {
@@ -123,10 +123,6 @@ export const addCampus =(state= initialCampusState, action={})=>{
                     }
 
                     state.campuses[i] = modifiedCampus;
-                    console.log("Campuses modified")
-                    console.log(state.campuses)
-                    // console.log("New modified campus")
-                    // console.log(modifiedCampus)
                     break;
 
     

@@ -2,7 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 import Header from './Header';
 import StudentCard from './StudentCard';
-import Footer from './Footer';
+
 
 
 class Students extends React.Component{

@@ -90,7 +90,7 @@ class ShowStudent extends React.Component{
 
         <div className="showStudent">
         <div className="student-img-container student-img-container-show show-student">
-          <img src={this.url || defaultImage}  />
+          <img src={this.url || defaultImage} alt="" />
         </div>
 
           <div className="student-info-container">

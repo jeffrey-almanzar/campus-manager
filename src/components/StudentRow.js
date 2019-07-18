@@ -31,7 +31,7 @@ class  StudentRow extends React.Component{
         return(
             <div className="st-row-container">
                 <div className="row-img">
-                    <img src={ this.props.url ||  defaultImage  } />
+                    <img src={ this.props.url ||  defaultImage  } alt="" />
                 </div>
 
                 <div className="st-row-info-container">
