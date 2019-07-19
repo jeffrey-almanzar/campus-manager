@@ -96,3 +96,16 @@ export const requestCampuses =() => (dispatch) =>{
         });    
     
 }
+
+export const requestStudents =() => (dispatch) =>{
+  
+    //dispatch({type:"REQUEST_CAMPUSES_PENDING"});
+    axios.get('https://desolate-hollows-41655.herokuapp.com/students')
+        .then((response)=> {
+            dispatch({type:"REQUEST_STUDENTS_SUCCESS", payload:response.data.students})
+        })
+        .catch(function (error) {
+             dispatch({type:"REQUEST_STUDENTS_FAILED", payload:error})
+        });    
+    
+}
