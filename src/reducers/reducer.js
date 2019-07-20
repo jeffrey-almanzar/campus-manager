@@ -158,7 +158,7 @@ const requestStudentsInitState= {
     error:""
  }
 
-export const requestStudents = (state= requestCampusesInitState, action={}) =>{
+export const requestStudents = (state= requestStudentsInitState, action={}) =>{
     switch(action.type){
        case "REQUEST_STUDENTS_PENDING":
          return Object.assign({}, state, {isPending:true});

@@ -45,6 +45,15 @@ class Add  extends React.Component{
 
                 if(info.name && validGpa && info.campusName){
                     this.props.addOnCampus(info)
+                    axios.post('https://desolate-hollows-41655.herokuapp.com/addStudent', info)
+                      .then(function (response) {
+                        this.props.refreshStudents();
+                      })
+                      .catch(function (error) {
+                        console.log(error);
+                      });
+                    alert("adding on campus")
+                   
                 }else{
                     alert("Name and GPA must be provide!, try again.")
                 }
@@ -69,25 +78,31 @@ class Add  extends React.Component{
                 let validGpa = (Number(info.gpa) >0.0 && Number(info.gpa) < 4.0);
 
                 if(info.name && validGpa && info.campusName){
+                    alert("adding")
                     axios.post('https://desolate-hollows-41655.herokuapp.com/addStudent', info2)
                       .then(function (response) {
                         
+                        console.log("added")
+                        console.log(response)
+                        this.props.refreshStudents();
                       })
                       .catch(function (error) {
                         console.log(error);
                       });
                     this.setState({redirect:true})
+
                     setTimeout( ()=> this.props.add(info) , 1000);
-                     setTimeout(()=>{
-                    axios.get('https://desolate-hollows-41655.herokuapp.com/campuses')
-                    .then((response) => {
                     
-                        this.props.refreshCampuses();
+                    setTimeout(()=>{
+                        axios.get('https://desolate-hollows-41655.herokuapp.com/campuses')
+                        .then((response) => {
                         
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    })
+                            this.props.refreshCampuses();
+                            
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        })
                 },500)
                     
                     
@@ -129,11 +144,8 @@ class Add  extends React.Component{
                 
                 setTimeout(()=>{
                     axios.get('https://desolate-hollows-41655.herokuapp.com/campuses')
-                    .then((response) => {
-                       
-                        this.props.refreshCampuses();
-                       
-                        
+                    .then((response) => {                 
+                        this.props.refreshCampuses(); 
                     })
                     .catch((error) => {
                         console.log(error);

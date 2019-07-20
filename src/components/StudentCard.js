@@ -10,10 +10,11 @@ class StudentCard extends React.Component{
   delete = () =>{
     axios.delete('https://desolate-hollows-41655.herokuapp.com/deleteStudent/'+this.props.name)
       .then((elem)=>{
+        this.props.refreshStudents()
           axios.get('https://desolate-hollows-41655.herokuapp.com/students')
           .then( (response) => {
             // console.log(response)
-             
+            
               console.log(this.props)
               try{//comming from show campus
                 this.props.onLoadStudents(response.data.students)
@@ -24,13 +25,8 @@ class StudentCard extends React.Component{
                 this.props.onLoadStudents(response.data.students)
                   
               }
-              //
               
           })
-          .catch( (error) =>{
-        
-          console.log(error);
-        })
       })
 
     //this.props.delete(this.props.name)
