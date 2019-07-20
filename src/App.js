@@ -10,7 +10,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 //actions
 import {addStudent, addCampus, deleteCampus, deleteStudent, studentClicked, 
   addStudentOnCampus, editStudent, editCampus, deleteStudentFromCampus,
-  loadStudents, reRender, requestCampuses} from './actions/actions';
+  loadStudents, reRender, requestCampuses,requestStudents} from './actions/actions';
 
 // components
 import Home from './components/Home';
@@ -27,8 +27,7 @@ import {connect} from 'react-redux';
 
 const mapStateToProps = state =>{
     return {
-      // campuses: state.addCampus.campuses,
-      students: state.addStudent.students,
+      students: state.requestStudents.students,
       campuses: state.requestCampuses.campuses,
       isPending: state.requestCampuses.isPending,
       error: state.requestCampuses.error
@@ -48,7 +47,8 @@ const mapDispatchToProps = (dispatch)=>{
     onDeleteStudentFromCampus : (event) => dispatch(deleteStudentFromCampus(event)),
     onLoadStudents: (event) => dispatch(loadStudents(event)),
     onReRender: (event) => dispatch(reRender(event)),
-    onRequestCampuses: (event) => dispatch(requestCampuses())
+    onRequestCampuses: (event) => dispatch(requestCampuses()),
+    onRequestStudents: (event) => dispatch(requestStudents())
   
   }
 
@@ -59,11 +59,7 @@ class App extends React.Component{
   componentDidMount(){
     
     this.props.onRequestCampuses();
-   
-    axios.get('https://desolate-hollows-41655.herokuapp.com/students')
-      .then( (response) => {
-          this.props.onLoadStudents(response.data.students) 
-      })
+    this.props.onRequestStudents();
     
   }
 
