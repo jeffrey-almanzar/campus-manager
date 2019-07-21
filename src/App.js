@@ -8,7 +8,7 @@ import './css/App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 //actions
-import {addStudent, addCampus, deleteCampus, deleteStudent, studentClicked, 
+import {addCampus, deleteCampus, deleteStudent, studentClicked, 
   addStudentOnCampus, editStudent, editCampus, deleteStudentFromCampus,
   loadStudents, reRender, requestCampuses,requestStudents} from './actions/actions';
 
@@ -35,7 +35,7 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = (dispatch)=>{
   return {
     onAddCampus:  (event) => dispatch(addCampus(event)),
-    onAddStudent: (event) => dispatch(addStudent(event)),
+    // onAddStudent: (event) => dispatch(addStudent(event)),
     onDeleteCampus: (event) => dispatch(deleteCampus(event)),
     onDeleteStudent: (event) => dispatch(deleteStudent(event)),
     onStudentClicked: (event) => dispatch(studentClicked(event)),
@@ -75,7 +75,7 @@ class App extends React.Component{
       return (
         <Add name="Student" 
           info ={info} 
-          add={this.props.onAddStudent}  
+          // add={this.props.onAddStudent}  
           refreshStudents={this.props.onRequestStudents}  
           addOnCampus={this.props.onAddStudentOnCampus} 
           addingOnCampus={true} 
@@ -146,6 +146,8 @@ class App extends React.Component{
           students={this.props.students} 
           info={info} 
           delete={this.props.onDeleteStudent}
+          refreshStudents={this.props.onRequestStudents} 
+
         />
       );
     }

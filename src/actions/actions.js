@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-export const addStudent = (event) =>{
-    return {
-        type: 'ADD_STUDENT',
-        payload: event
-    }
-}
+// export const addStudent = (event) =>{
+//     return {
+//         type: 'ADD_STUDENT',
+//         payload: event
+//     }
+// }
 
 export const loadStudents = (event) =>{
     return{

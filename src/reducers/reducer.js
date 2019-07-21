@@ -7,8 +7,6 @@ const initialStudentState ={
 
 export const addStudent =(state= initialStudentState, action={})=>{
    switch(action.type){
-       case 'ADD_STUDENT':
-           return {students: [action.payload, ...state.students]}
         case "DELETE_STUDENT":
             console.log(action.payload)
             return {students: state.students.filter((student)=>{
@@ -24,11 +22,6 @@ export const addStudent =(state= initialStudentState, action={})=>{
                 }
             }
             return state;
-
-        case 'LOAD STUDENTS':
-            console.log("From students load")
-            console.log(action.payload)
-            return {students: [...action.payload]}
 
       
 

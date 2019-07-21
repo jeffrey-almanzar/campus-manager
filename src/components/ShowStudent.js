@@ -31,6 +31,7 @@ class ShowStudent extends React.Component{
   delete =(e )=>{
     axios.delete('https://desolate-hollows-41655.herokuapp.com/deleteStudent/'+this.name)
       .then((elem)=>{
+        this.props.refreshStudents()
         console.log(elem)
       })
     this.props.delete(this.name); 
