@@ -15,9 +15,6 @@ class EditStudent extends React.Component{
            redirect:false
         }
 
-      
-
-
     }
 
     getIntialState = () => {
@@ -78,6 +75,7 @@ class EditStudent extends React.Component{
         })
             .then((response)=> {
                 alert("Student edited")
+                this.props.refreshStudents();
                 this.setState({redirect:true});
         
             })
