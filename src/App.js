@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 
 //css
 import './css/App.css';
@@ -8,8 +7,8 @@ import './css/App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 //actions
-import {addCampus, deleteCampus, deleteStudent, studentClicked, 
-  addStudentOnCampus, editStudent, editCampus, deleteStudentFromCampus,
+import {addCampus, deleteCampus, studentClicked, 
+  addStudentOnCampus, editCampus, deleteStudentFromCampus,
   loadStudents, reRender, requestCampuses,requestStudents} from './actions/actions';
 
 // components
@@ -35,12 +34,9 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = (dispatch)=>{
   return {
     onAddCampus:  (event) => dispatch(addCampus(event)),
-    // onAddStudent: (event) => dispatch(addStudent(event)),
     onDeleteCampus: (event) => dispatch(deleteCampus(event)),
-    onDeleteStudent: (event) => dispatch(deleteStudent(event)),
     onStudentClicked: (event) => dispatch(studentClicked(event)),
     onAddStudentOnCampus: (event) => dispatch( addStudentOnCampus(event)),
-    onEditStudent: (event) => dispatch(editStudent(event)),
     onEditCampus: (event) => dispatch(editCampus(event)),
     onDeleteStudentFromCampus : (event) => dispatch(deleteStudentFromCampus(event)),
     onLoadStudents: (event) => dispatch(loadStudents(event)),
@@ -74,8 +70,7 @@ class App extends React.Component{
     const AddStudentComponent = (info)=>{
       return (
         <Add name="Student" 
-          info ={info} 
-          // add={this.props.onAddStudent}  
+          info ={info}  
           refreshStudents={this.props.onRequestStudents}  
           addOnCampus={this.props.onAddStudentOnCampus} 
           addingOnCampus={true} 
@@ -97,7 +92,6 @@ class App extends React.Component{
           onLoadStudents={this.props.onLoadStudents} 
           campuses ={this.props.campuses} 
           students={this.props.students} 
-          delete={this.props.onDeleteStudent} 
           clicked={this.props.onStudentClicked}
           refreshStudents={this.props.onRequestStudents}   
         />
@@ -121,7 +115,6 @@ class App extends React.Component{
       return (
         <EditStudent 
           info={info} 
-          edit={this.props.onEditStudent }
           refreshStudents={this.props.onRequestStudents}
         />
       )
@@ -145,7 +138,6 @@ class App extends React.Component{
         <ShowStudent 
           students={this.props.students} 
           info={info} 
-          delete={this.props.onDeleteStudent}
           refreshStudents={this.props.onRequestStudents} 
 
         />

@@ -13,9 +13,6 @@ class StudentCard extends React.Component{
         this.props.refreshStudents()
           axios.get('https://desolate-hollows-41655.herokuapp.com/students')
           .then( (response) => {
-            // console.log(response)
-            
-              console.log(this.props)
               try{//comming from show campus
                 this.props.onLoadStudents(response.data.students)
                 this.props.refresh()
@@ -28,9 +25,6 @@ class StudentCard extends React.Component{
               
           })
       })
-
-    //this.props.delete(this.props.name)
-
   }
 
   
@@ -71,8 +65,6 @@ class StudentCard extends React.Component{
               }>
                 <button className="add-btn" >View Student</button>
           </Link>
-
-          {/* <button className="delete-btn" onClick={this.delete}>Delete</button> */}
       </div>
 
     

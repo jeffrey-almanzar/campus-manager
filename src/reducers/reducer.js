@@ -7,24 +7,7 @@ const initialStudentState ={
 
 export const addStudent =(state= initialStudentState, action={})=>{
    switch(action.type){
-        case "DELETE_STUDENT":
-            console.log(action.payload)
-            return {students: state.students.filter((student)=>{
-                return !(action.payload === student.name)
-            })}
-        case 'EDIT_STUDENT':
-            console.log(action.payload);
-            for(let i=0; i<state.students.length; i++){
-                if(state.students[i].name === action.payload.prevState.name){
-                    state.students[i] = action.payload.currentState;
-                    console.log("Replace "+state.students[i].name +" for "+ action.payload.currentState.name )
-                    break;
-                }
-            }
-            return state;
-
       
-
         case 'STUDENT_CLICKED':
             console.log(action.payload)
         return state

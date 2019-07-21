@@ -34,7 +34,7 @@ class ShowStudent extends React.Component{
         this.props.refreshStudents()
         console.log(elem)
       })
-    this.props.delete(this.name); 
+    // this.props.delete(this.name); 
   }
 
 

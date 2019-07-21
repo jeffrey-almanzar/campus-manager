@@ -25,11 +25,6 @@ class EditStudent extends React.Component{
             url:this.props.info.location.state.url
         }
     }
-
-    edit =(prevState, currentState)=>{
-        this.props.edit({prevState: prevState, currentState: currentState})
-    }
-
     submit = (event) =>{
         event.preventDefault();
         let name = event.target[0];
@@ -83,7 +78,7 @@ class EditStudent extends React.Component{
             console.log("Not worked");
             });
 
-        this.edit(initState, currState);
+        
 
         
     }

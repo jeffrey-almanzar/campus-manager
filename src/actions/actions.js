@@ -1,12 +1,5 @@
 import axios from 'axios';
 
-// export const addStudent = (event) =>{
-//     return {
-//         type: 'ADD_STUDENT',
-//         payload: event
-//     }
-// }
-
 export const loadStudents = (event) =>{
     return{
         type:'LOAD STUDENTS',
@@ -17,13 +10,6 @@ export const loadStudents = (event) =>{
 export const loadCampuses = (event) =>{
     return{
         type:'LOAD CAMPUSES',
-        payload: event
-    }
-}
-
-export const editStudent = (event) =>{
-    return {
-        type:"EDIT_STUDENT",
         payload: event
     }
 }
@@ -45,12 +31,6 @@ export const deleteCampus = (event)=>{
 export const reRender = (event) =>{
     return {
         type:"RE_RENDER"
-    }
-}
-export const deleteStudent = (event) =>{
-    return {
-        type: "DELETE_STUDENT",
-        payload: event
     }
 }
 
