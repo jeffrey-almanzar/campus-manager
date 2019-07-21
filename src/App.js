@@ -28,9 +28,7 @@ import {connect} from 'react-redux';
 const mapStateToProps = state =>{
     return {
       students: state.requestStudents.students,
-      campuses: state.requestCampuses.campuses,
-      isPending: state.requestCampuses.isPending,
-      error: state.requestCampuses.error
+      campuses: state.requestCampuses.campuses
     }
 }
 
@@ -69,12 +67,19 @@ class App extends React.Component{
           name="Campus" 
           add={this.props.onAddCampus} 
           refreshCampuses={this.props.onRequestCampuses}
-          refreshStudents={() => this.props.onRequestStudents()}   
+          refreshStudents={this.props.onRequestStudents}   
         />
     );
 
     const AddStudentComponent = (info)=>{
-      return (<Add name="Student" info ={info} add={this.props.onAddStudent}  refreshStudents={this.props.onRequestStudents}  addOnCampus={this.props.onAddStudentOnCampus} addingOnCampus={true} />)
+      return (
+        <Add name="Student" 
+          info ={info} 
+          add={this.props.onAddStudent}  
+          refreshStudents={this.props.onRequestStudents}  
+          addOnCampus={this.props.onAddStudentOnCampus} 
+          addingOnCampus={true} 
+        />);
     }
 
     const CampusesComponent = () =>(
@@ -82,8 +87,8 @@ class App extends React.Component{
             students ={this.props.students}
             campuses ={this.props.campuses} 
             delete={this.props.onDeleteCampus} 
-            refreshCampuses={ () => this.props.onRequestCampuses()} 
-            refreshStudents={() => this.props.onRequestStudents()}  
+            refreshCampuses={this.props.onRequestCampuses} 
+            refreshStudents={this.props.onRequestStudents}  
           />
     );
 
@@ -94,7 +99,7 @@ class App extends React.Component{
           students={this.props.students} 
           delete={this.props.onDeleteStudent} 
           clicked={this.props.onStudentClicked}
-          refreshStudents={() => this.props.onRequestStudents()}   
+          refreshStudents={this.props.onRequestStudents}   
         />
     );
 
@@ -117,7 +122,7 @@ class App extends React.Component{
         <EditStudent 
           info={info} 
           edit={this.props.onEditStudent }
-          refreshStudents={() => this.props.onRequestStudents()}
+          refreshStudents={this.props.onRequestStudents}
         />
       )
     }
@@ -129,7 +134,7 @@ class App extends React.Component{
           info={info} delete={this.props.onDeleteCampus} 
           deleteStudent={this.props.onDeleteStudentFromCampus} 
           campuses={this.props.campuses} 
-          refreshStudents={() => this.props.onRequestStudents()}
+          refreshStudents={this.props.onRequestStudents}
         />
       );
     }

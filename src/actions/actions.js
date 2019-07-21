@@ -91,9 +91,7 @@ export const requestCampuses =() => (dispatch) =>{
             dispatch({type:"REQUEST_CAMPUSES_SUCCESS", payload:response.data.campuses})
 
         })
-        .catch(function (error) {
-             dispatch({type:"REQUEST_CAMPUSES_FAILED", payload:error})
-        });    
+          
     
 }
 
@@ -104,8 +102,6 @@ export const requestStudents =() => (dispatch) =>{
         .then((response)=> {
             dispatch({type:"REQUEST_STUDENTS_SUCCESS", payload:response.data.students})
         })
-        .catch(function (error) {
-             dispatch({type:"REQUEST_STUDENTS_FAILED", payload:error})
-        });    
+          
     
 }

@@ -17,8 +17,7 @@ class Add  extends React.Component{
             location:"",
             description:"",
             img:"",
-            redirect:false
-            
+            redirect:false  
             
         }
     }
@@ -29,7 +28,6 @@ class Add  extends React.Component{
         
         if(this.props.name.toUpperCase()==="STUDENT"){
             let info;
-           
 
             try{
                 
@@ -46,13 +44,15 @@ class Add  extends React.Component{
                 if(info.name && validGpa && info.campusName){
                     this.props.addOnCampus(info)
                     axios.post('https://desolate-hollows-41655.herokuapp.com/addStudent', info)
-                      .then(function (response) {
+                      .then((response) => {
+                        this.setState({redirect:true})
                         this.props.refreshStudents();
+                       
                       })
-                      .catch(function (error) {
+                      .catch((error)=> {
                         console.log(error);
                       });
-                    alert("adding on campus")
+                    
                    
                 }else{
                     alert("Name and GPA must be provide!, try again.")
@@ -75,18 +75,20 @@ class Add  extends React.Component{
                 }
 
                 
-                let validGpa = (Number(info.gpa) >0.0 && Number(info.gpa) < 4.0);
+                let validGpa = (Number(info.gpa) >0 && Number(info.gpa) < 4);
 
                 if(info.name && validGpa && info.campusName){
-                    alert("adding")
+                   
                     axios.post('https://desolate-hollows-41655.herokuapp.com/addStudent', info2)
-                      .then(function (response) {
+                      .then( (response) => {
                         
                         console.log("added")
                         console.log(response)
+                        this.setState({redirect:true})
                         this.props.refreshStudents();
+                       
                       })
-                      .catch(function (error) {
+                      .catch((error) =>{
                         console.log(error);
                       });
                     this.setState({redirect:true})
@@ -134,10 +136,10 @@ class Add  extends React.Component{
 
             if(info.campusName){
                 axios.post('https://desolate-hollows-41655.herokuapp.com/addCampus', info2)
-                      .then(function (response) {
+                      .then( (response)=> {
                         console.log(response);
                       })
-                      .catch(function (error) {
+                      .catch( (error)=> {
                         console.log(error);
                       });
                 this.setState({redirect:true})

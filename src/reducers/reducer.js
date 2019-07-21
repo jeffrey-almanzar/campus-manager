@@ -8,7 +8,6 @@ const initialStudentState ={
 export const addStudent =(state= initialStudentState, action={})=>{
    switch(action.type){
        case 'ADD_STUDENT':
-           console.log(action)
            return {students: [action.payload, ...state.students]}
         case "DELETE_STUDENT":
             console.log(action.payload)
@@ -131,21 +130,14 @@ export const addCampus =(state= initialCampusState, action={})=>{
 }
 
 const requestCampusesInitState= {
-   isPending:false,
    campuses:[],
-   error:""
+  
 }
 export const requestCampuses = (state= requestCampusesInitState, action={}) =>{
     switch(action.type){
-       case "REQUEST_CAMPUSES_PENDING":
-         return Object.assign({}, state, {isPending:true});
-
        case "REQUEST_CAMPUSES_SUCCESS":
            console.log("campuses load");
         return {isPending:false, campuses:[...action.payload] };
-
-       case "REQUEST_CAMPUSES_FAILED":
-        return Object.assign({}, state, {isPending:false, error:action.payload});
 
        default:
            return state;
@@ -153,22 +145,16 @@ export const requestCampuses = (state= requestCampusesInitState, action={}) =>{
 }
 
 const requestStudentsInitState= {
-    isPending:false,
     students:[],
-    error:""
+  
  }
 
 export const requestStudents = (state= requestStudentsInitState, action={}) =>{
     switch(action.type){
-       case "REQUEST_STUDENTS_PENDING":
-         return Object.assign({}, state, {isPending:true});
-
+    
        case "REQUEST_STUDENTS_SUCCESS":
-           
+          console.log("Refresh") 
         return {isPending:false, students:[...action.payload] };
-
-       case "REQUEST_STUDENTS_FAILED":
-        return Object.assign({}, state, {isPending:false, error:action.payload});
 
        default:
            return state;
