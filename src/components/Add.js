@@ -34,17 +34,19 @@ class Add  extends React.Component{
                 info ={
                    
                     name: event.target[0].value,
-                    campusName: event.target[1].value,
+                    campus: event.target[1].value,
                     gpa: event.target[2].value,
                     url: event.target[3].value
                 }
 
                 let validGpa = (Number(info.gpa) >0.0 && Number(info.gpa) < 4.0);
 
-                if(info.name && validGpa && info.campusName){
+                if(info.name && validGpa && info.campus){
                     this.props.addOnCampus(info)
+                    console.log(info)
                     axios.post('https://desolate-hollows-41655.herokuapp.com/addStudent', info)
                       .then((response) => {
+                          console.log(response)
                         this.setState({redirect:true})
                         this.props.refreshStudents();
                        
