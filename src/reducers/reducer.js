@@ -9,7 +9,7 @@ export const addStudent =(state= initialStudentState, action={})=>{
    switch(action.type){
       
         case 'STUDENT_CLICKED':
-            console.log(action.payload)
+            
         return state
         default:
             return state;
@@ -25,7 +25,7 @@ export const addCampus =(state= initialCampusState, action={})=>{
            return {campuses: [ action.payload , ...state.campuses]}
 
         case 'DELETE_CAMPUS':
-            console.log(action.payload)
+            
             return {campuses: state.campuses.filter((campus)=>{
                 return !(campus.campusName ===action.payload)
             })}
@@ -49,7 +49,7 @@ export const addCampus =(state= initialCampusState, action={})=>{
             return {campuses: [...state.campuses]}
 
         case 'EDIT_CAMPUS':
-            console.log(action.payload);
+           
             for(let i=0; i<state.campuses.length; i++){
                 if(state.campuses[i].campusName === action.payload.prevState.campusName){
                     state.campuses[i] = action.payload.currentState;
@@ -59,7 +59,7 @@ export const addCampus =(state= initialCampusState, action={})=>{
             return state;
 
         case 'DELETE_STUDENT_FROM_CAMPUS':
-            console.log(action.payload)
+           
             let target = null;
             let  campusStudents ;
             let campusName;
@@ -67,8 +67,7 @@ export const addCampus =(state= initialCampusState, action={})=>{
             let location;
             let description;
             let modifiedCampus;
-            console.log("Deleting Student Campus before")
-            console.log(state.campuses)
+           
 
             for(let i=0; i<state.campuses.length; i++){
                 if(state.campuses[i].campusName === action.payload.campusName){
@@ -112,7 +111,7 @@ const requestCampusesInitState= {
 export const requestCampuses = (state= requestCampusesInitState, action={}) =>{
     switch(action.type){
        case "REQUEST_CAMPUSES_SUCCESS":
-           console.log("campuses load");
+          
         return {isPending:false, campuses:[...action.payload] };
 
        default:
@@ -129,7 +128,7 @@ export const requestStudents = (state= requestStudentsInitState, action={}) =>{
     switch(action.type){
     
        case "REQUEST_STUDENTS_SUCCESS":
-          console.log("Refresh") 
+          
         return {isPending:false, students:[...action.payload] };
 
        default:

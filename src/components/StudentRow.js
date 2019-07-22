@@ -12,14 +12,14 @@ class  StudentRow extends React.Component{
         .then((elem)=>{
             axios.get('https://desolate-hollows-41655.herokuapp.com/students')
             .then( (response) => {
-                // console.log(response)
+              
                 this.props.onLoadStudents(response.data.students)
                 this.props.refresh();
                 
             })
             .catch( (error) =>{
             
-            console.log(error);
+              alert("Error! try again")
             })
         })
 

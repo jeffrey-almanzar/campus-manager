@@ -36,7 +36,7 @@ class ShowCampus extends React.Component{
                     studentsRegistered.push(response.data.students[i]);
                 }
             }
-            console.log(studentsRegistered)
+           
 
             this.setState({campusStudents:studentsRegistered})  
             
@@ -45,7 +45,7 @@ class ShowCampus extends React.Component{
   }
 
   componentDidMount(){
-    console.log(this.props)
+    
     this.refresh()
   }
 
@@ -59,7 +59,7 @@ class ShowCampus extends React.Component{
     let location = this.props.info.location.state.location;
     let img = this.props.info.location.state.img;
     let description = this.props.info.location.state.description;
-    console.log(campusName+" from show")
+   
     // /editCampus
     return (
       <div>

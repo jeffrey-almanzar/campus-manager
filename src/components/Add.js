@@ -43,16 +43,14 @@ class Add  extends React.Component{
 
                 if(info.name && validGpa && info.campus){
                     this.props.addOnCampus(info)
-                    console.log(info)
                     axios.post('https://desolate-hollows-41655.herokuapp.com/addStudent', info)
                       .then((response) => {
-                          console.log(response)
                         this.setState({redirect:true})
                         this.props.refreshStudents();
                        
                       })
                       .catch((error)=> {
-                        console.log(error);
+                        alert("Error! Try again later")
                       });
                     
                    
@@ -83,15 +81,13 @@ class Add  extends React.Component{
                    
                     axios.post('https://desolate-hollows-41655.herokuapp.com/addStudent', info2)
                       .then( (response) => {
-                        
-                        console.log("added")
-                        console.log(response)
+                
                         this.setState({redirect:true})
                         this.props.refreshStudents();
                        
                       })
                       .catch((error) =>{
-                        console.log(error);
+                       alert("Error, Try again later")
                       });
                     this.setState({redirect:true})
 
@@ -105,7 +101,7 @@ class Add  extends React.Component{
                             
                         })
                         .catch((error) => {
-                            console.log(error);
+                            alert("Error, Try again later")
                         })
                 },500)
                     
@@ -139,10 +135,10 @@ class Add  extends React.Component{
             if(info.campusName){
                 axios.post('https://desolate-hollows-41655.herokuapp.com/addCampus', info2)
                       .then( (response)=> {
-                        console.log(response);
+                       
                       })
                       .catch( (error)=> {
-                        console.log(error);
+                        alert("Error, Try again later")
                       });
                 this.setState({redirect:true})
                 
@@ -152,7 +148,7 @@ class Add  extends React.Component{
                         this.props.refreshCampuses(); 
                     })
                     .catch((error) => {
-                        console.log(error);
+                        alert("Error, Try again later")
                     })
                 },1000)
                 

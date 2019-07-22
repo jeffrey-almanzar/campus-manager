@@ -34,7 +34,7 @@ class EditCampus extends React.Component{
                         studentsRegistered.push(response.data.students[i]);
                     }
                 }
-                console.log(studentsRegistered)
+               
 
                 this.setState({campusStudents:studentsRegistered})  
                 
@@ -43,7 +43,7 @@ class EditCampus extends React.Component{
     }
 
     componentDidMount(){
-        console.log(this.props);
+        
         this.refresh()
     }
 
@@ -100,10 +100,10 @@ class EditCampus extends React.Component{
         .then( (response) => {
             alert("Campus edited");
             this.setState({redirect:true})
-        console.log(response.data);
+        
         })
         .catch((error)=> {
-        console.log("Not worked");
+            alert('Error! try again')
         });
 
         this.edit(initialState, currentState);

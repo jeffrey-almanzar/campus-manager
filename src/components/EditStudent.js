@@ -32,7 +32,7 @@ class EditStudent extends React.Component{
         let gpa= event.target[2];
         let url = event.target[3];
         
-        console.log(name)
+        
 
         if(!name.value){
             name.style.borderColor ="red";
@@ -45,7 +45,7 @@ class EditStudent extends React.Component{
         }
 
         name.addEventListener('focus', ()=>{
-            console.log(name.style.borderColor)
+           
             name.style.border ="none";
         })
 
@@ -75,7 +75,7 @@ class EditStudent extends React.Component{
         
             })
             .catch(function (error) {
-            console.log("Not worked");
+              alert("Error! try again")
             });
 
         

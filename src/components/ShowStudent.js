@@ -32,7 +32,7 @@ class ShowStudent extends React.Component{
     axios.delete('https://desolate-hollows-41655.herokuapp.com/deleteStudent/'+this.name)
       .then((elem)=>{
         this.props.refreshStudents()
-        console.log(elem)
+        
       })
     // this.props.delete(this.name); 
   }
@@ -58,7 +58,7 @@ class ShowStudent extends React.Component{
             preVname: this.name
         })
             .then(function (response) {
-            console.log(response.data);
+            
             })
         campusInfo =<div>
                       <h2 className="sub-heading">This student is registered in a campus:</h2>  

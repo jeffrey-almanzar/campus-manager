@@ -111,7 +111,6 @@ class App extends React.Component{
     }
 
     const EditStudentComponent = (info) =>{
-      console.log(info);
       return (
         <EditStudent 
           info={info} 
