@@ -74,6 +74,7 @@ class App extends React.Component{
           refreshStudents={this.props.onRequestStudents}  
           addOnCampus={this.props.onAddStudentOnCampus} 
           addingOnCampus={true} 
+          campuses={this.props.campuses}
         />);
     }
 

@@ -51,6 +51,10 @@ class ShowCampus extends React.Component{
 
   delete =()=>{
     this.props.delete(this.props.info.location.state.campusName)
+    axios.delete('https://desolate-hollows-41655.herokuapp.com/deleteCampus/'+this.props.info.location.state.campusName)
+    .then((elem)=>{
+      this.props.refreshCampuses();
+    })
   }
 
   render(){

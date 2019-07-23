@@ -84,6 +84,22 @@ class Add  extends React.Component{
                 
                         this.setState({redirect:true})
                         this.props.refreshStudents();
+
+                        let campusExits= false;
+                        this.props.campuses.forEach((campus)=>{
+                            if(campus.campusName === event.target[1].value){
+                                campusExits = true;
+                            }
+                        });
+
+                        if(!campusExits){
+                            axios.post('https://desolate-hollows-41655.herokuapp.com/addCampus', 
+                            {campusname:event.target[1].value})
+                            .then( (response)=> {
+                                this.props.refreshCampuses();
+                            })
+
+                        }
                        
                       })
                       .catch((error) =>{
@@ -93,17 +109,10 @@ class Add  extends React.Component{
 
                     setTimeout( ()=> this.props.add(info) , 1000);
                     
-                    setTimeout(()=>{
-                        axios.get('https://desolate-hollows-41655.herokuapp.com/campuses')
-                        .then((response) => {
-                        
-                            this.props.refreshCampuses();
-                            
-                        })
-                        .catch((error) => {
-                            alert("Error, Try again later")
-                        })
-                },500)
+                    setTimeout(()=>{      
+                        this.props.refreshCampuses();
+                    
+                    },500)
                     
                     
                     
