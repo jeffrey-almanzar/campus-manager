@@ -88,25 +88,46 @@ class EditCampus extends React.Component{
             campusStudents:  this.state.campusStudents,
             description: e.target[3].value,
         }
-
-
-        axios.put('https://desolate-hollows-41655.herokuapp.com/editCampus/1', {
-            campusName: e.target[0].value ,
+        //adding a new cmpus info
+        let info2 ={
+                   
+            campusname:  e.target[0].value,
             location: e.target[1].value,
-            img: e.target[2].value,
             description: e.target[3].value,
-            preVname: initialState.campusName
-        })
-        .then( (response) => {
-            alert("Campus edited");
-            this.setState({redirect:true})
-        
-        })
-        .catch((error)=> {
-            alert('Error! try again')
-        });
+            img: e.target[2].value,
+            
+        }
 
-        this.edit(initialState, currentState);
+        if( e.target[0].value != initialState.campusName){// if you edit campus name, create a new campus with that info
+            axios.post('https://desolate-hollows-41655.herokuapp.com/addCampus', info2)
+                .then( (response)=> {
+                    this.setState({redirect:true})
+                    this.props.refreshCampuses();
+                    this.props.refreshStudents();
+                })
+        }else{
+
+            axios.put('https://desolate-hollows-41655.herokuapp.com/editCampus/1', {
+                campusName: e.target[0].value ,
+                location: e.target[1].value,
+                img: e.target[2].value,
+                description: e.target[3].value,
+                preVname: initialState.campusName
+            })
+            .then( (response) => {
+                alert("Campus edited");
+                this.setState({redirect:true})
+                this.props.refreshCampuses();
+                this.props.refreshStudents();
+            
+            
+            })
+            .catch((error)=> {
+                alert('Error! try again')
+            });
+
+            this.edit(initialState, currentState);
+        }
     }
 
     edit = (prevState, currentState) =>{

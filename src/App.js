@@ -106,6 +106,7 @@ class App extends React.Component{
           info={info} edit={this.props.onEditCampus} 
           deleteStudent={this.props.onDeleteStudentFromCampus} 
           refreshStudents={() => this.props.onRequestStudents()}
+          refreshCampuses={this.props.onRequestCampuses} 
           />
       );
     }
@@ -127,6 +128,7 @@ class App extends React.Component{
           deleteStudent={this.props.onDeleteStudentFromCampus} 
           campuses={this.props.campuses} 
           refreshStudents={this.props.onRequestStudents}
+          refreshCampuses={this.props.onRequestCampuses} 
         />
       );
     }

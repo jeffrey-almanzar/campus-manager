@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import CampusCard from './CampusCard';
+
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
