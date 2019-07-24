@@ -45,12 +45,14 @@ class Add  extends React.Component{
                     this.props.addOnCampus(info)
                     axios.post('https://desolate-hollows-41655.herokuapp.com/addStudent', info)
                       .then((response) => {
-                        this.setState({redirect:true})
+                       
                         this.props.refreshStudents();
+                        this.props.refreshCampuses();
+                        this.setState({redirect:true})
                        
                       })
                       .catch((error)=> {
-                        alert("Error! Try again later")
+                        alert(error+"\nTry again later")
                       });
                     
                    
@@ -84,6 +86,7 @@ class Add  extends React.Component{
                 
                         this.setState({redirect:true})
                         this.props.refreshStudents();
+                        this.props.refreshCampuses();
 
                         let campusExits= false;
                         this.props.campuses.forEach((campus)=>{

@@ -72,6 +72,7 @@ class App extends React.Component{
         <Add name="Student" 
           info ={info}  
           refreshStudents={this.props.onRequestStudents}  
+          refreshCampuses={this.props.onRequestCampuses} 
           addOnCampus={this.props.onAddStudentOnCampus} 
           addingOnCampus={true} 
           campuses={this.props.campuses}
