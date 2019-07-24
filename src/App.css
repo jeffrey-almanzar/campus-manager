@@ -7,6 +7,9 @@ body {
   padding: 0;
   font-family: 'proxima-nova', Helvetica, sans-serif;
 }
+.menu-container{
+  display: none;
+}
 
 .heading{
   padding-top:14px;
@@ -227,4 +230,15 @@ img {
   background-color: rgba(0, 0, 0, 0.425);
   width: 99.2%;
 
+}
+
+@media(max-width:800px){
+  .menu-container{
+    display: block;
+
+  }
+
+.navigation-bar .links{
+    display: none;
+  }
 }
