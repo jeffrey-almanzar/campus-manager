@@ -51,7 +51,7 @@ class Navigation extends React.Component{
                     </div>
                     
                 </nav>
-                <div  ref={this.menu}>
+                <div  ref={this.menu} className="dropDownLinks">
                         <p><Link to="/">Home </Link></p>
                         <p><Link to="/campuses">Campuses</Link></p>
                         <p><Link to="/students">Students</Link></p>
