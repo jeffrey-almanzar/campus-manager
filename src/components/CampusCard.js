@@ -93,7 +93,7 @@ class CampusCard extends React.Component{
               {
               pathname:'/showCampus',
               state: {campusName:this.props.campusName, campusStudents:this.studentsRegistered,
-                    location: this.props.location, description:this.props.description,img:this.props.img }
+                   location: this.props.location, description:this.props.description,img:this.props.img }
               } 
               }> <h1 className="campus-name"> {this.props.campusName} </h1>
             </Link>
