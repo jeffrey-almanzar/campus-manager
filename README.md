@@ -2,8 +2,9 @@
 https://github.com/Jeffrey-A/campusManagerServer  
 
 ## Description  
-• CRUD full stack web application that manages students and campuses, allowing the user to add, edit campuses and students information and remove them.   
-• Built with React JS, React-Router, React-Redux, Axios, Node JS/Express, Sequelize, and PostgreSQL.
+• CRUD full stack web application that manages students and campuses, allowing the user to add, edit, and remove campuses and students information.   
+• Built with React JS, React-Router, React-Redux, Axios, Node JS/Express, Sequelize, and PostgreSQL.  
+• Live demo: https://campusmanagerttp.netlify.com/
   
 ## Home  
 <img src="previewImages/home.png" width="500px">
@@ -33,4 +34,4 @@ https://github.com/Jeffrey-A/campusManagerServer
 <img src="previewImages/editStudent.png" width="500px" >  
   
 
-Live demo: in progress
+
