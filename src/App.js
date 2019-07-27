@@ -49,13 +49,12 @@ const mapDispatchToProps = (dispatch)=>{
 }
 
 class App extends React.Component{
-
-  componentDidMount(){
-    
+  constructor(props){
+    super(props)
     this.props.onRequestCampuses();
     this.props.onRequestStudents();
-    
-  }
+  } 
+   
 
   render(){
     const AddCampusComponent = ()=>(
