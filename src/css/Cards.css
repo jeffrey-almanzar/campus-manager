@@ -143,7 +143,23 @@
     .campButton button{
         /* text-align: end; */
         margin-right: 0px;
-      }
+    }
+
+    .campus-info-container {
+        flex-direction: column-reverse;
+    }
+
+    .show-student-btns {
+        justify-content: center;
+    }
+
+    .studentCards {
+        justify-content: center;
+    }
+
+    .image-c {
+        margin-top: 10px;
+    }
 
 
 
