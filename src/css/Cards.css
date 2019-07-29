@@ -161,6 +161,14 @@
         margin-top: 10px;
     }
 
+    .student-info-container {
+        flex-direction: column;
+    }
+
+    .button2 {
+        justify-content: flex-start;
+    }
+
 
 
     
