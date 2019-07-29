@@ -47,7 +47,7 @@ class CampusCard extends React.Component{
               </Link>
           </div>
 
-          <div className="center-txt">
+          <div className="center-txt campus-info-view">
           <Link to={
               {
               pathname:'/showCampus',
