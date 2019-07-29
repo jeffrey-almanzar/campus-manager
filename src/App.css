@@ -236,7 +236,7 @@ h1, h2 {
 
   }
 
-  .adding-from {
+  .adding-from, .edit-form {
     width: 100%;
     margin: 50px auto auto;
     border: none;
@@ -244,7 +244,7 @@ h1, h2 {
     padding: 0px;
   }
 
-  .adding-wrapper{
+  .adding-wrapper, .edit-wrapper{
     width: 90%;
     margin: auto;
   }
