@@ -173,6 +173,34 @@
        text-align:center;
     }
 
+    .st-row-container {
+        width: 100%!important;
+    }
+    .sub-heading {
+        font-size: 1.7rem;
+    }
+
+    .input-container .labels-container{
+        display:none;
+    }
+
+    .edit-camp-options {
+        width: 100%;
+
+    }
+
+    .edit-camp-options .edit-campus-btn-container a,
+    .edit-camp-options .edit-campus-btn-container button{
+       display: block;
+        width: 100%;
+    }
+    .edit-campus-btn-container {
+       justify-content: center;
+    }
+    .labels-container + div textarea{
+        width: 100%;
+    }
+
 
 
     

@@ -166,7 +166,7 @@ class EditCampus extends React.Component{
                     <form onSubmit={this.submit}>
                     <h1 className="center-txt sub-heading">Edit Campus</h1>
                         <div className="input-container">
-                            <div>
+                            <div className="labels-container">
                                 <label className="bold" htmlFor="campus-name">Campus Name:</label>
                                 <label className="bold" htmlFor="campus-location">Campus Location:</label>
                                 <label className="bold" htmlFor="campus-img-url">Campus Image URL:</label>
