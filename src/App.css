@@ -12,7 +12,7 @@ body {
 }
 
 .heading{
-  padding-top:14px;
+  padding:1rem 0;
   text-align: center;
 }
 
@@ -25,7 +25,7 @@ body {
   margin-top: 0px;
 }
 .changeCampusBtn{
-  margin-top: 200 px;
+  margin-top: 200px;
   
 
 }
@@ -80,7 +80,6 @@ align-items: flex-start;
 }
 
 .campButton button{
-  /* text-align: end; */
   margin-right: 100px;
 }
 
@@ -257,7 +256,9 @@ h1, h2 {
     width: 95%;
   }
 
-  
+.heading{
+  font-size: 1.7rem;
+}
 
 .navigation-bar .links{
     display: none;
