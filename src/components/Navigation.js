@@ -15,6 +15,13 @@ class Navigation extends React.Component{
 
     componentDidMount(){
         this.menu.current.style.display ="none";
+        window.addEventListener('resize', ()=>{
+            if(window.innerWidth > 800){
+                document.getElementById("dropDownLinks").style.display = "none";
+                this.setState({showMenu:false})
+            }
+           
+        })
     }
 
     onClick = ()=>{
@@ -51,7 +58,7 @@ class Navigation extends React.Component{
                     </div>
                     
                 </nav>
-                <div  ref={this.menu} className="dropDownLinks">
+                <div  ref={this.menu} id="dropDownLinks" className="dropDownLinks">
                         <p><Link to="/">Home </Link></p>
                         <p><Link to="/campuses">Campuses</Link></p>
                         <p><Link to="/students">Students</Link></p>
