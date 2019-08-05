@@ -106,6 +106,7 @@ export const addCampus =(state= initialCampusState, action={})=>{
 
 const requestCampusesInitState= {
    campuses:[],
+   isPending:true
   
 }
 export const requestCampuses = (state= requestCampusesInitState, action={}) =>{
@@ -114,6 +115,9 @@ export const requestCampuses = (state= requestCampusesInitState, action={}) =>{
           
         return {isPending:false, campuses:[...action.payload] };
 
+        case "REQUEST_CAMPUSES_PENDING":
+            return {isPending:true, campuses:[] };
+
        default:
            return state;
     }
@@ -121,15 +125,18 @@ export const requestCampuses = (state= requestCampusesInitState, action={}) =>{
 
 const requestStudentsInitState= {
     students:[],
+    isPending: true
   
  }
 
 export const requestStudents = (state= requestStudentsInitState, action={}) =>{
     switch(action.type){
     
-       case "REQUEST_STUDENTS_SUCCESS":
-          
+       case "REQUEST_STUDENTS_SUCCESS":         
         return {isPending:false, students:[...action.payload] };
+
+       case "REQUEST_STUDENTS_PENDING":
+           return  {isPending:true, students:[] };
 
        default:
            return state;

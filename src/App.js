@@ -27,7 +27,10 @@ import {connect} from 'react-redux';
 const mapStateToProps = state =>{
     return {
       students: state.requestStudents.students,
-      campuses: state.requestCampuses.campuses
+      campuses: state.requestCampuses.campuses,
+      campusesPending: state.requestCampuses.isPending,
+      studentsPending: state.requestStudents.isPending
+
     }
 }
 
@@ -41,8 +44,8 @@ const mapDispatchToProps = (dispatch)=>{
     onDeleteStudentFromCampus : (event) => dispatch(deleteStudentFromCampus(event)),
     onLoadStudents: (event) => dispatch(loadStudents(event)),
     onReRender: (event) => dispatch(reRender(event)),
-    onRequestCampuses: (event) => dispatch(requestCampuses()),
-    onRequestStudents: (event) => dispatch(requestStudents())
+    onRequestCampuses: (event) => dispatch(requestCampuses(event)),
+    onRequestStudents: (event) => dispatch(requestStudents(event))
   
   }
 
@@ -82,7 +85,8 @@ class App extends React.Component{
           <Campuses 
             students ={this.props.students}
             campuses ={this.props.campuses} 
-            delete={this.props.onDeleteCampus} 
+            delete={this.props.onDeleteCampus}
+            campusesPending = {this.props.campusesPending }
             refreshCampuses={this.props.onRequestCampuses} 
             refreshStudents={this.props.onRequestStudents}  
           />
@@ -90,6 +94,7 @@ class App extends React.Component{
 
     const StudentsComponent = () =>(
         <Students 
+          studentsPending ={this.props.studentsPending}
           onLoadStudents={this.props.onLoadStudents} 
           campuses ={this.props.campuses} 
           students={this.props.students} 

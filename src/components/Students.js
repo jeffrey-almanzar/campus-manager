@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from './Navigation';
 import Header from './Header';
 import StudentCard from './StudentCard';
+import Loader from 'react-loader-spinner';
 
 
 
@@ -20,10 +21,24 @@ class Students extends React.Component{
 
     render(){
         let content;
-        if(this.props.campuses.length){
+        if(this.props.campuses.length && !this.props.studentsPending){
             content =this.getStudents()
-        }else{
+        }else if(!this.props.studentsPending && !this.props.campuses.length){
             content = <h2 className="sub-heading">There are no students registered in the database </h2>
+        }else{
+            content = ( 
+                <div
+                      style={{
+                       width: "100%",
+                       height: "100",
+                       display: "flex",
+                       justifyContent: "center",
+                       alignItems: "center"
+                     }}
+                    >
+                      <Loader type="ThreeDots" color="#006917" height="100" width="100" />
+                </div>)
+
         }
         return (
             <div>
