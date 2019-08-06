@@ -8,6 +8,10 @@ body {
   font-family: 'proxima-nova', Helvetica, sans-serif;
 }
 
+.add-btn, .delete-btn{
+  font-weight: bold;
+}
+
 .add-btn:hover, .delete-btn:hover{
  cursor: pointer;
 }

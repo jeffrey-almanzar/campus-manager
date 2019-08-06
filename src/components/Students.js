@@ -43,16 +43,14 @@ class Students extends React.Component{
         return (
             <div>
                 
-                    <Navigation />
-                    <Header info="Students" add={this.props.add} />  
+                <Navigation />
+                <Header info="Students" add={this.props.add} />  
 
-                    <div className="d-flex students-container">
-                        {content}
-                    </div>
+                <div className="d-flex students-container">
+                    {content}
+                </div>
 
-           </div>
-
-           
+           </div> 
         )
     }
 }
