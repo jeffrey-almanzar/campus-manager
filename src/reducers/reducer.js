@@ -1,144 +1,136 @@
 const initialCampusState = {
-    campuses:[]
-}
-const initialStudentState ={
-    students :[]
-}
+  campuses: []
+};
+const initialStudentState = {
+  students: []
+};
 
-export const addStudent =(state= initialStudentState, action={})=>{
-   switch(action.type){
-      
-        case 'STUDENT_CLICKED':
-            
-        return state
-        default:
-            return state;
-   }
-}
+export const addStudent = (state = initialStudentState, action = {}) => {
+  switch (action.type) {
+    case "STUDENT_CLICKED":
+      return state;
+    default:
+      return state;
+  }
+};
 
+export const addCampus = (state = initialCampusState, action = {}) => {
+  switch (action.type) {
+    case "ADD_CAMPUS":
+      return { campuses: [action.payload, ...state.campuses] };
 
+    case "DELETE_CAMPUS":
+      return {
+        campuses: state.campuses.filter(campus => {
+          return !(campus.campusName === action.payload);
+        })
+      };
 
-export const addCampus =(state= initialCampusState, action={})=>{
-  
-   switch(action.type){
-       case 'ADD_CAMPUS':
-           return {campuses: [ action.payload , ...state.campuses]}
+    case "ADD_STUDENT_TO_CAMPUS":
+      for (let i = 0; i < state.campuses.length; i++) {
+        if (state.campuses[i].campusName === action.payload.campusName) {
+          state.campuses[i].campusStudents.push(action.payload);
+          break;
+        }
+      }
+      return state;
 
-        case 'DELETE_CAMPUS':
-            
-            return {campuses: state.campuses.filter((campus)=>{
-                return !(campus.campusName ===action.payload)
-            })}
+    case "LOAD CAMPUSES":
+      return { campuses: [...action.payload] };
 
-        case 'ADD_STUDENT_TO_CAMPUS':
-            
-            for(let i=0; i<state.campuses.length; i++){
-                if(state.campuses[i].campusName === action.payload.campusName){
-                    state.campuses[i].campusStudents.push(action.payload);;
-                    break;
-                }
+    case "RE_RENDER":
+      return { campuses: [...state.campuses] };
 
-            }
-            return state;
+    case "EDIT_CAMPUS":
+      for (let i = 0; i < state.campuses.length; i++) {
+        if (
+          state.campuses[i].campusName === action.payload.prevState.campusName
+        ) {
+          state.campuses[i] = action.payload.currentState;
+          break;
+        }
+      }
+      return state;
 
-        case 'LOAD CAMPUSES':   
-            return {campuses: [...action.payload]}
+    case "DELETE_STUDENT_FROM_CAMPUS":
+      let target = null;
+      let campusStudents;
+      let campusName;
+      let img;
+      let location;
+      let description;
+      let modifiedCampus;
 
-        case 'RE_RENDER':
+      for (let i = 0; i < state.campuses.length; i++) {
+        if (state.campuses[i].campusName === action.payload.campusName) {
+          alert("Campus Found!!");
+          target = i;
 
-            return {campuses: [...state.campuses]}
+          campusName = state.campuses[i].campusName;
+          img = state.campuses[i].img;
+          location = state.campuses[i].location;
+          description = state.campuses[i].description;
 
-        case 'EDIT_CAMPUS':
-           
-            for(let i=0; i<state.campuses.length; i++){
-                if(state.campuses[i].campusName === action.payload.prevState.campusName){
-                    state.campuses[i] = action.payload.currentState;
-                    break;
-                }
-            }
-            return state;
+          campusStudents = state.campuses[i].campusStudents.filter(element => {
+            return element.name !== action.payload.name;
+          });
 
-        case 'DELETE_STUDENT_FROM_CAMPUS':
-           
-            let target = null;
-            let  campusStudents ;
-            let campusName;
-            let img;
-            let location;
-            let description;
-            let modifiedCampus;
-           
+          modifiedCampus = {
+            campusStudents,
+            campusName,
+            img,
+            location,
+            description
+          };
 
-            for(let i=0; i<state.campuses.length; i++){
-                if(state.campuses[i].campusName === action.payload.campusName){
-                    alert("Campus Found!!")
-                    target = i;
+          state.campuses[i] = modifiedCampus;
+          break;
+        }
+      }
+      return { campuses: [...state.campuses] };
 
-                    campusName = state.campuses[i].campusName;
-                    img = state.campuses[i].img;
-                    location = state.campuses[i].location;
-                    description = state.campuses[i].description;
-                     
-                    campusStudents = state.campuses[i].campusStudents.filter((element)=>{  
-                            return element.name !== action.payload.name;
-                    })
+    default:
+      return state;
+  }
+};
 
-                    modifiedCampus = {
-                         campusStudents,
-                         campusName,
-                         img,
-                         location,
-                         description
-                    }
+const requestCampusesInitState = {
+  campuses: [],
+  isPending: true
+};
+export const requestCampuses = (
+  state = requestCampusesInitState,
+  action = {}
+) => {
+  switch (action.type) {
+    case "REQUEST_CAMPUSES_SUCCESS":
+      return { isPending: false, campuses: [...action.payload] };
 
-                    state.campuses[i] = modifiedCampus;
-                    break;
+    case "REQUEST_CAMPUSES_PENDING":
+      return { isPending: true, campuses: [] };
 
-    
-                }
-            }
-            return {campuses: [...state.campuses]}
+    default:
+      return state;
+  }
+};
 
-        default:
-            return state;
-   }
-}
+const requestStudentsInitState = {
+  students: [],
+  isPending: true
+};
 
-const requestCampusesInitState= {
-   campuses:[],
-   isPending:true
-  
-}
-export const requestCampuses = (state= requestCampusesInitState, action={}) =>{
-    switch(action.type){
-       case "REQUEST_CAMPUSES_SUCCESS":
-          
-        return {isPending:false, campuses:[...action.payload] };
+export const requestStudents = (
+  state = requestStudentsInitState,
+  action = {}
+) => {
+  switch (action.type) {
+    case "REQUEST_STUDENTS_SUCCESS":
+      return { isPending: false, students: [...action.payload] };
 
-        case "REQUEST_CAMPUSES_PENDING":
-            return {isPending:true, campuses:[] };
+    case "REQUEST_STUDENTS_PENDING":
+      return { isPending: true, students: [] };
 
-       default:
-           return state;
-    }
-}
-
-const requestStudentsInitState= {
-    students:[],
-    isPending: true
-  
- }
-
-export const requestStudents = (state= requestStudentsInitState, action={}) =>{
-    switch(action.type){
-    
-       case "REQUEST_STUDENTS_SUCCESS":         
-        return {isPending:false, students:[...action.payload] };
-
-       case "REQUEST_STUDENTS_PENDING":
-           return  {isPending:true, students:[] };
-
-       default:
-           return state;
-    }
-}
+    default:
+      return state;
+  }
+};
