@@ -100,8 +100,9 @@
 
 .campus-cards-container{
     justify-content: center;
-    width: 90%;
+    width: 50%;
     margin: 20px auto 20px auto;
+    flex-direction: column;
 }
 
 
