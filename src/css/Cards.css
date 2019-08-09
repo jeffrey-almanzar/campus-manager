@@ -118,12 +118,20 @@
     margin-bottom: 200px;
     text-align: center;
   }
+  .campusCardOuterContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .campButton {
     align-items: flex-start;
     justify-content: center;
     margin-top: 1rem;
     width: 300px;
     height: 50px;
+  }
+  .campus-cards-container {
+    width: 100%;
   }
 
   .campus-info,

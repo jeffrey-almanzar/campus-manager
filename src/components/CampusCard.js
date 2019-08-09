@@ -26,7 +26,6 @@ class CampusCard extends React.Component {
       .then(elem => {
         this.props.refreshCampuses();
       });
-    //this.props.delete(this.props.campusName)
   };
 
   display = () => {
@@ -154,7 +153,7 @@ class CampusCard extends React.Component {
   };
 
   render() {
-    return <div>{this.display()}</div>;
+    return <div className="campusCardOuterContainer">{this.display()}</div>;
   }
 }
 export default CampusCard;
