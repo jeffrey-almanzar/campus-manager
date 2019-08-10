@@ -39,16 +39,19 @@ class Campuses extends React.Component {
       );
     } else {
       content = (
-        <div
-          style={{
-            width: "100%",
-            height: "100",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-        >
-          <Loader type="ThreeDots" color="#006917" height="100" width="100" />
+        <div>
+          <p className="center-txt">Awakening free heroku server, please wait a couple of seconds.</p>
+          <div
+            style={{
+              width: "100%",
+              height: "100",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          >
+            <Loader type="ThreeDots" color="#006917" height="100" width="100" />
+          </div>
         </div>
       );
     }
