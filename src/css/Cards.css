@@ -112,11 +112,12 @@
 }
 
 @media (max-width: 800px) {
+ 
   .campus-card {
-    flex-direction: column;
     width: 300px;
     margin-bottom: 200px;
     text-align: center;
+    display: inline-block;
   }
   .campusCardOuterContainer{
     display: flex;
@@ -139,6 +140,7 @@
     margin-left: 0px;
     border: 1px solid #000;
     padding-top: 1rem;
+    height: 130px;
   }
 
   .campButton button {
@@ -200,4 +202,6 @@
   .labels-container + div textarea {
     width: 100%;
   }
+
+  
 }
