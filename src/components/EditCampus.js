@@ -65,7 +65,7 @@ class EditCampus extends React.Component {
   };
 
   onImgChange = e => {
-    this.setState({ imgUrl: e.target.value });
+    this.setState({ img: e.target.value });
   };
 
   onDescriptionChange = e => {
