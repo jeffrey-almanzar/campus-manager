@@ -30,13 +30,16 @@ class EditStudent extends React.Component {
     let campus = event.target[1];
     let gpa = event.target[2];
     let url = event.target[3];
+    let error = false;
 
     if (!name.value) {
       name.style.borderColor = "red";
+      error = true;
     }
 
     if (!(gpa.value > 0.0 && gpa.value <= 4)) {
       gpa.style.borderColor = "red";
+      error = true;
     }
 
     name.addEventListener("focus", () => {
@@ -55,22 +58,24 @@ class EditStudent extends React.Component {
       url: url.value
     };
 
-    axios
-      .put("https://desolate-hollows-41655.herokuapp.com/editStudent/1", {
-        name: name.value,
-        gpa: gpa.value,
-        campus: campus.value,
-        url: url.value,
-        preVname: initState.name
-      })
-      .then(response => {
-        alert("Student edited");
-        this.props.refreshStudents();
-        this.setState({ redirect: true });
-      })
-      .catch(function(error) {
-        alert("Error! try again");
-      });
+    if (!error) {
+      axios
+        .put("https://desolate-hollows-41655.herokuapp.com/editStudent/1", {
+          name: name.value,
+          gpa: gpa.value,
+          campus: campus.value,
+          url: url.value,
+          preVname: initState.name
+        })
+        .then(response => {
+          this.setState({ redirect: true });
+          alert("Student edited");
+          this.props.refreshStudents();
+        })
+        .catch(function(error) {
+          alert("Error! try again");
+        });
+    }
   };
 
   onChangeName = e => {
